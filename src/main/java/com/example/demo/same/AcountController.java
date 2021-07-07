@@ -55,16 +55,15 @@ public class AcountController {
 			 check = true;
 			 People login = new People(userid, p.getName(), password);
 			 session.setAttribute("login", login);
-			 People p2 = (People) session.getAttribute("login");
-			 mv.addObject("login",p2);
 			 break;
 		 }
 		}
 
 		if(check == true) {
-			mv.addObject("user",user);
+
 			mv.setViewName("select");
-		}else {
+		}
+		else {
 
 			mv.addObject("miss","ユーザIDが一致しませんでした");
 			 mv.setViewName("login");

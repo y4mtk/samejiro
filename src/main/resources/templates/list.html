@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ゲーム一覧</title>
+</head>
+<body>
+
+	<span th:replace="menu"></span>
+
+	<hr>
+
+<div>
+	<table border="2" th:each="game : ${games}">
+	<tr>
+		<td rowspan="2">ここに画像をいれたいね</td>
+		<td th:text="${game.name}"></td>
+		<form th:action="'/select/game/'+${game.code}" method="post">
+		<td rowspan="2"><button type="submit">ゲームに<br>参加する！</button></td>
+		</form>
+	</tr>
+	<tr>
+		<td th:text="'1 PLAY '+ ${game.price} + '円'"></td>
+	</tr>
+
+	</table>
+
+</div>
+
+</body>
+</html>
