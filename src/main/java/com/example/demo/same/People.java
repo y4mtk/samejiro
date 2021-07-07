@@ -4,8 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="people")
 public class People {
 
 	@Id
@@ -19,6 +21,19 @@ public class People {
 	//デフォルトコンストラクタ
 	public People() {
 
+	}
+
+	public People(String userid, String name, String email,String password) {
+		this.userid = userid;
+		this.name = name;
+		this.email = email;
+		this.password = password;
+	}
+
+	public People(String userid, String name,String password) {
+		this.userid = userid;
+		this.name = name;
+		this.password = password;
 	}
 
 	//コンストラクター

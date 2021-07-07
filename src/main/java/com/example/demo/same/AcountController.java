@@ -1,6 +1,5 @@
 package com.example.demo.same;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -19,12 +18,14 @@ public class AcountController {
 	@Autowired
 	private HttpSession session;
 
+	@Autowired
+	PeopleRepository peopleRepository;
+
 	//http://localhost:8080/
 	//index.html(トップページ)を表示する
 	@RequestMapping ("/")
-	public ModelAndView index(ModelAndView mv) {
-
-		mv.setViewName("index"); //フォワード先
+	public ModelAndView top(ModelAndView mv) {
+		mv.setViewName("index");
 		return mv;
 	}
 
@@ -41,35 +42,34 @@ public class AcountController {
 			@RequestParam("password") String password,
 			ModelAndView mv) {
 
-		@SuppressWarnings("unchecked")
-		List<People>alluser =(ArrayList<People>)session.getAttribute("People");
-		for (People user : alluser) {
-			String _Userid =user.getUserid();
-			String _Password = user.getPassword();
-			session.setAttribute("login",user);
-
-
-			String name = user.getName();
-
-			if( userid.equals( _Userid)  &&  password.equals(_Password)){
-				mv.addObject("People",user);
-				mv.addObject("alluser",alluser);
-				mv.addObject("name","こんにちは、"+ name +"さん");
-				mv.setViewName("select");
-
-			return mv;
-			}
-		}
-
-		if(userid.equals("") || password.equals("")) {
+		if (userid.isEmpty() ||password.isEmpty()) {// 名前が空の場合にエラーとする
 			mv.addObject("message", "未入力の項目があります");
 			mv.setViewName("login");
-		} else {
-			mv.addObject("miss","ユーザIDとパスワードが一致しませんでした");
-			mv.setViewName("login");
+		}else {
+		List<People>user = peopleRepository.findByUserid(userid);
+
+		boolean check = false;
+
+		for(People p : user) {
+		 if (userid.equals(p.getUserid()) && password.equals(p.getPassword())) {
+			 check = true;
+			 People login = new People(userid, p.getName(), password);
+			 session.setAttribute("login", login);
+			 People p2 = (People) session.getAttribute("login");
+			 mv.addObject("login",p2);
+			 break;
+		 }
 		}
 
+		if(check == true) {
+			mv.addObject("user",user);
+			mv.setViewName("select");
+		}else {
 
+			mv.addObject("miss","ユーザIDが一致しませんでした");
+			 mv.setViewName("login");
+		 }
+	 }
 		return mv;
 	}
 
@@ -87,58 +87,48 @@ public class AcountController {
 			@RequestParam("email") String email,
 			@RequestParam("password") String password,
 			ModelAndView mv) {
-		@SuppressWarnings("unchecked")
 
-		List<People> alluser =(List<People>) session.getAttribute("People");
-		//セッションスコープに何も設定されていなければ作成
-		if(alluser == null) {
-			alluser = new ArrayList<>();
-			session.setAttribute("People", alluser);
-		}
 
-		People p = new People();
-
-		for (People user : alluser) {
-			String _Userid =user.getUserid();
-			String _Email = user.getEmail();
-
-			if (userid.equals(_Userid)) {
-				mv.addObject("Already","登録済みのユーザIDです");
+			//未入力項目
+			if (userid.isEmpty() || name.isEmpty() || email.isEmpty() || password.isEmpty()) {
+				mv.addObject("message","未入力の項目があります");
 				mv.setViewName("signup");
-
-				return mv;
-			}else if(email.equals(_Email)) {
-				mv.addObject("Already2","登録済みのメールアドレスです");
-				mv.setViewName("signup");
-
-				return mv;
 			}
-		}
-
-		if(userid.equals("")||  name.equals("")|| email.equals("")|| password.equals("")) {
-			//未入力の場合
-			mv.addObject("message", "未入力の項目があります");
-			mv.setViewName("signup"); //フォワード先
-		} else {
-			// 書き込み情報をnewしてリストに追加
-			p.setUserid(userid);
-			p.setName(name);
-			p.setEmail(email);
-			p.setPassword(password);
-
-			//１つの情報
-			alluser.add(p);
 
 
-		mv.addObject("People",alluser);
-		mv.addObject("Registration","登録が完了しました");
-		mv.setViewName("login"); //フォワード先
-	 }
+			//重複しているとき
+			List<People> user = peopleRepository.findByEmail(email);
+			int check = 1;
 
+			for(People p : user) {
+				if (userid.equals(p.getUserid())) {
+					check = 2;
+				} else if(email.equals(p.getEmail())) {
+					check = 3;
+				}
+			}
+
+			if(check == 2) {
+				mv.addObject("Already1","登録済みのユーザIDです");
+				mv.setViewName("signup");
+			} else if(check == 3) {
+				mv.addObject("Already","登録済みのメールアドレスです");
+				mv.setViewName("signup");
+			}
+			else {
+				People people = new People(userid,name,email,password);
+				peopleRepository.saveAndFlush(people);
+
+				mv.addObject("Registration","登録が完了しました");
+				mv.setViewName("login"); //フォワード先
+			}
 
 		return mv;
+
 	}
 
+
+	//ログアウト
 	@RequestMapping("/logout")
 	public ModelAndView out(ModelAndView mv) {
 	session.removeAttribute("login");
