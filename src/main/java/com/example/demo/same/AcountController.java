@@ -20,17 +20,11 @@ public class AcountController {
 	private HttpSession session;
 
 	//http://localhost:8080/
+	//index.html(トップページ)を表示する
 	@RequestMapping ("/")
-	public ModelAndView top(ModelAndView mv) {
-		@SuppressWarnings("unchecked")
-		List<USER>allReg =(ArrayList<USER>)session.getAttribute("USER");
+	public ModelAndView index(ModelAndView mv) {
 
-		if (allReg == null) {
-			session.invalidate();
-		}
-		mv.addObject("login",allReg);
-
-		mv.setViewName("top"); //フォワード先
+		mv.setViewName("index"); //フォワード先
 		return mv;
 	}
 
@@ -41,115 +35,117 @@ public class AcountController {
 			return mv;
 	}
 
-		@PostMapping("/login")
-		public ModelAndView log(
-				@RequestParam("ID") String ID,
-				@RequestParam("PW") String PW,
-				ModelAndView mv) {
+	@PostMapping("/login")
+	public ModelAndView log(
+			@RequestParam("userid") String userid,
+			@RequestParam("password") String password,
+			ModelAndView mv) {
 
-			@SuppressWarnings("unchecked")
-			List<USER>allReg =(ArrayList<USER>)session.getAttribute("USER");
-			for (USER user : allReg) {
-				String _ID =user.getID();
-				String _PW = user.getPW();
-				session.setAttribute("login",user);
-
-
-				String NAME = user.getNAME();
-
-				if(ID.equals(_ID)  &&  PW.equals(_PW)){
-					mv.addObject("USER",user);
-					mv.addObject("allReg",allReg);
-					mv.addObject("NAME","こんにちは、"+ NAME +"さん");
-					mv.setViewName("main");
-
-				return mv;
-				}
-			}
-
-			if(ID.equals("") || PW.equals("")) {
-				mv.addObject("message", "未入力の項目があります");
-				mv.setViewName("login");
-			} else {
-				mv.addObject("mes","ユーザIDとパスワードが一致しませんでした");
-				mv.setViewName("login");
-			}
-
-
-			return mv;
-		}
-
-		//http://localhost:8080/signup
-		@RequestMapping("/signup")
-			public ModelAndView signup(ModelAndView mv) {
-			mv.setViewName("signup"); //フォワード先
-			return mv;
-		}
-
-		@PostMapping("/signup")
-		public ModelAndView sign(
-				@RequestParam("ID") String ID,
-				@RequestParam("NAME") String NAME,
-				@RequestParam("PW") String PW,
-				ModelAndView mv) {
 		@SuppressWarnings("unchecked")
+		List<People>alluser =(ArrayList<People>)session.getAttribute("People");
+		for (People user : alluser) {
+			String _Userid =user.getUserid();
+			String _Password = user.getPassword();
+			session.setAttribute("login",user);
 
-		List<USER> allReg =(List<USER>) session.getAttribute("USER");
-		//セッションスコープに何も設定されていなければ作成
-		if(allReg == null) {
-			allReg = new ArrayList<>();
-			session.setAttribute("USER", allReg);
-		}
 
-		USER s = new USER();
+			String name = user.getName();
 
-		for (USER user : allReg) {
-			String _ID =user.getID();
+			if( userid.equals( _Userid)  &&  password.equals(_Password)){
+				mv.addObject("People",user);
+				mv.addObject("alluser",alluser);
+				mv.addObject("name","こんにちは、"+ name +"さん");
+				mv.setViewName("select");
 
-			if (ID.equals(_ID)) {
-				mv.addObject("m","登録済みのユーザIDです");
-				mv.setViewName("signup");
-
-				return mv;
+			return mv;
 			}
 		}
 
-		if(ID.equals("")||  NAME.equals("")|| PW.equals("")) {
-			//未入力の場合
+		if(userid.equals("") || password.equals("")) {
 			mv.addObject("message", "未入力の項目があります");
-			mv.setViewName("signup"); //フォワード先
+			mv.setViewName("login");
 		} else {
-			// 書き込み情報をnewしてリストに追加
-			s.setID(ID);
-			s.setNAME(NAME);
-			s.setPW(PW);
-
-			//１つの情報
-			allReg.add(s);
-
-
-		mv.addObject("USER",allReg);
-		mv.addObject("u","登録が完了しました");
-		mv.setViewName("login"); //フォワード先
+			mv.addObject("miss","ユーザIDとパスワードが一致しませんでした");
+			mv.setViewName("login");
 		}
 
 
 		return mv;
 	}
 
-		//http://localhost:8080/main
-				@RequestMapping("/main")
-				public String main() {
-					return ("main");
+	//http://localhost:8080/signup
+	@RequestMapping("/signup")
+		public ModelAndView signup(ModelAndView mv) {
+		mv.setViewName("signup"); //フォワード先
+		return mv;
+	}
 
-				}
+	@PostMapping("/signup")
+		public ModelAndView sign(
+			@RequestParam("userid") String userid,
+			@RequestParam("name") String name,
+			@RequestParam("email") String email,
+			@RequestParam("password") String password,
+			ModelAndView mv) {
+		@SuppressWarnings("unchecked")
 
-				@RequestMapping("/logout")
-				public ModelAndView out(ModelAndView mv) {
-				session.removeAttribute("login");
+		List<People> alluser =(List<People>) session.getAttribute("People");
+		//セッションスコープに何も設定されていなければ作成
+		if(alluser == null) {
+			alluser = new ArrayList<>();
+			session.setAttribute("People", alluser);
+		}
 
-				mv.setViewName("top"); //フォワード先
+		People p = new People();
+
+		for (People user : alluser) {
+			String _Userid =user.getUserid();
+			String _Email = user.getEmail();
+
+			if (userid.equals(_Userid)) {
+				mv.addObject("Already","登録済みのユーザIDです");
+				mv.setViewName("signup");
+
+				return mv;
+			}else if(email.equals(_Email)) {
+				mv.addObject("Already2","登録済みのメールアドレスです");
+				mv.setViewName("signup");
+
 				return mv;
 			}
+		}
+
+		if(userid.equals("")||  name.equals("")|| email.equals("")|| password.equals("")) {
+			//未入力の場合
+			mv.addObject("message", "未入力の項目があります");
+			mv.setViewName("signup"); //フォワード先
+		} else {
+			// 書き込み情報をnewしてリストに追加
+			p.setUserid(userid);
+			p.setName(name);
+			p.setEmail(email);
+			p.setPassword(password);
+
+			//１つの情報
+			alluser.add(p);
+
+
+		mv.addObject("People",alluser);
+		mv.addObject("Registration","登録が完了しました");
+		mv.setViewName("login"); //フォワード先
+	 }
+
+
+		return mv;
+	}
+
+	@RequestMapping("/logout")
+	public ModelAndView out(ModelAndView mv) {
+	session.removeAttribute("login");
+
+	mv.setViewName("index"); //フォワード先
+	return mv;
+
+	}
 
 }
