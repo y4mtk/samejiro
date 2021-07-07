@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>商品検索</title>
+</head>
+<body>
+<h1>商品一覧</h1>
+
+<table border="1">
+<tr>
+	<th>NO</th><th>商品名</th><th>値段</th><th>更新</th><th>削除</th>
+</tr>
+<!-- 繰り返すのでeachを利用して表示するようにしている -->
+
+<tr th:each="item:${list}">
+	<td th:text="${item.code}"></td>
+	<td th:text="${item.name}"></td>
+	<td th:text="${item.price}"></td>
+
+	<td>
+	<!-- thのものをformに入れる時はth:action=になる -->
+	<form th:action="'/items/change/' +${item.code}" method="get">
+	<input type="submit" value="変更">
+	</form>
+	</td>
+	<td>
+	<form th:action="'/delete/' +${item.code}" method="post">
+	<input type="submit" value="削除">
+	</form>
+	</td>
+</tr>
+</table>
+<br>
+<a href="/items/new">新規登録</a>
+</body>
+</html>
