@@ -46,7 +46,7 @@ public class SelectController {
 		return mv;
 	}
 
-	//残高確認画面へ
+	//ゲーム詳細画面へ
 	@RequestMapping(value="/select/game/{code}", method=RequestMethod.POST)
 	public ModelAndView showGame(
 			ModelAndView mv,

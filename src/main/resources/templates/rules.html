@@ -15,7 +15,9 @@
 	<tr>
 		<td rowspan="4" colspan="2">画像入れます</td>
 		<td th:text="${game.name}"></td>
+		<form th:action="'/join/'+${game.code}" method="post">
 		<td rowspan="2"><button type="submit">ゲームに<br>参加する！</button></td>
+		</form>
 	</tr>
 	<tr>
 		<td th:text="'1 PLAY '+ ${game.price} + '円'"></td>
