@@ -11,12 +11,12 @@
 	<form action="/challenge/start" method="post">
 		<input type="hidden" th:value="${name}" name="name">
 		<input type="hidden" th:value="${JP}" name="JP">
+		現在のジャックポットは<span style="color: red" th:text="${JP}"></span>円です。<br>
 		<button name="start">START</button>
-		現在のジャックポットは<span style="color: red" th:text="${JP}"></span>円です。
 	</form>
 </div>
 
-<div th:else="${slot1 == null && slot2 == null && slot3 == null}">
+<div th:if="${slot1 != null && slot2 != null && slot3 != null}">
 <table border="1">
         <tr>
        		 <td><div th:text="${slot1}"></div></td>
@@ -24,9 +24,20 @@
            	 <td><div th:text="${slot3}"></div></td>
         </tr>
 </table>
-	<span th:text="${message}"></span>
+<span th:text="${message}"></span>
 </div>
 
+<div th:else="${samejiroCheck == true}">
+	<a href="jpResult">結果表示画面へ</a>
+</div>
+
+<div th:if="${samejiroCheck == true}">
+	<form action="/jackpot" method="post">
+	<input type="hidden" th:value="${name}" name="name">
+	<input type="hidden" th:value="${JP}" name="JP">
+	<input type="submit" value="JackPot!!!">
+	</form>
+</div>
 
 </body>
 </html>

@@ -27,7 +27,6 @@ public class JPController {
 	BankRepository bankRepository;
 
 
-	//ルール詳細画面表示
 	@RequestMapping(value="/challenge", method=RequestMethod.POST)
 	public ModelAndView jpchallenge(
 			ModelAndView mv,
@@ -106,6 +105,19 @@ public class JPController {
 		}
 
 		mv.setViewName("jpchallenge");
+		return mv;
+	}
+
+	@RequestMapping(value="/jackpot", method=RequestMethod.POST)
+	public ModelAndView jackpot(
+			ModelAndView mv,
+			@RequestParam("JP") int jp,
+			@RequestParam("name") String name
+			) {
+
+		mv.addObject("JP", jp);
+		mv.addObject("name", name);
+		mv.setViewName("jackpot");
 		return mv;
 	}
 }
