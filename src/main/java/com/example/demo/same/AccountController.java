@@ -95,26 +95,30 @@ public class AccountController {
 			if (userid.isEmpty() || name.isEmpty() || email.isEmpty() || password.isEmpty()) {
 				mv.addObject("message","未入力の項目があります");
 				mv.setViewName("signup");
+
+				return mv;
 			}
 
 
 			//重複しているとき
 			List<People> user = peopleRepository.findByEmail(email);
-			int check = 1;
+			int check = 0;
 
 			for(People p : user) {
-				if (userid.equals(p.getUserid())) {
-					check = 2;
+				if(userid.equals(p.getUserid())) {
+					check = 1;
 				} else if(email.equals(p.getEmail())) {
-					check = 3;
+					check = 2;
 				}
 			}
 
-			if(check == 2) {
-				mv.addObject("Already1","登録済みのユーザIDです");
+			if(check == 1) {
+				mv.addObject("Already","登録済みのユーザIDです");
 				mv.setViewName("signup");
-			} else if(check == 3) {
-				mv.addObject("Already","登録済みのメールアドレスです");
+
+			}
+			else if(check == 2) {
+				mv.addObject("Already1","登録済みのメールアドレスです");
 				mv.setViewName("signup");
 			}
 			else {
