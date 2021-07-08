@@ -21,6 +21,9 @@ public class AcountController {
 	@Autowired
 	PeopleRepository peopleRepository;
 
+	@Autowired
+	BankRepository bankRepository;
+
 	//http://localhost:8080/
 	//index.html(トップページ)を表示する
 	@RequestMapping ("/")
@@ -116,9 +119,15 @@ public class AcountController {
 			}
 			else {
 				People people = new People(userid,name,email,password);
-				peopleRepository.saveAndFlush(people);
+				peopleRepository.saveAndFlush(people); //登録完了
 
-				mv.addObject("Registration","登録が完了しました");
+				//Bankの初期値30000,0,0とPeopleのコードを紐づける
+				int user_code = people.getCode();
+
+				Bank bank = new Bank(user_code, 30000, 0, 0);
+				bankRepository.saveAndFlush(bank);
+
+				mv.addObject("Registration", "登録が完了しました");
 				mv.setViewName("login"); //フォワード先
 			}
 
