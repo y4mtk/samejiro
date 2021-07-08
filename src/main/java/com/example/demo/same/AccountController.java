@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
-public class AcountController {
+public class AccountController {
 
 	@Autowired
 	private HttpSession session;

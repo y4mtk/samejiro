@@ -1,5 +1,6 @@
 package com.example.demo.same;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
@@ -42,6 +43,10 @@ public class GameController {
 		if (code == 1) {
 			mv.setViewName("gametop1");
 		} else if (code == 2) {
+			List<Bank> bankJackPot = bankRepository.findByUserCode(0);
+			Bank JackPot = bankJackPot.get(0);
+			mv.addObject("JP", JackPot);
+
 			mv.setViewName("gametop2");
 		} else if (code == 3) {
 			mv.setViewName("gametop3");

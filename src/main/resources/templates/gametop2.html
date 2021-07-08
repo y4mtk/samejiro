@@ -5,12 +5,17 @@
 <title>ルール説明</title>
 </head>
 <body>
-<h1 th:text="'ルール説明：' + ${game.name}"></h1>
+<h1 th:text="${game.name}"></h1>
 
-<div>
+スロットで当たりが出たらジャックポットチャレンジ成功！<br>
+ジャックポットの一部が当たるかも？？？<br>
 
-</div>
+現在のジャックポットは<span style="color:red" th:text="${JP.money}"></span>円です。
 
-
+<form action="/challenge" method="post">
+<input type="hidden" th:value="${JP.money}" name="JP">
+<input type="hidden" th:value="${game.name}" name="name">
+<input type="submit" value="START">
+</form>
 </body>
 </html>

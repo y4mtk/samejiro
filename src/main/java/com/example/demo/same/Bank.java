@@ -16,7 +16,7 @@ public class Bank {
 	private Integer code;
 
 	@Column(name="user_code")
-	private Integer user_code;
+	private Integer userCode;
 
 	@Column(name="money")
 	private int money;
@@ -27,14 +27,15 @@ public class Bank {
 	@Column(name="won")
 	private int won;
 
-	public Bank(Integer user_code, int money, int lost, int won) {
-		this.user_code = user_code;
+	public Bank(Integer userCode, int money, int lost, int won) {
+		this.userCode = userCode;
 		this.money = money;
 		this.lost = lost;
 		this.won = won;
 	}
 
-
+	public Bank() {
+	}
 
 	public Integer getCode() {
 		return code;
@@ -44,12 +45,12 @@ public class Bank {
 		this.code = code;
 	}
 
-	public Integer getUser_code() {
-		return user_code;
+	public Integer getUserCode() {
+		return userCode;
 	}
 
-	public void setUser_code(Integer user_code) {
-		this.user_code = user_code;
+	public void setUserCode(Integer userCode) {
+		this.userCode = userCode;
 	}
 
 	public int getMoney() {
