@@ -142,7 +142,7 @@ public class JPController {
 		Bank JPbank = JP.get(0);
 
 		Random random = new Random();
-		int r = random.nextInt(5) + 1;
+		int r = random.nextInt(3) + 1;
 		double prizeR = 0;
 
 		switch(r){
@@ -154,12 +154,6 @@ public class JPController {
 			break;
 		case 3:
 			prizeR = 0.001;
-			break;
-		case 4:
-			prizeR = 0.0001;
-			break;
-		case 5:
-			prizeR = 0.00001;
 			break;
 		}
 
