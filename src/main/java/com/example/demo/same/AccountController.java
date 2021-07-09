@@ -49,28 +49,17 @@ public class AccountController {
 			mv.addObject("message", "未入力の項目があります");
 			mv.setViewName("login");
 		}else {
-		List<People>user = peopleRepository.findByUserid(userid);
+			List<People>user = peopleRepository.findByUseridAndPassword(userid, password);
 
-		boolean check = false;
-
-		for(People p : user) {
-		 if (userid.equals(p.getUserid()) && password.equals(p.getPassword())) {
-			 check = true;
-			 People login = new People(userid, p.getName(), password);
-			 session.setAttribute("login", login);
-			 break;
-		 }
-		}
-
-		if(check == true) {
-
-			mv.setViewName("select");
-		}
-		else {
-
-			mv.addObject("miss","ユーザIDが一致しませんでした");
-			 mv.setViewName("login");
-		 }
+			if(user.size()==0) {
+				mv.addObject("miss","ユーザIDが一致しませんでした");
+				mv.setViewName("login");
+			}
+			else {
+				People login = user.get(0);
+				session.setAttribute("login", login);
+				mv.setViewName("select");
+			}
 	 }
 		return mv;
 	}

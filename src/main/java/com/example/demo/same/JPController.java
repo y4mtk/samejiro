@@ -36,7 +36,7 @@ public class JPController {
 			@RequestParam("name") String name
 	) {
 		People player = (People)session.getAttribute("login");
-		System.out.println("ここみて" + player.getCode());
+
 		List<Bank> list = bankRepository.findByUserCode(player.getCode());
 		Bank bankAccount = list.get(0);
 
