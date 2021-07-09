@@ -102,26 +102,19 @@ public class AccountController {
 
 			//重複しているとき
 			List<People> user = peopleRepository.findByEmail(email);
-			int check = 0;
-
-			for(People p : user) {
-				if(userid.equals(p.getUserid())) {
-					check = 1;
-				} else if(email.equals(p.getEmail())) {
-					check = 2;
-				}
-			}
-
-			if(check == 1) {
-				mv.addObject("Already","登録済みのユーザIDです");
-				mv.setViewName("signup");
-
-			}
-			else if(check == 2) {
+			if(user.size()!=0) {
 				mv.addObject("Already1","登録済みのメールアドレスです");
 				mv.setViewName("signup");
+				return mv;
 			}
-			else {
+
+			List<People> user1 = peopleRepository.findByUserid(userid);
+			if(user1.size()!=0) {
+				mv.addObject("Already","登録済みのユーザIDです");
+				mv.setViewName("signup");
+				return mv;
+			}
+
 				People people = new People(userid,name,email,password);
 				peopleRepository.saveAndFlush(people); //登録完了
 
@@ -133,7 +126,6 @@ public class AccountController {
 
 				mv.addObject("Registration", "登録が完了しました");
 				mv.setViewName("login"); //フォワード先
-			}
 
 		return mv;
 
