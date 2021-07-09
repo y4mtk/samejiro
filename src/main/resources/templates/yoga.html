@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Relax yoga</title>
+</head>
+<body>
+<h1>Relax yoga</h1>
+
+<br>
+<form action="/yoga" method="post">
+<input type="submit" value="ヨガスタート">
+</form>
+
+<a th:text="${result1}"><img src="../static/onepiece01_luffy.png" width="350"
+             th:src="@{onepiece01_luffy.png}"/></a>
+
+
+<div th:text="${result2}"></div>
+<div th:text="${result3}"></div>
+<div th:text="${result4}"></div>
+<div th:text="${result5}"></div>
+<div th:text="${result6}"></div>
+<div th:text="${result7}"></div>
+<div th:text="${result8}"></div>
+<div th:text="${result9}"></div>
+<div th:text="${result10}"></div>
+
+
+
+</body>
+</html>
