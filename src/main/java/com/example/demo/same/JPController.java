@@ -1,5 +1,7 @@
 package com.example.demo.same;
 
+import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 import javax.servlet.http.HttpSession;
@@ -33,6 +35,22 @@ public class JPController {
 			@RequestParam("JP") int jp,
 			@RequestParam("name") String name
 	) {
+		People player = (People) session.getAttribute("login");
+		List<Bank> list = bankRepository.findByUserCode(player.getCode());
+		Bank bankAccount = list.get(0);
+
+		Optional<Game> list2 = gameRepository.findById(2);
+		Game game = list2.get();
+
+		if(bankAccount.getMoney() < game.getPrice()) {
+			mv.addObject("message", "残高が足りません");
+			mv.setViewName("");
+			return mv;
+		}
+
+		Bank newMoney = new Bank(bankAccount.getCode(), bankAccount.getUserCode(), bankAccount.getMoney()-game.getPrice(), bankAccount.getLost(), bankAccount.getWon());
+		bankRepository.saveAndFlush(newMoney);
+
 		mv.addObject("name", name);
 		mv.addObject("JP", jp);
 		mv.setViewName("jpchallenge");

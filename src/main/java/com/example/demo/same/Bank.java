@@ -34,6 +34,14 @@ public class Bank {
 		this.won = won;
 	}
 
+	public Bank(Integer code, Integer userCode, int money, int lost, int won) {
+		this.code = code;
+		this.userCode = userCode;
+		this.money = money;
+		this.lost = lost;
+		this.won = won;
+	}
+
 	public Bank() {
 	}
 

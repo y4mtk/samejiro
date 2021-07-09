@@ -56,22 +56,38 @@ public class GameController {
 	}
 
 	//結果表示
-	@RequestMapping(value="/result/{code}", method=RequestMethod.POST)
+	@RequestMapping(value="/result", method=RequestMethod.POST)
 	public ModelAndView showResult(
 			ModelAndView mv,
-			@PathVariable("code") int code,
-			@RequestParam("lost") int lost,
-			@RequestParam("won") int won
+			@RequestParam("prize") int prize,
+			@RequestParam("code") int code
 			) {
+
 		Optional<Game> game = gameRepository.findById(code);
 		Game gameDetail = game.get();
 		mv.addObject("game", gameDetail);
 
-		if(won != 0) {
+		People player = (People) session.getAttribute("login");
+		List<Bank> list = bankRepository.findByUserCode(player.getCode());
+		Bank bankAccount = list.get(0);
+
+		int WonOrLost = prize - gameDetail.getPrice();
+		if(WonOrLost > 0) {
+			int won = WonOrLost;
 			mv.addObject("message", "勝ち金が"+ won + "円増えました");
+
+			Bank newMoney = new Bank(bankAccount.getCode(), bankAccount.getUserCode(), bankAccount.getMoney(), bankAccount.getLost(), bankAccount.getWon()+won);
+			bankRepository.saveAndFlush(newMoney);
 		}
-		else if(lost != 0) {
+		else if(WonOrLost == 0) {
+			mv.addObject("message", "引き分けです");
+		}
+		else {
+			int lost = WonOrLost;
 			mv.addObject("message", "負け金が"+ lost + "円増えてしまいました");
+
+			Bank newMoney = new Bank(bankAccount.getCode(), bankAccount.getUserCode(), bankAccount.getMoney(), bankAccount.getLost()+lost, bankAccount.getWon());
+			bankRepository.saveAndFlush(newMoney);
 		}
 
 		mv.setViewName("result");
