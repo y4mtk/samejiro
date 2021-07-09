@@ -81,22 +81,24 @@ public class GameController {
 		int WonOrLost = (int)prize - gameDetail.getPrice();
 		if(WonOrLost > 0) {
 			int won = WonOrLost;
-			mv.addObject("message", "勝ち金が"+ won + "円増えました");
+			mv.addObject("message", "勝ち金が"+ won + "円増えました。");
 
 			Bank newMoney = new Bank(bankAccount.getCode(), bankAccount.getUserCode(), bankAccount.getMoney()+(int)prize, bankAccount.getLost(), bankAccount.getWon()+won);
 			bankRepository.saveAndFlush(newMoney);
 		}
 		else if(WonOrLost == 0) {
-			mv.addObject("message", "引き分けです");
+			mv.addObject("message", "引き分けです。");
 		}
 		else {
 			int lost = WonOrLost;
-			mv.addObject("message", "負け金が"+ lost + "円分増えてしまいました");
+			mv.addObject("message", "負け金が"+ lost + "円分増えてしまいました。");
 
 			Bank newMoney = new Bank(bankAccount.getCode(), bankAccount.getUserCode(), bankAccount.getMoney()+(int)prize, bankAccount.getLost()+lost, bankAccount.getWon());
 			bankRepository.saveAndFlush(newMoney);
 		}
 
+		mv.addObject("prize", (int)prize);
+		mv.addObject("bankAccount", bankAccount);
 		mv.setViewName("result");
 		return mv;
 	}

@@ -7,7 +7,24 @@
 <body>
 <h1 th:text="${game.name}+'結果発表'"></h1>
 
+<div th:text="'賞金は'+ ${prize} + 'でした。'"></div>
 <div th:text="${message}"></div>
+<br>
+新しい残高は
+<table border="1">
+<tr>
+<th>残高</th>
+<td th:text="${bankAccount.money}"></td>
+</tr>
+<tr>
+<th>累計負け金</th>
+<td th:text="${bankAccount.lost}"></td>
+</tr>
+<tr>
+<th>累計勝ち金</th>
+<td th:text="${bankAccount.won}"></td>
+</tr>
+</table>
 
 <a href="/select">メニューに戻る</a>
 </body>
