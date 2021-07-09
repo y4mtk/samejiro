@@ -10,23 +10,18 @@
 <br>
 <form action="/yoga" method="post">
 <input type="submit" value="ヨガスタート">
+
+<div th:if="${session.COUNT == 0}"><img width="350" th:src="@{/onepiece01_luffy.png}"/></div><!-- 出てこない部分 -->
+<div th:if="${session.COUNT == 1}"><img width="350" th:src="@{/onepiece02_zoro_bandana.png}"/></div>
+<div th:if="${session.COUNT == 2}"><img width="350" th:src="@{/onepiece03_nami.png}"/></div>
+<div th:if="${session.COUNT == 3}"><img width="350" th:src="@{/onepiece04_usopp_sogeking.png}"/></div>
+<div th:if="${session.COUNT == 4}"><img width="350" th:src="@{/onepiece05_sanji.png}"/></div>
+<div th:if="${session.COUNT == 5}"><img width="350" th:src="@{/onepiece06_chopper.png}"/></div>
+<div th:if="${session.COUNT == 6}"><img width="350" th:src="@{/onepiece07_robin.png}"/></div>
+<div th:if="${session.COUNT == 7}"><img width="350" th:src="@{/onepiece08_franky.png}"/></div>
+<div th:if="${session.COUNT == 8}"><img width="350" th:src="@{/onepiece09_brook.png}"/></div>
+<div th:if="${session.COUNT == 9}"><img width="350" th:src="@{/onepiece10_jinbe.png}"/></div>
 </form>
-
-<a th:text="${result1}"><img src="../static/onepiece01_luffy.png" width="350"
-             th:src="@{onepiece01_luffy.png}"/></a>
-
-
-<div th:text="${result2}"></div>
-<div th:text="${result3}"></div>
-<div th:text="${result4}"></div>
-<div th:text="${result5}"></div>
-<div th:text="${result6}"></div>
-<div th:text="${result7}"></div>
-<div th:text="${result8}"></div>
-<div th:text="${result9}"></div>
-<div th:text="${result10}"></div>
-
-
 
 </body>
 </html>
