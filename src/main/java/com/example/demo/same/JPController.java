@@ -35,7 +35,8 @@ public class JPController {
 			@RequestParam("JP") int jp,
 			@RequestParam("name") String name
 	) {
-		People player = (People) session.getAttribute("login");
+		People player = (People)session.getAttribute("login");
+		System.out.println("ここみて" + player.getCode());
 		List<Bank> list = bankRepository.findByUserCode(player.getCode());
 		Bank bankAccount = list.get(0);
 
@@ -50,6 +51,11 @@ public class JPController {
 
 		Bank newMoney = new Bank(bankAccount.getCode(), bankAccount.getUserCode(), bankAccount.getMoney()-game.getPrice(), bankAccount.getLost(), bankAccount.getWon());
 		bankRepository.saveAndFlush(newMoney);
+
+		List<Bank> JP = bankRepository.findByUserCode(0);
+		Bank JPbank = JP.get(0);
+		Bank newJP = new Bank(JPbank.getCode(), 0, JPbank.getMoney()+game.getPrice(), 0, 0);
+		bankRepository.saveAndFlush(newJP);
 
 		mv.addObject("name", name);
 		mv.addObject("JP", jp);
@@ -119,7 +125,9 @@ public class JPController {
 			mv.addObject("message", "チャレンジ成功！！");
 			mv.addObject("samejiroCheck", samejiroCheck);
 		}else {
+			boolean samejiroCheck = false;
 			mv.addObject("message", "チャレンジ失敗……。");
+			mv.addObject("samejiroCheck", samejiroCheck);
 		}
 
 		mv.setViewName("jpchallenge");

@@ -84,7 +84,7 @@ public class GameController {
 		}
 		else {
 			int lost = WonOrLost;
-			mv.addObject("message", "負け金が"+ lost + "円増えてしまいました");
+			mv.addObject("message", "負け金が"+ lost + "円分増えてしまいました");
 
 			Bank newMoney = new Bank(bankAccount.getCode(), bankAccount.getUserCode(), bankAccount.getMoney(), bankAccount.getLost()+lost, bankAccount.getWon());
 			bankRepository.saveAndFlush(newMoney);

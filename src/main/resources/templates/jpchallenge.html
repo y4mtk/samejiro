@@ -27,15 +27,18 @@
 <span th:text="${message}"></span>
 </div>
 
-<div th:else="${samejiroCheck == true}">
-	<a href="jpResult">結果表示画面へ</a>
+<div th:if="${samejiroCheck == false}">
+	<form action="/result" method="post">
+	<input type="hidden" value="2" name="code">
+	<input type="hidden" value="0" name="prize">
+	<input type="submit" value="結果表示画面へ">
+	</form>
 </div>
 
 <div th:if="${samejiroCheck == true}">
 	<form action="/jackpot" method="post">
 	<input type="hidden" th:value="${name}" name="name">
 	<input type="hidden" th:value="${JP}" name="JP">
-	<input type="hidden" value="2" name="code">
 	<input type="submit" value="JackPot!!!">
 	</form>
 </div>
