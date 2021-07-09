@@ -43,17 +43,18 @@ public class JPController {
 		Optional<Game> list2 = gameRepository.findById(2);
 		Game game = list2.get();
 
-		if(bankAccount.getMoney() < game.getPrice()) {
+		List<Bank> JP = bankRepository.findByUserCode(0);
+		Bank JPbank = JP.get(0);
+
+		if(game.getPrice() > bankAccount.getMoney()) {
 			mv.addObject("message", "残高が足りません");
-			mv.setViewName("");
+			mv.setViewName("error");
 			return mv;
 		}
 
 		Bank newMoney = new Bank(bankAccount.getCode(), bankAccount.getUserCode(), bankAccount.getMoney()-game.getPrice(), bankAccount.getLost(), bankAccount.getWon());
 		bankRepository.saveAndFlush(newMoney);
 
-		List<Bank> JP = bankRepository.findByUserCode(0);
-		Bank JPbank = JP.get(0);
 		Bank newJP = new Bank(JPbank.getCode(), 0, JPbank.getMoney()+game.getPrice(), 0, 0);
 		bankRepository.saveAndFlush(newJP);
 
@@ -119,7 +120,7 @@ public class JPController {
 		mv.addObject("name", name);
 		mv.addObject("JP", jp);
 
-		if(slot1.equals("サメジロー。") && slot2.equals("サメジロー。") && slot3.equals("サメジロー。")) {
+		if(slot1.equals(slot2) && slot1.equals(slot3) && slot2.equals(slot3)) {
 			boolean samejiroCheck = true;
 
 			mv.addObject("message", "チャレンジ成功！！");
@@ -134,13 +135,59 @@ public class JPController {
 		return mv;
 	}
 
+	@RequestMapping(value="/getPrize", method=RequestMethod.POST)
+	public ModelAndView getPrize(ModelAndView mv) {
+
+		List<Bank> JP = bankRepository.findByUserCode(0);
+		Bank JPbank = JP.get(0);
+
+		Random random = new Random();
+		int r = random.nextInt(5) + 1;
+		double prizeR = 0;
+
+		switch(r){
+		case 1:
+			prizeR = 0.1;
+			break;
+		case 2:
+			prizeR = 0.01;
+			break;
+		case 3:
+			prizeR = 0.001;
+			break;
+		case 4:
+			prizeR = 0.0001;
+			break;
+		case 5:
+			prizeR = 0.00001;
+			break;
+		}
+
+		Optional<Game> list2 = gameRepository.findById(2);
+		Game game = list2.get();
+
+		double prize = prizeR * JPbank.getMoney();
+
+		boolean check = true;
+
+		mv.addObject("check", check);
+		mv.addObject("prizeR", prizeR);
+		mv.addObject("prize", prize);
+		mv.addObject("JP", JPbank.getMoney());
+		mv.addObject("name", game.getName());
+		mv.setViewName("jackpot");
+		return mv;
+	}
+
 	@RequestMapping(value="/jackpot", method=RequestMethod.POST)
 	public ModelAndView jackpot(
 			ModelAndView mv,
 			@RequestParam("JP") int jp,
 			@RequestParam("name") String name
 			) {
+		boolean check = false;
 
+		mv.addObject("check", check);
 		mv.addObject("JP", jp);
 		mv.addObject("name", name);
 		mv.setViewName("jackpot");

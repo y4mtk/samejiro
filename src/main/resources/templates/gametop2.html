@@ -7,7 +7,7 @@
 <body>
 <h1 th:text="${game.name}"></h1>
 
-スロットで当たりが出たらジャックポットチャレンジ成功！<br>
+くじで当たりが出たらジャックポットチャレンジ成功！<br>
 ジャックポットの一部が当たるかも？？？<br>
 
 現在のジャックポットは<span style="color:red" th:text="${JP.money}"></span>円です。
@@ -17,5 +17,8 @@
 <input type="hidden" th:value="${game.name}" name="name">
 <input type="submit" value="START">
 </form>
+
+<span th:text="${message}"></span>
+<a href="/select/game">ゲーム一覧に戻る</a>
 </body>
 </html>

@@ -6,8 +6,28 @@
 </head>
 <body>
 <h1 th:text="${name}"></h1>
-	現在のジャックポットは<span style="color: red; font-size: 20px" th:text="${JP}"></span>円です。<br>
 
+<div th:if="${check == true}">
+
+	おめでとうございます！！
+	<span th:text="'ジャックポットの'+ ${prizeR} + 'をゲット出来ます！！'"></span>
+
+	<form action="/result" method="post">
+	<input type="hidden" value="2" name="code">
+	<input type="hidden" th:value="${prize}" name="prize">
+	<input type="submit" value="結果表示画面へ">
+	</form>
+</div>
+
+<div th:if="${check == false}">
+	くじをひいて賞金を決めよう！
+
+	<form action="/getPrize" method="post">
+	<input type="submit" value="くじをひく！">
+	</form>
+
+	現在のジャックポットは<span style="color: red; font-size: 20px" th:text="${JP}"></span>円です。<br>
+</div>
 
 </body>
 </html>

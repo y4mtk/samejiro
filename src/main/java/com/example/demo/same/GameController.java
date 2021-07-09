@@ -59,7 +59,7 @@ public class GameController {
 	@RequestMapping(value="/result", method=RequestMethod.POST)
 	public ModelAndView showResult(
 			ModelAndView mv,
-			@RequestParam("prize") int prize,
+			@RequestParam("prize") double prize,
 			@RequestParam("code") int code
 			) {
 
@@ -67,16 +67,23 @@ public class GameController {
 		Game gameDetail = game.get();
 		mv.addObject("game", gameDetail);
 
+		if(code == 2) {
+			List<Bank> JP = bankRepository.findByUserCode(0);
+			Bank JPbank = JP.get(0);
+			Bank newJP = new Bank(JPbank.getCode(), 0, JPbank.getMoney()-(int)prize, 0, 0);
+			bankRepository.saveAndFlush(newJP);
+		}
+
 		People player = (People) session.getAttribute("login");
 		List<Bank> list = bankRepository.findByUserCode(player.getCode());
 		Bank bankAccount = list.get(0);
 
-		int WonOrLost = prize - gameDetail.getPrice();
+		int WonOrLost = (int)prize - gameDetail.getPrice();
 		if(WonOrLost > 0) {
 			int won = WonOrLost;
 			mv.addObject("message", "勝ち金が"+ won + "円増えました");
 
-			Bank newMoney = new Bank(bankAccount.getCode(), bankAccount.getUserCode(), bankAccount.getMoney(), bankAccount.getLost(), bankAccount.getWon()+won);
+			Bank newMoney = new Bank(bankAccount.getCode(), bankAccount.getUserCode(), bankAccount.getMoney()+(int)prize, bankAccount.getLost(), bankAccount.getWon()+won);
 			bankRepository.saveAndFlush(newMoney);
 		}
 		else if(WonOrLost == 0) {
@@ -86,7 +93,7 @@ public class GameController {
 			int lost = WonOrLost;
 			mv.addObject("message", "負け金が"+ lost + "円分増えてしまいました");
 
-			Bank newMoney = new Bank(bankAccount.getCode(), bankAccount.getUserCode(), bankAccount.getMoney(), bankAccount.getLost()+lost, bankAccount.getWon());
+			Bank newMoney = new Bank(bankAccount.getCode(), bankAccount.getUserCode(), bankAccount.getMoney()+(int)prize, bankAccount.getLost()+lost, bankAccount.getWon());
 			bankRepository.saveAndFlush(newMoney);
 		}
 
