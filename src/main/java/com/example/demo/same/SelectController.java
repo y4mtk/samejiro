@@ -22,6 +22,9 @@ public class SelectController {
 	GameRepository gameRepository;
 
 	@Autowired
+	BankRepository bankRepository;
+
+	@Autowired
 	SamejiroRepository samejiroRepository;
 
 	//選択画面表示
@@ -63,7 +66,11 @@ public class SelectController {
 	@RequestMapping(value="/select/bank")
 	public ModelAndView showBank(ModelAndView mv) {
 
+		People player = (People) session.getAttribute("login");
+		List<Bank> list = bankRepository.findByUserCode(player.getCode());
+		Bank bankAccount = list.get(0);
 
+		mv.addObject("bankAccount", bankAccount);
 		mv.setViewName("bank");
 		return mv;
 	}

@@ -10,6 +10,25 @@
 
 	<hr>
 
+現在の残高を表示します
+<table border="1">
+<tr>
+<th>残高</th>
+<td th:text="${bankAccount.money}+'円'"></td>
+</tr>
+<tr>
+<th>累計負け金</th>
+<td th:text="${bankAccount.lost}+'円'"></td>
+</tr>
+<tr>
+<th>累計勝ち金</th>
+<td th:text="${bankAccount.won}+'円'"></td>
+</tr>
+<tr>
+<th>成績</th>
+<td th:text="${bankAccount.won}+${bankAccount.lost}+'円'"></td>
+</tr>
+</table>
 
 </body>
 </html>
