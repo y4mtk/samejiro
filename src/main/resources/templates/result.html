@@ -5,13 +5,13 @@
 <title>RESULT</title>
 </head>
 <body>
-<div th:if="${game.code=1}">
+<div th:if="${game.code == 1}">
 <h1 th:text="${game.name}+'ポイントゲット！'"></h1>
 
 <div th:text="'ゲットしたポイントは'+ ${prize} + 'でした。'"></div>
 </div>
 
-<div th:else="${game.code=1}">
+<div th:else="${game.code == 1}">
 <h1 th:text="${game.name}+'結果発表'"></h1>
 
 <div th:text="'賞金は'+ ${prize} + 'でした。'"></div>

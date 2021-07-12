@@ -6,22 +6,306 @@
 </head>
 <body>
 <h1>Relax yoga</h1>
+<div th:else="${session.COUNT == null}">
+<form action="/yoga" method="post">
+<input th:if="${session.COUNT == 1}" type="submit" value="スタート">
+</form>
 
 <br>
-<form action="/yoga" method="post">
-<input type="submit" value="ヨガスタート">
+<form th:if="${session.COUNT == 2}" action="/yoga" method="post">
+<input type="submit" value="次のポーズ！">
+<h1 th:if="${session.COUNT == 2}">スフィンクスのポーズ</h1>
+<div th:if="${session.COUNT == 2}"><img width="350" th:src="@{/yoga1.png}"/></div>
+<p th:if="${session.COUNT == 2}">
+効果効能
+<br>
+背骨の強化・胸、肺、肩、腹部のストレッチ・臀部の引き締め・腹部組織の活性化・ストレスの緩和
+<br>
+ポーズのやり方
+<br>
+1
+<br>
+うつぶせになり、両脚を並べる。尾骨を恥骨のほうへ引き入れて、かかとのほうへ伸ばす。
+<br>
+太腿の外側を床の方向へ回転して、太腿を内側に回転する。
+<br>
+これにより腰と仙骨（骨盤の後ろ側にある逆三角形の骨）が引き伸ばされて、後屈するときの保護の役目を果たす。
+<br>
+2
+<br>
+足指を積極的に後ろの壁に向けて伸ばす。
+<br>
+ポーズに入るときは、引き続き尾骨をかかとのほうへ伸ばして腰を守る。
+<br>
+お尻を引き締めつつも固くしないようにする。
+<br>
+両脚はアクティブに、舌・目・脳は静かに。
+<br>
+3
+<br>
+肘を床の上に置き、肩と前腕の真下で互いに平行にする。
+<br>
+息を吸いながら胴体上部を持ち上げて、頭を床から離して緩やかな後屈へ。
+<br>
+4
+<br>
+スフィンクスのポーズにおいて基盤をつくるための最後のステップでは、下腹部（恥骨の上からへその下までの領域）の意識を高める。
+<br>
+下腹部を軽く床から引き離して腰のほうへ丸める。
+<br>
+これは繊細な動きで、引っ込めるのでもなく、固くするのでもない。
+<br>
+この腹の持ち上げが後屈で背骨をより均等に屈曲させてサポートし、腰を和らげて背中上部を目覚めさせる。
+<br>
+5
+<br>
+5〜10呼吸ステイする。息を吐きながら、ゆっくり腹と胴体下部を緩めて頭を下ろす。
+<br>
+頭を片側に向けて、しばらく静かに横になる。息を吸うたびに背中を広げて、息を吐くたびに緊張を緩めていく。
+<br>
+もう1〜2回繰り返してもよい。
 
-<div th:if="${session.COUNT == 0}"><img width="350" th:src="@{/onepiece01_luffy.png}"/></div><!-- 出てこない部分 -->
-<div th:if="${session.COUNT == 1}"><img width="350" th:src="@{/onepiece02_zoro_bandana.png}"/></div>
-<div th:if="${session.COUNT == 2}"><img width="350" th:src="@{/onepiece03_nami.png}"/></div>
-<div th:if="${session.COUNT == 3}"><img width="350" th:src="@{/onepiece04_usopp_sogeking.png}"/></div>
-<div th:if="${session.COUNT == 4}"><img width="350" th:src="@{/onepiece05_sanji.png}"/></div>
-<div th:if="${session.COUNT == 5}"><img width="350" th:src="@{/onepiece06_chopper.png}"/></div>
-<div th:if="${session.COUNT == 6}"><img width="350" th:src="@{/onepiece07_robin.png}"/></div>
-<div th:if="${session.COUNT == 7}"><img width="350" th:src="@{/onepiece08_franky.png}"/></div>
-<div th:if="${session.COUNT == 8}"><img width="350" th:src="@{/onepiece09_brook.png}"/></div>
-<div th:if="${session.COUNT == 9}"><img width="350" th:src="@{/onepiece10_jinbe.png}"/></div>
-</form>
+</p></form>
+<!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
+
+
+<form th:if="${session.COUNT == 3}" action="/yoga" method="post">
+<input type="submit" value="次のポーズ！">
+<h1 th:if="${session.COUNT == 3}">木のポーズ</h1>
+<div th:if="${session.COUNT == 3}"><img width="350" th:src="@{/yoga2.png}"/></div>
+<p th:if="${session.COUNT == 3}">
+効果効能
+<br>
+全身にエネルギーが巡る。集中力と自身を高める。
+<br>
+ポーズのやり方
+<br>
+1
+<br>
+足の裏全体で床を踏みしめながら、背筋を伸ばす。
+<br>
+2
+<br>
+右脚を持ち上げて、徐々に左脚へ重心を乗せる。
+<br>
+右足を、軸足になる左脚の太ももに押しつける。
+<br>
+太ももと足裏で互いに押し合うイメージで。
+<br>
+3
+<br>
+もう一度、左脚の裏全体で床を踏みしめたら、息を吸いながら両手を持ち上げ胸を引き上げる。
+<br>
+視線を一点に保ち、3～5呼吸キープ。
+<br>
+1に戻り、脚を入れ替えて反対側も同様に行う。
+
+</p></form>
+<!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
+
+<form th:if="${session.COUNT == 4}" action="/yoga" method="post">
+<input type="submit" value="次のポーズ！">
+<h1 th:if="${session.COUNT == 4}">ダウンドッグのポーズ</h1>
+<div th:if="${session.COUNT == 4}"><img width="350" th:src="@{/yoga3.png}"/></div>
+<p th:if="${session.COUNT == 4}">
+効率効能
+<br>
+背中からハムストリングと体の背面を伸ばすことが特徴。
+<br>
+背中の柔軟性をアップさせる効果が期待できます。
+<br>
+ポーズのやり方
+<br>
+1
+<br>
+正座をした状態から、体を倒して手を床につけます。手は前方へまっすぐ伸ばしておきます。
+<br>
+2
+<br>
+足の方にある体重を伸ばした手の方向へ移していきます。
+<br>
+手と足へ均等に体重を乗せながら、お尻を天上の方へ上げます。
+<br>
+体全体で三角形を描くことをイメージしましょう。
+<br>
+3
+<br>
+お尻が上がったら、手と足でしっかり床を押します。
+<br>
+床を押した力を体全体に伝えて、さらにお尻を高く上げる意識を持ちます。
+<br>
+体の背面に伸びを感じましょう。
+</p></form>
+<!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
+
+<form th:if="${session.COUNT == 5}" action="/yoga" method="post">
+<input type="submit" value="次のポーズ！">
+<h1 th:if="${session.COUNT == 5}">ホタルのポーズ</h1>
+<div th:if="${session.COUNT == 5}"><img width="350" th:src="@{/yoga4.png}"/></div>
+<p th:if="${session.COUNT == 5}">
+効率効能
+<br>
+鼠蹊部内側と背中のストレッチ・腕と手首の強化・腹部を整える・バランス感覚の向上
+<br>
+ポーズのやり方
+<br>
+1
+<br>
+両足を肩幅よりやや狭くしてしゃがむ。
+<br>
+骨盤を前傾させて胴体を両脚の間に。
+<br>
+胴体を低く保ちながら、骨盤を膝くらいの高さに持ち上げられるように両脚を伸ばす。
+2
+<br>
+左の上腕と肩を、膝のすぐ上の左腿裏からできるだけ遠くに滑らせていく。
+<br>
+左手は足の外側の床の上に指先を前に向けて置く。反対側も同じように行う。
+<br>
+3
+<br>
+注意深く重心を移動させながら、体を床から持ち上げる。
+<br>
+両手を床へ押してゆっくり両足から両手の上へ体重を後ろにかけていく。
+<br>
+腿の内側をできるだけ両腕と同じ高さにする。
+<br>
+4
+<br>
+吸う息で両脚を外側へできる範囲でまっすぐに伸ばし、骨盤の高さを保って両脚を床と平行にする。
+<br>
+5
+<br>
+足の親指の付け根を押して、なおかつ足指は後方に引いて広げる。
+<br>
+両足の内側は少し前に、外側を少し後ろに。両腕はできるだけ伸ばす。
+<br>
+肩甲骨を広くして胸をくぼませる。
+<br>
+こうすることで背中上部が丸くなり、胴体がより高く持ち上がる。
+<br>
+6
+<br>
+首を緊張させないように頭を持ち上げて、前を見る。
+<br>
+ゆっくり呼吸して、このポーズを15秒以上ホールドしてから、吐く息で両足を床へ。
+</p></form>
+<!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
+
+<form th:if="${session.COUNT == 6}" action="/yoga" method="post">
+<input type="submit" value="次のポーズ！">
+<h1 th:if="${session.COUNT == 6}">一本足のポーズ</h1>
+<div th:if="${session.COUNT == 6}"><img width="350" th:src="@{/yoga5.PNG}"/></div>
+<p th:if="${session.COUNT == 6}">
+効率効能
+<br>
+体幹を強化。股関節の柔軟性を高める。バランス感覚を高める。集中力を高める。
+<br>
+ポーズのやり方
+<br>
+1
+<br>
+くるぶしをつけて頭のてっぺんを上に引き上げた状態で立つ
+<br>
+2
+<br>
+片膝を上げ、その足先を手で掴む
+<br>
+3
+<br>
+上げた足を前方へと伸ばす
+<br>
+4
+<br>
+足を横に開きバランスを取る
+<br>
+※体が硬くて厳しい人は無理をせずストレッチなどを行い柔らかい身体作りから初めてみよう！
+</p></form>
+<!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
+<form th:if="${session.COUNT == 7}" action="/yoga" method="post">
+<input type="submit" value="次のポーズ！">
+<h1 th:if="${session.COUNT == 7}">賢者のポーズ</h1>
+<div th:if="${session.COUNT == 7}"><img width="350" th:src="@{/yoga6.png}"/></div>
+<p th:if="${session.COUNT == 7}">
+効率効能
+<br>
+体幹の強化。自分に自身がつく。脇腹のシェイプアップ。背中のシェイプアップ
+<br>
+ポーズのやり方
+<br>
+1
+<br>
+四つん這いになる
+<br>
+2
+<br>
+左脚を後ろに下げて膝を伸ばす。右脚の位置は変えない。
+<br>
+3
+<br>
+身体を左にねじり左手を腰に添える
+<br>
+4
+<br>
+右脚を伸ばして両足を揃えたら、左腕を上に向けて伸ばし目線を向ける
+<br>
+呼吸を5回ほどする
+<br>
+逆向きも同様に行う
+</p></form>
+<!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
+<form th:if="${session.COUNT == 8}" action="/yoga" method="post">
+<input type="submit" value="次でラスト！">
+<h1 th:if="${session.COUNT == 8}">安楽座(スカーサナ)のポーズ</h1>
+<div th:if="${session.COUNT == 8}"><img width="350" th:src="@{/yoga7.png}"/></div>
+<p th:if="${session.COUNT == 8}">
+効率効能
+<br>
+リラックス効果。集中力を高める。背中の強化。体幹強化と姿勢改善。膝と足首の柔軟性アップ
+<br>
+ポーズのやり方
+<br>
+1
+<br>
+足を前にして座り、すねを交差させます。
+<br>
+2
+<br>
+両膝を広げてそれぞれの足を反対側の膝の下に入れて身体の前でクロスさせます。
+<br>
+3
+<br>
+背骨をまっすぐに引き上げ、胸を開きながら、足をリラックスさせましょう。
+<br>
+4
+<br>
+坐骨に均等に体重をかけて、骨盤の真上で両肩のバランスをとり、頭を背骨の上に置くようにします。
+<br>
+</p></form>
+<!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
+<form th:if="${session.COUNT == 9}" action="/result" method="post">
+<input type="hidden" value="1" name="code">
+<input type="hidden" value="100" name="prize">
+
+<h1 th:if="${session.COUNT == 9}">様々なヨガお疲れさまでした！</h1>
+<p th:if="${session.COUNT == 9}">
+いつも疲れている体を癒すことはできましたか？
+<br>
+継続することでより良い効果を得ることができるので継続してやってみましょう！
+<br></p>
+<input type="submit" value="PointGet"></form>
+
+<!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
+<form th:if="${session.COUNT == 9}" action="/yoga" method="post">
+<input type="submit" value="もう一度やる"></form>
+
+</div>
+
+
+<div th:if="${session.COUNT == null}">
+<form action="/yoga" method="post">
+<input type="submit" value="Let's go!!!"></form>
+</div>
 
 </body>
 </html>
