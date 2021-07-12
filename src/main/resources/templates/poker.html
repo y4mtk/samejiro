@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Poker</title>
+</head>
+<body>
+<h1 th:text="${game.name}"></h1>
+
+<div th:text="'CPUの残りチップ' + ${list[1]}"></div>
+<br>
+<div th:text="'あなたの残りチップ' + ${list[0]}"></div>
+<div th:text="'あなたの手札' + ${playerDeck}"></div>
+<br>
+<div th:text="'pot:' + ${list[2]}"></div>
+
+アクションを選択してください<br>
+<form action="/action" method="post">
+
+<input type="radio" name="check" value="1">check
+<br>
+<input type="radio" name="bet1" value="bet">bet:
+<input type="text" name="bet" th:value="${list[2]}">
+<br>
+<span th:if="${list[3]!=0}"><input type="radio" name="fold" value="1">fold<br></span>
+<span th:if="${list[3]!=0}"><input type="radio" name="call" value="1">call<br></span>
+<span th:if="${list[3]!=0}">
+<input type="radio" name="raise1" value="raise">raise:
+<input type="text" name="raise" th:value="${list[2]}"><br>
+</span>
+
+
+<input type="hidden" name="list" th:value="${list}">
+<input type="submit" value="ACTION">
+
+</form>
+<span th:text="${message}"></span>
+</body>
+</html>
