@@ -3,12 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <title>ゲーム一覧</title>
+<link th:href="@{/css/list.css}" rel="stylesheet">
 </head>
 <body>
 
 	<span th:replace="menu"></span>
 
 	<hr>
+
+
+
+
 
 <div>
 	<table border="2" th:each="game : ${games}">
@@ -26,6 +31,5 @@
 	</table>
 
 </div>
-
 </body>
 </html>

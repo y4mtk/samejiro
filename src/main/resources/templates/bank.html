@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>残高確認</title>
+<link th:href="@{/css/bank.css}" rel="stylesheet">
 </head>
 <body>
 
@@ -10,8 +11,12 @@
 
 	<hr>
 
-現在の残高を表示します
-<table border="1">
+<h1><span th:text="${session.login.name}+' さんの現在の残高'"></span></h1>
+
+<div class="parent">
+  <div class="inner">
+
+<table width="600"  border="1">
 <tr>
 <th>残高</th>
 <td th:text="${bankAccount.money}+'円'"></td>
@@ -29,6 +34,9 @@
 <td th:text="${bankAccount.won}+${bankAccount.lost}+'円'"></td>
 </tr>
 </table>
+
+</div>
+</div>
 
 </body>
 </html>

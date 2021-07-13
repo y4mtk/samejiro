@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+body{
+    background-color:rgb(215, 233, 236);
+}
+
+hr {
+  height: 4px;
+  background: url(line01.png) repeat-x 0 0;
+}

@@ -1,8 +1,71 @@
+<link th:href="@{/css/menu.css}" rel="stylesheet">
 <div style="font-size:20px">
-<a href="/select/game">ゲーム一覧</a>
-<a href="/select/bank">残高確認へ</a>
 
-<span th:text="'（ようこそ、'+${session.login.name}+' さん）'"></span>
+
+<a href="/select/game" class="btn-partial-line">
+  <i class="fa fa-caret-right"></i>ゲーム一覧
+</a>
+
+<a href="/select/bank" class="btn-partial-line">
+  <i class="fa fa-caret-right"></i>残高確認へ
+</a>
+
+<!--
+<a href="/select/game" class="btn btn-border">ゲーム一覧</a>
+<a href="/select/bank" class="btn btn-border">残高確認へ</a>
+-->
+&nbsp;&nbsp;
+
+<span th:text="'ようこそ、'+${session.login.name}+' さん'"></span>
+
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+
+<a href="/logout" class="btn-flat-logo">
+  <i class="fa fa-chevron-right"></i> 〉LOGOUT
+</a>
+
+<!--
 <a href="/logout" style="padding-left:10px;">ログアウト</a>
+ -->
+
 
 </div>
