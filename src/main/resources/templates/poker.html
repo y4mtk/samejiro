@@ -16,24 +16,21 @@
 
 アクションを選択してください<br>
 <form action="/action" method="post">
+<input type="checkbox" name="check" value="1">一番左
+<input type="checkbox" name="check" value="2">左から２つ目
+<input type="checkbox" name="check" value="3">真ん中
+<input type="checkbox" name="check" value="4">右から２つ目
+<input type="checkbox" name="check" value="5">一番右
+<input type="checkbox" name="check" value="6">交換しない
 
-<input type="radio" name="check" value="1">check
 <br>
-<input type="radio" name="bet1" value="bet">bet:
-<input type="text" name="bet" th:value="${list[2]}">
-<br>
-<span th:if="${list[3]!=0}"><input type="radio" name="fold" value="1">fold<br></span>
-<span th:if="${list[3]!=0}"><input type="radio" name="call" value="1">call<br></span>
-<span th:if="${list[3]!=0}">
-<input type="radio" name="raise1" value="raise">raise:
-<input type="text" name="raise" th:value="${list[2]}"><br>
-</span>
+BET:$<input type="text" name="bet" th:value="${list[1]}">
 
-
-<input type="hidden" name="list" th:value="${list}">
-<input type="submit" value="ACTION">
-
+<input type="hidden" name="deckCount" th:value="${deckCount}">
+<input type="submit" value="確定">
 </form>
+
 <span th:text="${message}"></span>
+
 </body>
 </html>

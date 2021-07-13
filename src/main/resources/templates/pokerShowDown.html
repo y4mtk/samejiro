@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>PokerShowDown</title>
+</head>
+<body>
+<h1 th:text="${game.name}"></h1>
+
+<div th:text="'CPUの残りチップ' + ${list.get(1)}"></div>
+<br>
+<div th:text="'あなたの残りチップ' + ${list.get(0)}"></div>
+<div th:text="'あなたの手札' + ${playerDeck}"></div>
+<br>
+<div th:text="'pot:' + ${list.get(2)}"></div>
+
+<form action="/pokerResult" method="post">
+
+<input type="hidden" name="playerDeck" th:value="${playerDeck}">
+<input type="hidden" name="cpuDeck" th:value="${cpuDeck}">
+BET:$<input type="text" name="bet" th:value="${list.get(1)}">
+<input type="submit" value="勝負！">
+</form>
+
+<span th:text="${message}"></span>
+
+</body>
+</html>
