@@ -11,12 +11,20 @@ h1{
 
 	text-align: center;
  	position: absolute;
-  	top: 25%;
+  	top: 20%;
   	left: 50%;
   	-webkit-transform: translateY(-50%) translateX(-50%);
   	transform: translateY(-50%) translateX(-50%);
   	padding: 20px;
 }
+
+p{
+	text-align: center;
+
+  	top: 0%;
+  	left: 37%;
+}
+
 
 中央寄せ
 .parent{

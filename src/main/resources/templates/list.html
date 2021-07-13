@@ -11,10 +11,30 @@
 
 	<hr>
 
+<h1>ゲーム一覧</h1>
+
+<div class="parent">
+  <div class="inner">
+
+<table >
+<div  th:each="game : ${games}">
+  <tr>
+  <th th:if="${game.code == 1}"><img width="100" th:src="@{/same.png}"/></th>
+  <th th:if="${game.code == 2}"><img width="100" th:src="@{/same1.png}"/></th>
+  <th th:if="${game.code == 3}"><img width="100" th:src="@{/same2.png}"/></th>
+    <td th:text="${game.name}"></td>
+    <td th:text="'1 PLAY '+ ${game.price} + '円'"></td>
+    <td><form th:action="'/select/game/'+${game.code}" method="post">
+    <button class="reset flat border">ゲームに<br>参加する！</button></form>
+		</td>
+  </tr>
+</table>
+
+</div></div>
 
 
 
-
+<!--
 <div>
 	<table border="2" th:each="game : ${games}">
 	<tr>
@@ -31,5 +51,8 @@
 	</table>
 
 </div>
+-->
+
+
 </body>
 </html>

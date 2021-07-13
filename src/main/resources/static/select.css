@@ -18,6 +18,18 @@ h1{
   	padding: 20px;
 }
 
+p{
+	text-align: center;
+ 	position: absolute;
+  	top: 30%;
+  	left: 25%;
+
+}
+
+
+
+
+
 中央寄せ
 .parent{
   width: 400px;
