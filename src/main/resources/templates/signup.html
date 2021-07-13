@@ -6,39 +6,60 @@
 <link rel="stylesheet" href="signup.css">
 </head>
 <body>
-<a href="/">トップ画面に戻る</a>
+<a href="/" class="btn btn-svg">
+  <svg>
+    <rect x="2" y="2" rx="0" fill="none" width=200 height="50"></rect>
+  </svg>
+  <span>トップ画面に戻る</span>
+</a>
+
 <h1>会員登録</h1>
+
+<h2>
 <form action="/signup" method="post">
 <div th:text="${message}" style="color:red"></div>
 <div th:text="${Already}" style="color:red"></div>
 <div th:text="${Already1}" style="color:red"></div>
+<br>
+<br>
 
 
-
-<div class="cp_iptxt">
-	<input class="ef" type="text" name="userid">
-	<label>ユーザー名</label>
-	<span class="focus_line"></span>
+<div class="group">
+   <label for="text3" id="l_text3">ユーザー名</label>
+   <input id="text3" type="text" name="userid">
+   <div class="text_underline"></div>
 </div>
+<br>
 
-<div class="cp_iptxt">
-	<input class="ef" type="text" name="name">
-	<label>名前</label>
-	<span class="focus_line"></span>
+<div class="group">
+   <label for="text3" id="l_text3">名前</label>
+   <input id="text3" type="text" name="name">
+   <div class="text_underline"></div>
 </div>
+<br>
 
-<div class="cp_iptxt">
-	<input class="ef" type="text" name="email">
-	<label>メールアドレス</label>
-	<span class="focus_line"></span>
+<div class="group">
+   <label for="text3" id="l_text3">メールアドレス</label>
+   <input id="text3" type="text" name="email">
+   <div class="text_underline"></div>
 </div>
+<br>
 
-<div class="cp_iptxt">
-	<input class="ef" type="text" name="password">
-	<label>パスワード</label>
-	<span class="focus_line"></span>
+<div class="group">
+   <label for="text3" id="l_text3">パスワード</label>
+   <input id="text3" type="text" name="password">
+   <div class="text_underline"></div>
 </div>
+<br>
+<br>
 
+<input type="submit" value="登録" class="button">
+</form>
+<br>
+<br>
+<br>
+<a href="/login">ログイン</a>はこちら
+</h2>
 
 
 
@@ -59,10 +80,8 @@
 	<td>パスワード</td><td><input type="text" name="password"></td>
 	</tr>
 </table>-->
+
 <br>
-<input type="submit" value="登録">
-</form>
-<br>
-<a href="/login">ログイン</a>はこちら
+
 </body>
 </html>

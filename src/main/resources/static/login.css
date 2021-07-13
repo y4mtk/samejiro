@@ -4,7 +4,6 @@ body{
     background-color:rgb(170, 195, 200);
 }
 
-
 h1{
 	font-size:50px;
 	text-align: center;
@@ -12,7 +11,6 @@ h1{
   	top: 0%;
   	left: 18%;
 }
-
 
 h2{
 
@@ -25,6 +23,69 @@ h2{
   	padding: 10px;
 }
 
+#text3{
+    font-size: 17px;
+    width: 100%;
+    border: none;
+    outline: none;
+    padding-bottom: 8px;
+    box-sizing: border-box; /*横幅の解釈をpadding, borderまでとする*/
+}
+
+.text_underline{
+    position: relative; /*.text_underline::beforeの親要素*/
+    border-top: 1px solid #c2c2c2; /*text3の下線*/
+}
+
+/*共通のstyle*/
+.text_underline::before,
+.text_underline::after{
+    position: absolute;
+    bottom: 0px; /*中央配置*/
+    width: 0px; /*アニメーションで0pxから50%に*/
+    height: 1px; /*高さ*/
+    content: '';
+    background-color: #3be5ae; /*アニメーションの色*/
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+}
+/*左から右へのアニメーション*/
+.text_underline::before{
+    position: absolute;
+    left: 0px; /*左配置 ここright: 0px;にすると右から左のアニメーション*/
+    bottom: 0px; /*左配置*/
+    width: 0px; /*アニメーションで0pxから100%に*/
+    height: 1px; /*高さ*/
+    content: '';
+    background-color: #3be5ae; /*アニメーションの色*/
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+}
+
+#text3:focus + .text_underline::before{
+    width: 100%;
+}
+
+
+.button {
+  display       : inline-block;
+  border-radius : 5%;          /* 角丸       */
+  font-size     : 13pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 9px 17px;   /* 余白       */
+  background    : rgba(153, 153, 255, 0.89);     /* 背景色     */
+  color         : rgba(255, 255, 255, 0.93);     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  transition    : .3s;         /* なめらか変化 */
+  box-shadow    : 1px 1px 2px #666666;  /* 影の設定 */
+  border        : 2px solid rgba(153, 153, 255, 0.89);    /* 枠の指定 */
+}
+.button:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  color         : rgba(153, 153, 255, 0.89);     /* 背景色     */
+  background    : rgba(255, 255, 255, 0.93);     /* 文字色     */
+}
 
 aタグ
 *,
@@ -110,51 +171,6 @@ a.btn-svg span {
 }
 
 
-
-
-
-#text3{
-    font-size: 17px;
-    width: 100%;
-    border: none;
-    outline: none;
-    padding-bottom: 8px;
-    box-sizing: border-box; /*横幅の解釈をpadding, borderまでとする*/
-}
-
-.text_underline{
-    position: relative; /*.text_underline::beforeの親要素*/
-    border-top: 1px solid #c2c2c2; /*text3の下線*/
-}
-
-/*共通のstyle*/
-.text_underline::before,
-.text_underline::after{
-    position: absolute;
-    bottom: 0px; /*中央配置*/
-    width: 0px; /*アニメーションで0pxから50%に*/
-    height: 1px; /*高さ*/
-    content: '';
-    background-color: #3be5ae; /*アニメーションの色*/
-    transition: all 0.5s;
-    -webkit-transition: all 0.5s;
-}
-/*左から右へのアニメーション*/
-.text_underline::before{
-    position: absolute;
-    left: 0px; /*左配置 ここright: 0px;にすると右から左のアニメーション*/
-    bottom: 0px; /*左配置*/
-    width: 0px; /*アニメーションで0pxから100%に*/
-    height: 1px; /*高さ*/
-    content: '';
-    background-color: #3be5ae; /*アニメーションの色*/
-    transition: all 0.5s;
-    -webkit-transition: all 0.5s;
-}
-
-#text3:focus + .text_underline::before{
-    width: 100%;
-}
 
 
 .button {

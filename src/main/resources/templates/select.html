@@ -2,10 +2,29 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>ようこそ！</title>
+<title>ようこそ</title>
+<link rel="stylesheet" href="select.css">
 </head>
 <body>
 
+<h1>どちらか選択してね</h1>
+
+<div class="parent">
+  <div class="inner">
+
+<a href="/select/game" class="btn btn-malformation btn-malformation--pastel">ゲームで遊ぶ</a>
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+<a href="/select/bank" class="btn btn-malformation btn-malformation--pastel" >残高を確認する</a>
+<br>
+
+  </div>
+</div>
+
+
+<!--
 <div>
 	<form action="/select/game" method="get">
 		<input type="submit" value="ゲームで遊ぶ！">
@@ -17,6 +36,6 @@
 		<input type="submit" value="残高を確認する！">
 	</form>
 </div>
-
+-->
 </body>
 </html>
