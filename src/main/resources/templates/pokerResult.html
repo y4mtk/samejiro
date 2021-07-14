@@ -18,8 +18,11 @@
 
 <div th:text="${winner}"></div>
 <div th:else="${prize == 0}">
-<span th:text="'賞金は$'+ ${prize} + 'になりました'"></span>
+<span th:text="'賞金は$'+ ${prize} + 'に決定しました'"></span>
 </div>
+
+<br>
+<div th:text="'あなたの残チップ' + ${list.get(0)} + 'は口座にお返ししました。'"></div>
 
 <form action="/result" method="post">
 <input type="hidden" th:value="${game.code}" name="code">

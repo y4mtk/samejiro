@@ -105,7 +105,7 @@ public class PokerController {
 	@RequestMapping(value="/action", method=RequestMethod.POST)
 	public ModelAndView action(
 			ModelAndView mv,
-			@RequestParam("check") int check,
+			@RequestParam("check") int check[],
 			@RequestParam("deckCount") int deckCount,
 			@RequestParam("bet") int bet
 			) {
@@ -133,26 +133,41 @@ public class PokerController {
 		list.set(1, list.get(1)-CPUbet);
 	    list.set(2, list.get(2)+bet+CPUbet);
 
-		if(check == 1) {
-			playerDeck.set(0, toDescription(deck.get(deckCount)));
-			deckCount+=1;
+	    ArrayList<Integer> checked = new ArrayList<>();
+	    for(int i : check) {
+	    	checked.add(i);
+	    }
+		if(checked.contains(6)) {
+
 		}
-		else if(check == 2) {
-			playerDeck.set(1, toDescription(deck.get(deckCount)));
-			deckCount+=1;
+		else {
+			if (checked.contains(1)) {
+				playerDeck.set(0, toDescription(deck.get(deckCount)));
+				deckCount += 1;
+			}
+			if (checked.contains(2)) {
+				playerDeck.set(1, toDescription(deck.get(deckCount)));
+				deckCount += 1;
+			}
+			if (checked.contains(3)) {
+				playerDeck.set(2, toDescription(deck.get(deckCount)));
+				deckCount += 1;
+			}
+			if (checked.contains(4)) {
+				playerDeck.set(3, toDescription(deck.get(deckCount)));
+				deckCount += 1;
+			}
+			if (checked.contains(5)) {
+				playerDeck.set(4, toDescription(deck.get(deckCount)));
+				deckCount += 1;
+			}
+
+//			for(int i=0; i<check.length-1; i++) {
+//				playerDeck.set(i, toDescription(deck.get(deckCount + i)));
+//				deckCount+=i+1;
+//			}
 		}
-		else if(check == 3) {
-			playerDeck.set(2, toDescription(deck.get(deckCount)));
-			deckCount+=1;
-		}
-		else if(check == 4) {
-			playerDeck.set(3, toDescription(deck.get(deckCount)));
-			deckCount+=1;
-		}
-		else if(check == 5) {
-			playerDeck.set(4, toDescription(deck.get(deckCount)));
-			deckCount+=1;
-		}
+
 
 		Random rand = new Random();
 	    int randomValue = rand.nextInt(5); //CPU何枚交換する？
@@ -275,13 +290,23 @@ public class PokerController {
 		}
 
 		boolean straight = false;
-		if(number.get(0)+1 == number.get(1)&&
+		if (number.get(0) == 14) {
+			number.set(0, 1);
+
+			if (number.get(0) + 1 == number.get(1) &&
+					number.get(1) + 1 == number.get(2) &&
+					number.get(2) + 1 == number.get(3) &&
+					number.get(3) + 1 == number.get(4)) {
+				straight = true;
+				number.set(0, 14);
+			}
+		}
+		else if(number.get(0)+1 == number.get(1)&&
 				number.get(1)+1 == number.get(2)&&
 				number.get(2)+1 == number.get(3)&&
 				number.get(3)+1 == number.get(4)) {
 			straight = true;
 		}
-
 
 		if(flush == true) {
 			//スーツ揃い
@@ -364,10 +389,20 @@ public class PokerController {
 		}
 
 		boolean straightCPU = false;
-		if(numberCPU.get(0)+1 == numberCPU.get(1)&&
-				numberCPU.get(1)+1 == numberCPU.get(2)&&
-						numberCPU.get(2)+1 == numberCPU.get(3)&&
-								numberCPU.get(3)+1 == numberCPU.get(4)) {
+		if (numberCPU.get(0) == 14) {
+			numberCPU.set(0, 1);
+
+			if (numberCPU.get(0) + 1 == numberCPU.get(1) &&
+					numberCPU.get(1) + 1 == numberCPU.get(2) &&
+					numberCPU.get(2) + 1 == numberCPU.get(3) &&
+					numberCPU.get(3) + 1 == numberCPU.get(4)) {
+				straightCPU = true;
+				numberCPU.set(0, 14);
+			}
+		} else if (numberCPU.get(0) + 1 == numberCPU.get(1) &&
+				numberCPU.get(1) + 1 == numberCPU.get(2) &&
+				numberCPU.get(2) + 1 == numberCPU.get(3) &&
+				numberCPU.get(3) + 1 == numberCPU.get(4)) {
 			straightCPU = true;
 		}
 
@@ -410,56 +445,6 @@ public class PokerController {
 		String hand = null;
 		long prize = 0;
 
-		if(rank>rankCPU) {
-			winner = "あなたの勝ちです";
-			switch(rank) {
-			case 1:
-				hand = "ROYAL STRAIGHT FLUSH";
-				prize = 1000 * list.get(2);
-				break;
-			case 2:
-				hand = "STRAIGHT FLUSH";
-				prize = 100 * list.get(2);
-				break;
-			case 3:
-				hand = "FOUR OF A KIND";
-				prize = 50 * list.get(2);
-				break;
-			case 4:
-				hand = "FULL HOUSE";
-				prize = 25 * list.get(2);
-				break;
-			case 5:
-				hand = "FLUSH";
-				prize = 20 * list.get(2);
-				break;
-			case 6:
-				hand = "STRAIGHT";
-				prize = 15 * list.get(2);
-				break;
-			case 7:
-				hand = "THREE OF A KIND";
-				prize = 10 * list.get(2);
-				break;
-			case 8:
-				hand = "TWO PAIR";
-				prize = 5 * list.get(2);
-				break;
-			case 9:
-				hand = "ONE PIAR";
-				prize = 2 * list.get(2);
-				break;
-			}
-
-		}
-		else if(rank==rankCPU) {
-			winner = "引き分けです";
-			prize = list.get(2)/2;
-		}
-		else {
-			winner = "CPUの勝ちです";
-			prize =0;
-		}
 
 		switch(rank) {
 		case 1:
@@ -504,8 +489,63 @@ public class PokerController {
 			break;
 		}
 
+		if(rank<rankCPU) {
+			winner = "あなたの勝ちです";
+			switch(rank) {
+			case 1:
+				hand = "ROYAL STRAIGHT FLUSH";
+				prize = 1000 * list.get(2);
+				break;
+			case 2:
+				hand = "STRAIGHT FLUSH";
+				prize = 100 * list.get(2);
+				break;
+			case 3:
+				hand = "FOUR OF A KIND";
+				prize = 50 * list.get(2);
+				break;
+			case 4:
+				hand = "FULL HOUSE";
+				prize = 25 * list.get(2);
+				break;
+			case 5:
+				hand = "FLUSH";
+				prize = 20 * list.get(2);
+				break;
+			case 6:
+				hand = "STRAIGHT";
+				prize = 15 * list.get(2);
+				break;
+			case 7:
+				hand = "THREE OF A KIND";
+				prize = 10 * list.get(2);
+				break;
+			case 8:
+				hand = "TWO PAIR";
+				prize = 5 * list.get(2);
+				break;
+			case 9:
+				hand = "ONE PIAR";
+				prize = 2 * list.get(2);
+				break;
+			case 10:
+				hand = "HIGH CARD";
+				prize = list.get(2);
+				break;
+			}
+
+		}
+		else if(rank==rankCPU) {
+			winner = "引き分けです";
+			prize = list.get(2)/2;
+		}
+		else {
+			winner = "CPUの勝ちです";
+			prize =0;
+		}
+
 		String handCPU = null;
-		switch(rank) {
+		switch(rankCPU) {
 		case 1:
 			handCPU = "ROYAL STRAIGHT FLUSH";
 			break;
@@ -540,6 +580,12 @@ public class PokerController {
 
 		Optional<Game> list2 = gameRepository.findById(2);
 		Game game = list2.get();
+
+		People loginee = (People)session.getAttribute("login");
+		List<Bank> playerBank = bankRepository.findByUserCode(loginee.getCode());
+		Bank bankAccount = playerBank.get(0);
+		Bank newMoney = new Bank(bankAccount.getCode(), bankAccount.getUserCode(), bankAccount.getMoney()+(list.get(0)*100), bankAccount.getLost(), bankAccount.getWon());
+		bankRepository.saveAndFlush(newMoney);
 
 		mv.addObject("list", list);
 		mv.addObject("game",game);
