@@ -12,17 +12,17 @@
 	<form action="/challenge/start" method="post">
 		<input type="hidden" th:value="${name}" name="name">
 		<input type="hidden" th:value="${JP}" name="JP">
-		現在のジャックポットは<span style="color: red" th:text="${JP}"></span>円です。<br>
+		<p1>現在のジャックポットは<span style="color: red" th:text="${JP}"></span>円です。<br></p1>
 
 <table border="1">
         <tr>
-       		 <td><img width="200" th:src="@{/same01.png}"/></td>
-       		 <td><img width="200" th:src="@{/same01.png}"/></td>
-       		 <td><img width="200" th:src="@{/same01.png}"/></td>
+       		 <td><img width="200" th:src="@{/same0.png}"/></td>
+       		 <td><img width="200" th:src="@{/same0.png}"/></td>
+       		 <td><img width="200" th:src="@{/same0.png}"/></td>
         </tr>
 </table>
 
-		<button name="start">START</button>
+		<p2><button class="reset flat border" name="start">START</button></p2>
 	</form>
 </div>
 
@@ -42,14 +42,14 @@
            	 <div th:if="${slot3 == 'サメ子'}"><img width="200" th:src="@{/same03.png}"/></div></td>
         </tr>
 </table>
-<span th:text="${message}"></span>
+<p3><span th:text="${message}"></span></p3>
 </div>
 
 <div th:if="${samejiroCheck == false}">
 	<form action="/result" method="post">
 	<input type="hidden" value="2" name="code">
 	<input type="hidden" value="0" name="prize">
-	<input type="submit" value="結果表示画面へ">
+	<p4><button class="reset flat border" >結果表示画面へ</button></p4>
 	</form>
 </div>
 
@@ -57,7 +57,7 @@
 	<form action="/jackpot" method="post">
 	<input type="hidden" th:value="${name}" name="name">
 	<input type="hidden" th:value="${JP}" name="JP">
-	<input type="submit" value="JackPot!!!">
+	<p4><button class="reset flat border" >JackPot!!!</button></p4>
 	</form>
 </div>
 
