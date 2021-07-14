@@ -144,8 +144,6 @@ public class BJController {
 		List<String> playerDeck = (List<String>) session.getAttribute("player");
 		List<String> dealerDeck = (List<String>) session.getAttribute("dealer");
 		List<Integer> list = (List<Integer>) session.getAttribute("list");
-		List<Integer> number = (List<Integer>) session.getAttribute("number");
-		List<Integer> numberDealer = (List<Integer>) session.getAttribute("numberDealer");
 		Optional<Game> list2 = gameRepository.findById(4);
 		Game game = list2.get();
 
@@ -155,6 +153,8 @@ public class BJController {
 		list.set(1, list.get(1)+1); //playerCountに+1
 
 		int handTotal = 0;
+		List<Integer> number = new ArrayList<>();
+		session.setAttribute("number",number);
 		for(int u=0; u<playerDeck.size(); u++) {
 			if(playerDeck.get(u).substring(1).equals("J")) {
 				number.add(10);
@@ -192,6 +192,8 @@ public class BJController {
 			list.set(0, list.get(0)+1); //deckCountに+1
 			list.set(2, list.get(2)+1); //dealerCountに+1
 
+			List<Integer> numberDealer = new ArrayList<>();
+			session.setAttribute("numberDealer",numberDealer);
 			int handTotalDealer = 0;
 			for (int u = 0; u < dealerDeck.size(); u++) {
 				if (dealerDeck.get(u).substring(1).equals("J")) {
@@ -207,6 +209,7 @@ public class BJController {
 				}
 				handTotalDealer += numberDealer.get(u);
 			}
+
 			list.set(4, handTotalDealer);
 
 			if (busted(handTotalDealer)) {
@@ -245,7 +248,6 @@ public class BJController {
 		List<String> playerDeck = (List<String>) session.getAttribute("player");
 		List<String> dealerDeck = (List<String>) session.getAttribute("dealer");
 		List<Integer> list = (List<Integer>) session.getAttribute("list");
-		List<Integer> numberDealer = (List<Integer>) session.getAttribute("numberDealer");
 		Optional<Game> list2 = gameRepository.findById(4);
 		Game game = list2.get();
 
@@ -254,6 +256,8 @@ public class BJController {
 			list.set(0, list.get(0)+1); //deckCountに+1
 			list.set(2, list.get(2)+1); //dealerCountに+1
 
+			List<Integer> numberDealer = new ArrayList<>();
+			session.setAttribute("numberDealer",numberDealer);
 			int handTotalDealer = 0;
 			for (int u = 0; u < dealerDeck.size(); u++) {
 				if (dealerDeck.get(u).substring(1).equals("J")) {
