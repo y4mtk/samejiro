@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>JackPotChallenge</title>
+<link th:href="@{/css/jpchallenge.css}" rel="stylesheet">
 </head>
 <body>
 <h1 th:text="${name}"></h1>
@@ -12,6 +13,7 @@
 		<input type="hidden" th:value="${name}" name="name">
 		<input type="hidden" th:value="${JP}" name="JP">
 		現在のジャックポットは<span style="color: red" th:text="${JP}"></span>円です。<br>
+
 		<button name="start">START</button>
 	</form>
 </div>
@@ -19,9 +21,17 @@
 <div th:if="${slot1 != null && slot2 != null && slot3 != null}">
 <table border="1">
         <tr>
-       		 <td><div th:text="${slot1}"></div></td>
-           	 <td><div th:text="${slot2}"></div></td>
-           	 <td><div th:text="${slot3}"></div></td>
+       		 <td><div th:if="${slot1 == 'サメ太郎'}"><img width="200" th:src="@{/same04.png}"/></div>
+       		 	<div th:if="${slot1 == 'サメジロー。'}"><img width="200" th:src="@{/same01.png}"/></div>
+       		 	<div th:if="${slot1 == 'サメ子'}"><img width="200" th:src="@{/same03.png}"/></div></td>
+
+           	 <td><div th:if="${slot2 == 'サメ太郎'}"><img width="200" th:src="@{/same04.png}"/></div>
+           	 <div th:if="${slot2 == 'サメジロー。'}"><img width="200" th:src="@{/same01.png}"/></div>
+           	 <div th:if="${slot2 == 'サメ子'}"><img width="200" th:src="@{/same03.png}"/></div></td>
+
+           	 <td><div th:if="${slot3 == 'サメ太郎'}"><img width="200" th:src="@{/same04.png}"/></div>
+           	 <div th:if="${slot3 == 'サメジロー。'}"><img width="200" th:src="@{/same01.png}"/></div>
+           	 <div th:if="${slot3 == 'サメ子'}"><img width="200" th:src="@{/same03.png}"/></div></td>
         </tr>
 </table>
 <span th:text="${message}"></span>
