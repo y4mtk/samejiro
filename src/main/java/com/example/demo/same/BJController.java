@@ -32,6 +32,12 @@ public class BJController {
 	@RequestMapping(value="/startBlackJack", method=RequestMethod.POST)
 	public ModelAndView bj(ModelAndView mv) {
 		People loginee = (People)session.getAttribute("login");
+		session.removeAttribute("deck");
+		session.removeAttribute("player");
+		session.removeAttribute("dealer");
+		session.removeAttribute("list");
+		session.removeAttribute("number");
+		session.removeAttribute("numberDealer");
 
 		List<Bank> playerBank = bankRepository.findByUserCode(loginee.getCode());
 		Bank bankAccount = playerBank.get(0);
@@ -143,9 +149,8 @@ public class BJController {
 		Optional<Game> list2 = gameRepository.findById(4);
 		Game game = list2.get();
 
-
 		int deckCount = list.get(0);
-		playerDeck.add(toDescription(deck.get(deckCount)));
+		playerDeck.add(toDescription(deck.get(deckCount))); //プレイヤーデッキにカードを追加
 		list.set(0, deckCount+1); //deckCountに+1
 		list.set(1, list.get(1)+1); //playerCountに+1
 
@@ -179,11 +184,10 @@ public class BJController {
 			mv.addObject("game",game);
 			mv.addObject("playerDeck",playerDeck);
 			mv.addObject("dealerDeck",dealerDeck);
-			mv.setViewName("blackjackResult");
-			return mv;
+			return winner(mv);
 		}
 
-		if (list.get(4) <= 17) {
+		if (list.get(4) < 17) {
 			dealerDeck.add(toDescription(deck.get(list.get(0))));
 			list.set(0, list.get(0)+1); //deckCountに+1
 			list.set(2, list.get(2)+1); //dealerCountに+1
@@ -213,8 +217,7 @@ public class BJController {
 				mv.addObject("game",game);
 				mv.addObject("playerDeck",playerDeck);
 				mv.addObject("dealerDeck",dealerDeck);
-				mv.setViewName("blackjackResult");
-				return mv;
+				return winner(mv);
 			}
 		}
 		else {
@@ -222,7 +225,7 @@ public class BJController {
 			mv.addObject("game",game);
 			mv.addObject("playerDeck",playerDeck);
 			mv.addObject("dealerDeck",dealerDeck);
-			mv.setViewName("blackjackResult");
+			mv.setViewName("blackjack");
 			return mv;
 		}
 
@@ -246,10 +249,10 @@ public class BJController {
 		Optional<Game> list2 = gameRepository.findById(4);
 		Game game = list2.get();
 
-		if (list.get(4) <= 17) {
+		if (list.get(4) < 17) {
 			dealerDeck.add(toDescription(deck.get(list.get(0))));
 			list.set(0, list.get(0)+1); //deckCountに+1
-			list.set(1, list.get(2)+1); //dealerCountに+1
+			list.set(2, list.get(2)+1); //dealerCountに+1
 
 			int handTotalDealer = 0;
 			for (int u = 0; u < dealerDeck.size(); u++) {
@@ -276,8 +279,7 @@ public class BJController {
 				mv.addObject("game",game);
 				mv.addObject("playerDeck",playerDeck);
 				mv.addObject("dealerDeck",dealerDeck);
-				mv.setViewName("blackjackResult");
-				return mv;
+				return winner(mv);
 			}
 
 			mv.addObject("list",list);
@@ -292,11 +294,47 @@ public class BJController {
 			mv.addObject("game",game);
 			mv.addObject("playerDeck",playerDeck);
 			mv.addObject("dealerDeck",dealerDeck);
-			mv.setViewName("blackjackResult");
-			return mv;
+			return winner(mv);
 		}
 	}
 
+
+	@SuppressWarnings("unchecked")
+	public ModelAndView winner(ModelAndView mv) {
+		List<Integer> list = (List<Integer>) session.getAttribute("list");
+		Optional<Game> list2 = gameRepository.findById(4);
+		Game game = list2.get();
+
+		String winner = null;
+		int prize;
+
+		if (list.get(3) > list.get(4)) {
+			if(list.get(3) == 21) {
+				winner = "あなたの勝ちです";
+				prize = 3 * game.getPrice();
+			}
+			else {
+				winner = "あなたの勝ちです";
+				prize = 2 * game.getPrice();
+			}
+		}
+		else if (list.get(3) == list.get(4)) {
+			winner = "引き分け";
+			prize = game.getPrice();
+		}
+		else {
+			winner = "ディーラーの勝ちです";
+			prize = 0;
+		}
+
+
+		mv.addObject("game", game);
+		mv.addObject("prize", prize);
+		mv.addObject("winner", winner);
+
+		mv.setViewName("blackjackResult");
+		return mv;
+	}
 
 	private static boolean busted(int point){
 		if(point <= 21) {

@@ -27,8 +27,8 @@
 <div th:text="${winner}"></div>
 
 <form action="/result" method="post">
-<!-- <input type="hidden" th:value="${game.code}" name="code">
-<input type="hidden" th:value="${prize}*100" name="prize"> -->
+<input type="hidden" th:value="${game.code}" name="code">
+<input type="hidden" th:value="${prize}" name="prize">
 <input type="submit" value="結果表示画面へ">
 </form>
 
