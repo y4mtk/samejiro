@@ -50,6 +50,8 @@ public class GameController {
 			mv.setViewName("gametop2");
 		} else if (code == 3) {
 			mv.setViewName("gametop3");
+		} else if (code == 4) {
+			mv.setViewName("gametop4");
 		}
 
 		return mv;

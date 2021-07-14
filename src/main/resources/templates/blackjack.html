@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>BlackJack</title>
+</head>
+<body>
+<h1 th:text="${game.name}"></h1>
+
+<div th:text="'ディーラーの手札枚数は' + ${list[2]} + 'です'"></div>
+<div th:text="'ディーラー１枚目：' + ${dealerDeck[0]}"></div>
+<br>
+<div th:text="'あなたの手札' + ${playerDeck}"></div>
+<div th:text="'現在のあなたの合計は'+ ${list[3]} + 'です'"></div>
+<br>
+
+アクションを選択してください<br>
+<form action="/actionContinue" method="post">
+<input type="submit" value="カードをひく">
+</form>
+
+<br>
+
+<form action="/actionEnd" method="post">
+<input type="submit" value="ひかない">
+</form>
+
+<span th:text="${message}"></span>
+
+</body>
+</html>

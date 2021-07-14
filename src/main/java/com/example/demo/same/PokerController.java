@@ -89,7 +89,7 @@ public class PokerController {
 		list.add(20);
 		//{player, cpu, pot}
 
-		Optional<Game> list2 = gameRepository.findById(2);
+		Optional<Game> list2 = gameRepository.findById(3);
 		Game game = list2.get();
 
 		mv.addObject("deckCount",deckCount);
@@ -205,7 +205,7 @@ public class PokerController {
 	    	break;
 	    }
 
-	    Optional<Game> list2 = gameRepository.findById(2);
+	    Optional<Game> list2 = gameRepository.findById(3);
 		Game game = list2.get();
 
 		mv.addObject("game",game);

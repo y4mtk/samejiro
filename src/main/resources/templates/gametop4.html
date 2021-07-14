@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ルール説明</title>
+</head>
+<body>
+<h1 th:text="'ルール説明：' + ${game.name}"></h1>
+
+<div>
+ディーラーとブラックジャックで対決！<br>
+
+ルール
+<ol>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+</ol>
+
+
+</div>
+
+<form action="/startBlackJack" method="post">
+<input type="submit" value="ゲームを開始する">
+</form>
+
+
+<span th:text="${message}"></span>
+<a href="/select/game">ゲーム一覧に戻る</a>
+</body>
+</html>
