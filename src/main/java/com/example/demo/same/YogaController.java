@@ -16,13 +16,13 @@ public class YogaController {
 
 	//http://localhost:8080/blackjack
 	@GetMapping ("/yoga")
-	public ModelAndView blackjack(ModelAndView mv) {
+	public ModelAndView yoga(ModelAndView mv) {
 		mv.setViewName("yoga");
 		return mv;
 	}
 
 	@PostMapping("/yoga")
-	public ModelAndView bjposttop(ModelAndView mv) {
+	public ModelAndView yogatop(ModelAndView mv) {
 
 
 		Integer count = (Integer)session.getAttribute("COUNT");
@@ -38,11 +38,9 @@ public class YogaController {
 		session.setAttribute("COUNT", count);
 
 
-		if(count >=10) {
+		if(count >=9) {
 			//セッションオブジェクトを消滅
-			session.invalidate();
-
-
+			session.removeAttribute("COUNT");
 
 		}
 

@@ -63,6 +63,9 @@ public class GameController {
 			@RequestParam("code") int code
 			) {
 
+
+		session.removeAttribute("COUNT");
+
 		Optional<Game> game = gameRepository.findById(code);
 		Game gameDetail = game.get();
 		mv.addObject("game", gameDetail);

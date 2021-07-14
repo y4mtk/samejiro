@@ -6,17 +6,17 @@
 </head>
 <body>
 <h1>Relax yoga</h1>
-<div th:else="${session.COUNT == null}">
+<div>
 <form action="/yoga" method="post">
-<input th:if="${session.COUNT == 1}" type="submit" value="スタート">
+<input th:if="${session.COUNT == null}" type="submit" value="スタート">
 </form>
 
 <br>
-<form th:if="${session.COUNT == 2}" action="/yoga" method="post">
+<form th:if="${session.COUNT == 1}" action="/yoga" method="post">
 <input type="submit" value="次のポーズ！">
-<h1 th:if="${session.COUNT == 2}">スフィンクスのポーズ</h1>
-<div th:if="${session.COUNT == 2}"><img width="350" th:src="@{/yoga1.png}"/></div>
-<p th:if="${session.COUNT == 2}">
+<h1 th:if="${session.COUNT == 1}">スフィンクスのポーズ</h1>
+<div th:if="${session.COUNT == 1}"><img width="350" th:src="@{/yoga1.png}"/></div>
+<p th:if="${session.COUNT == 1}">
 効果効能
 <br>
 背骨の強化・胸、肺、肩、腹部のストレッチ・臀部の引き締め・腹部組織の活性化・ストレスの緩和
@@ -69,11 +69,11 @@
 <!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
 
 
-<form th:if="${session.COUNT == 3}" action="/yoga" method="post">
+<form th:if="${session.COUNT == 2}" action="/yoga" method="post">
 <input type="submit" value="次のポーズ！">
-<h1 th:if="${session.COUNT == 3}">木のポーズ</h1>
-<div th:if="${session.COUNT == 3}"><img width="350" th:src="@{/yoga2.png}"/></div>
-<p th:if="${session.COUNT == 3}">
+<h1 th:if="${session.COUNT == 2}">木のポーズ</h1>
+<div th:if="${session.COUNT == 2}"><img width="350" th:src="@{/yoga2.png}"/></div>
+<p th:if="${session.COUNT == 2}">
 効果効能
 <br>
 全身にエネルギーが巡る。集中力と自身を高める。
@@ -103,11 +103,11 @@
 </p></form>
 <!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
 
-<form th:if="${session.COUNT == 4}" action="/yoga" method="post">
+<form th:if="${session.COUNT == 3}" action="/yoga" method="post">
 <input type="submit" value="次のポーズ！">
-<h1 th:if="${session.COUNT == 4}">ダウンドッグのポーズ</h1>
-<div th:if="${session.COUNT == 4}"><img width="350" th:src="@{/yoga3.png}"/></div>
-<p th:if="${session.COUNT == 4}">
+<h1 th:if="${session.COUNT == 3}">ダウンドッグのポーズ</h1>
+<div th:if="${session.COUNT == 3}"><img width="350" th:src="@{/yoga3.png}"/></div>
+<p th:if="${session.COUNT == 3}">
 効率効能
 <br>
 背中からハムストリングと体の背面を伸ばすことが特徴。
@@ -138,11 +138,11 @@
 </p></form>
 <!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
 
-<form th:if="${session.COUNT == 5}" action="/yoga" method="post">
+<form th:if="${session.COUNT == 4}" action="/yoga" method="post">
 <input type="submit" value="次のポーズ！">
-<h1 th:if="${session.COUNT == 5}">ホタルのポーズ</h1>
-<div th:if="${session.COUNT == 5}"><img width="350" th:src="@{/yoga4.png}"/></div>
-<p th:if="${session.COUNT == 5}">
+<h1 th:if="${session.COUNT == 4}">ホタルのポーズ</h1>
+<div th:if="${session.COUNT == 4}"><img width="350" th:src="@{/yoga4.png}"/></div>
+<p th:if="${session.COUNT == 4}">
 効率効能
 <br>
 鼠蹊部内側と背中のストレッチ・腕と手首の強化・腹部を整える・バランス感覚の向上
@@ -192,11 +192,11 @@
 </p></form>
 <!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
 
-<form th:if="${session.COUNT == 6}" action="/yoga" method="post">
+<form th:if="${session.COUNT == 5}" action="/yoga" method="post">
 <input type="submit" value="次のポーズ！">
-<h1 th:if="${session.COUNT == 6}">一本足のポーズ</h1>
-<div th:if="${session.COUNT == 6}"><img width="350" th:src="@{/yoga5.PNG}"/></div>
-<p th:if="${session.COUNT == 6}">
+<h1 th:if="${session.COUNT == 5}">一本足のポーズ</h1>
+<div th:if="${session.COUNT == 5}"><img width="350" th:src="@{/yoga5.PNG}"/></div>
+<p th:if="${session.COUNT == 5}">
 効率効能
 <br>
 体幹を強化。股関節の柔軟性を高める。バランス感覚を高める。集中力を高める。
@@ -222,11 +222,11 @@
 ※体が硬くて厳しい人は無理をせずストレッチなどを行い柔らかい身体作りから初めてみよう！
 </p></form>
 <!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
-<form th:if="${session.COUNT == 7}" action="/yoga" method="post">
+<form th:if="${session.COUNT == 6}" action="/yoga" method="post">
 <input type="submit" value="次のポーズ！">
-<h1 th:if="${session.COUNT == 7}">賢者のポーズ</h1>
-<div th:if="${session.COUNT == 7}"><img width="350" th:src="@{/yoga6.png}"/></div>
-<p th:if="${session.COUNT == 7}">
+<h1 th:if="${session.COUNT == 6}">賢者のポーズ</h1>
+<div th:if="${session.COUNT == 6}"><img width="350" th:src="@{/yoga6.png}"/></div>
+<p th:if="${session.COUNT == 6}">
 効率効能
 <br>
 体幹の強化。自分に自身がつく。脇腹のシェイプアップ。背中のシェイプアップ
@@ -254,11 +254,11 @@
 逆向きも同様に行う
 </p></form>
 <!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
-<form th:if="${session.COUNT == 8}" action="/yoga" method="post">
+<form th:if="${session.COUNT == 7}" action="/yoga" method="post">
 <input type="submit" value="次でラスト！">
-<h1 th:if="${session.COUNT == 8}">安楽座(スカーサナ)のポーズ</h1>
-<div th:if="${session.COUNT == 8}"><img width="350" th:src="@{/yoga7.png}"/></div>
-<p th:if="${session.COUNT == 8}">
+<h1 th:if="${session.COUNT == 7}">安楽座(スカーサナ)のポーズ</h1>
+<div th:if="${session.COUNT == 7}"><img width="350" th:src="@{/yoga7.png}"/></div>
+<p th:if="${session.COUNT == 7}">
 効率効能
 <br>
 リラックス効果。集中力を高める。背中の強化。体幹強化と姿勢改善。膝と足首の柔軟性アップ
@@ -283,12 +283,12 @@
 <br>
 </p></form>
 <!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
-<form th:if="${session.COUNT == 9}" action="/result" method="post">
+<form th:if="${session.COUNT == 8}" action="/result" method="post">
 <input type="hidden" value="1" name="code">
 <input type="hidden" value="100" name="prize">
 
-<h1 th:if="${session.COUNT == 9}">様々なヨガお疲れさまでした！</h1>
-<p th:if="${session.COUNT == 9}">
+<h1 th:if="${session.COUNT == 8}">様々なヨガお疲れさまでした！</h1>
+<p th:if="${session.COUNT == 8}">
 いつも疲れている体を癒すことはできましたか？
 <br>
 継続することでより良い効果を得ることができるので継続してやってみましょう！
@@ -296,15 +296,7 @@
 <input type="submit" value="PointGet"></form>
 
 <!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
-<form th:if="${session.COUNT == 9}" action="/yoga" method="post">
-<input type="submit" value="もう一度やる"></form>
 
-</div>
-
-
-<div th:if="${session.COUNT == null}">
-<form action="/yoga" method="post">
-<input type="submit" value="Let's go!!!"></form>
 </div>
 
 </body>
