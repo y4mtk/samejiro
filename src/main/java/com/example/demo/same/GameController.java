@@ -100,6 +100,13 @@ public class GameController {
 
 			Bank newMoney = new Bank(bankAccount.getCode(), bankAccount.getUserCode(), bankAccount.getMoney()+(int)prize, bankAccount.getLost()+lost, bankAccount.getWon());
 			bankRepository.saveAndFlush(newMoney);
+
+			if(code == 4) {
+				List<Bank> JP = bankRepository.findByUserCode(0);
+				Bank JPbank = JP.get(0);
+				Bank newJP = new Bank(JPbank.getCode(), 0, JPbank.getMoney()+(int)prize, 0, 0);
+				bankRepository.saveAndFlush(newJP);
+			}
 		}
 
 		mv.addObject("prize", (int)prize);

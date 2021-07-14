@@ -36,11 +36,11 @@ public class BJController {
 		session.removeAttribute("player");
 		session.removeAttribute("dealer");
 		session.removeAttribute("list");
-		session.removeAttribute("number");
-		session.removeAttribute("numberDealer");
 
 		List<Bank> playerBank = bankRepository.findByUserCode(loginee.getCode());
 		Bank bankAccount = playerBank.get(0);
+		List<Bank> JP = bankRepository.findByUserCode(0);
+		Bank JPbank = JP.get(0);
 
 		List <Integer> list = new ArrayList<>();
 		session.setAttribute("list",list);
@@ -56,6 +56,9 @@ public class BJController {
 
 		Bank newMoney = new Bank(bankAccount.getCode(), bankAccount.getUserCode(), bankAccount.getMoney()-game.getPrice(), bankAccount.getLost(), bankAccount.getWon());
 		bankRepository.saveAndFlush(newMoney);
+
+		Bank newJP = new Bank(JPbank.getCode(), 0, JPbank.getMoney()+game.getPrice(), 0, 0);
+		bankRepository.saveAndFlush(newJP);
 
 		List <Integer> deck = new ArrayList<>(52);
 		session.setAttribute("deck",deck);
@@ -77,7 +80,6 @@ public class BJController {
 
 		//手札の合計値を求める
 		List<Integer> number = new ArrayList<>();
-		session.setAttribute("number",number);
 		int handTotal = 0;
 		for(int u=0; u<player.size(); u++) {
 			if(player.get(u).substring(1).equals("J")) {
@@ -99,7 +101,6 @@ public class BJController {
 		}
 
 		List<Integer> numberDealer = new ArrayList<>();
-		session.setAttribute("numberDealer",numberDealer);
 		int handTotalDealer = 0;
 		for(int u=0; u<dealer.size(); u++) {
 			if(dealer.get(u).substring(1).equals("J")) {
@@ -154,7 +155,6 @@ public class BJController {
 
 		int handTotal = 0;
 		List<Integer> number = new ArrayList<>();
-		session.setAttribute("number",number);
 		for(int u=0; u<playerDeck.size(); u++) {
 			if(playerDeck.get(u).substring(1).equals("J")) {
 				number.add(10);
@@ -193,7 +193,6 @@ public class BJController {
 			list.set(2, list.get(2)+1); //dealerCountに+1
 
 			List<Integer> numberDealer = new ArrayList<>();
-			session.setAttribute("numberDealer",numberDealer);
 			int handTotalDealer = 0;
 			for (int u = 0; u < dealerDeck.size(); u++) {
 				if (dealerDeck.get(u).substring(1).equals("J")) {
@@ -257,7 +256,6 @@ public class BJController {
 			list.set(2, list.get(2)+1); //dealerCountに+1
 
 			List<Integer> numberDealer = new ArrayList<>();
-			session.setAttribute("numberDealer",numberDealer);
 			int handTotalDealer = 0;
 			for (int u = 0; u < dealerDeck.size(); u++) {
 				if (dealerDeck.get(u).substring(1).equals("J")) {
