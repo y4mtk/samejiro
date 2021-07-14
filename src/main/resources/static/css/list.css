@@ -48,7 +48,7 @@ table th,table td{
 
 .parent{
   width: 900px;
-  height: 80px;
+  height: 90px;
 
   padding: 100px;
   margin: 200px;
@@ -56,7 +56,7 @@ table th,table td{
 }
 .inner{
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 25%;
   -webkit-transform: translateY(-50%) translateX(-50%);
   transform: translateY(-50%) translateX(-50%);

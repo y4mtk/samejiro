@@ -3,15 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <title>RESULT</title>
+<link th:href="@{/css/result.css}" rel="stylesheet">
 </head>
 <body>
+<span th:replace="menu"></span>
+
+	<hr>
+
+
 <div th:if="${game.code == 1}">
 <h1 th:text="${game.name}+'ポイントゲット！'"></h1>
 
-<div th:text="'ゲットしたポイントは'+ ${prize} + 'でした。'"></div>
+<h3 th:text="'ゲットしたポイントは'+ ${prize} + 'でした。'"></h3>
 </div>
 
-<div th:else="${game.code == 1}">
+<div th:if="${game.code == 2}">
+<h1 th:text="${game.name}+'結果発表'"></h1>
+
+<h3 th:text="'賞金は'+ ${prize} + '円でした。'"></h3>
+<h4 th:text="${message}"></h4>
+</div>
+
+<div th:if="${game.code == 3}">
+<h1 th:text="${game.name}+'結果発表'"></h1>
+
+<div th:text="'賞金は'+ ${prize} + '円でした。'"></div>
+<div th:text="${message}"></div>
+</div>
+
+<div th:if="${game.code == 4}">
 <h1 th:text="${game.name}+'結果発表'"></h1>
 
 <div th:text="'賞金は'+ ${prize} + '円でした。'"></div>
@@ -19,8 +39,11 @@
 </div>
 
 <br>
-新しい残高は
-<table border="1">
+<h5>新しい残高は</h5>
+<br>
+<div class="parent">
+  <div class="inner">
+<table width="600" border="1">
 <tr>
 <th>残高</th>
 <td th:text="${bankAccount.money}+'円'"></td>
@@ -39,6 +62,15 @@
 </tr>
 </table>
 
+</div>
+</div>
+
+<p1><section><a href="/select" class="btn_05"><span>TOPに戻る</span></a></section></p1>
+
+
+<!--
 <a href="/select">メニューに戻る</a>
+-->
+
 </body>
 </html>

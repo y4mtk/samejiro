@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+
+body{
+    background-color:rgb(226, 232, 240);
+    text-align: center;
+}
+
+
+.flat.border {
+  position: relative;
+  text-align: center;
+  /* 中央揃え */
+  display: block;
+  margin: 0 auto;
+  /* 幅の指定 */
+  width: 80%;
+  max-width: 150px;
+  box-sizing: border-box;
+  padding: 10px;
+  /* 色の指定 */
+  background: linear-gradient(135deg, #ffd900, #ff9300);
+  color: #fff;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: 0.3s;
+  border: 2px solid rgb(143, 177, 218);
+  background: #fff;
+  color: rgb(100, 143, 151);
+}
+.flat.border:hover {
+  background: rgb(181, 181, 192);
+  color: #fff;
+}
+.flat.border:active, .flat.border:focus {
+  top: 2px;
+}

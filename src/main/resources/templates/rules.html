@@ -3,12 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <title>ゲーム詳細</title>
+<link th:href="@{/css/rules.css}" rel="stylesheet">
 </head>
 <body>
 
 	<span th:replace="menu"></span>
 
 	<hr>
+
+	<br>
+<h1 th:text="${game.name}"></h1>
+
+<br>
+
+<span th:if="${game.code == 1}"><img src="/yoga-2.png" width="600"></span>
+<span th:if="${game.code == 2}"><img src="/same.png" width="100"></span>
+<span th:if="${game.code == 3}"><img src="/same.png" width="100"></span>
+<span th:if="${game.code == 4}"><img src="/same.png" width="100"></span>
+
+
+
+
+<br>
+<div th:text="'1 PLAY '+ ${game.price} + '円'"></div>
+<br>
+<div th:text="${game.rules}"></div>
+<br>
+
+<div>難易度：<span th:if="${game.difficulty == 1}">☆☆☆☆★</span></div>
+<div th:if="${game.difficulty == 3}">☆☆★★★</div>
+<div th:if="${game.difficulty == 4}">☆★★★★</div>
+<div th:if="${game.difficulty == 5}">★★★★★</div>
+<br>
+
+<form th:action="'/join/'+${game.code}" method="post">
+<button class="reset flat border">ゲームに<br>参加する！</button>
+</form>
+
+<!--
 
 <div>
 	<table border="2">
@@ -30,7 +62,7 @@
 	</tr>
 	</table>
 </div>
-
+-->
 
 </body>
 </html>

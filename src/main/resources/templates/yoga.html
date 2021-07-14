@@ -3,25 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <title>Relax yoga</title>
+<link th:href="@{/css/yoga.css}" rel="stylesheet">
 </head>
 <body>
-<h1>Relax yoga</h1>
+
 <div>
+<h1 th:if="${session.COUNT == null}">ヨガ</h1>
+<br>
+<div th:if="${session.COUNT == null}">
+<img width="350" th:src="@{/yogatop.png}"/>
+</div>
+<br>
+<br>
+<br>
+<br>
 <form action="/yoga" method="post">
-<input th:if="${session.COUNT == null}" type="submit" value="スタート">
+<input th:if="${session.COUNT == null}" type="submit" class="button" value="スタート">
 </form>
 
-<br>
 <form th:if="${session.COUNT == 1}" action="/yoga" method="post">
-<input type="submit" value="次のポーズ！">
+<input type="submit" class="button" value="次のポーズ！">
 <h1 th:if="${session.COUNT == 1}">スフィンクスのポーズ</h1>
 <div th:if="${session.COUNT == 1}"><img width="350" th:src="@{/yoga1.png}"/></div>
 <p th:if="${session.COUNT == 1}">
-効果効能
+<h3>効果効能</h3>
 <br>
 背骨の強化・胸、肺、肩、腹部のストレッチ・臀部の引き締め・腹部組織の活性化・ストレスの緩和
 <br>
-ポーズのやり方
+<br>
+<h3>ポーズのやり方</h3>
 <br>
 1
 <br>
@@ -30,6 +40,7 @@
 太腿の外側を床の方向へ回転して、太腿を内側に回転する。
 <br>
 これにより腰と仙骨（骨盤の後ろ側にある逆三角形の骨）が引き伸ばされて、後屈するときの保護の役目を果たす。
+<br>
 <br>
 2
 <br>
@@ -41,11 +52,13 @@
 <br>
 両脚はアクティブに、舌・目・脳は静かに。
 <br>
+<br>
 3
 <br>
 肘を床の上に置き、肩と前腕の真下で互いに平行にする。
 <br>
 息を吸いながら胴体上部を持ち上げて、頭を床から離して緩やかな後屈へ。
+<br>
 <br>
 4
 <br>
@@ -56,6 +69,7 @@
 これは繊細な動きで、引っ込めるのでもなく、固くするのでもない。
 <br>
 この腹の持ち上げが後屈で背骨をより均等に屈曲させてサポートし、腰を和らげて背中上部を目覚めさせる。
+<br>
 <br>
 5
 <br>
@@ -70,19 +84,21 @@
 
 
 <form th:if="${session.COUNT == 2}" action="/yoga" method="post">
-<input type="submit" value="次のポーズ！">
+<input type="submit" class="button" value="次のポーズ！">
 <h1 th:if="${session.COUNT == 2}">木のポーズ</h1>
 <div th:if="${session.COUNT == 2}"><img width="350" th:src="@{/yoga2.png}"/></div>
 <p th:if="${session.COUNT == 2}">
-効果効能
+<h3>効果効能</h3>
 <br>
 全身にエネルギーが巡る。集中力と自身を高める。
 <br>
-ポーズのやり方
+<br>
+<h3>ポーズのやり方</h3>
 <br>
 1
 <br>
 足の裏全体で床を踏みしめながら、背筋を伸ばす。
+<br>
 <br>
 2
 <br>
@@ -91,6 +107,7 @@
 右足を、軸足になる左脚の太ももに押しつける。
 <br>
 太ももと足裏で互いに押し合うイメージで。
+<br>
 <br>
 3
 <br>
@@ -104,21 +121,23 @@
 <!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
 
 <form th:if="${session.COUNT == 3}" action="/yoga" method="post">
-<input type="submit" value="次のポーズ！">
+<input type="submit" class="button" value="次のポーズ！">
 <h1 th:if="${session.COUNT == 3}">ダウンドッグのポーズ</h1>
 <div th:if="${session.COUNT == 3}"><img width="350" th:src="@{/yoga3.png}"/></div>
 <p th:if="${session.COUNT == 3}">
-効率効能
+<h3>効率効能</h3>
 <br>
 背中からハムストリングと体の背面を伸ばすことが特徴。
 <br>
 背中の柔軟性をアップさせる効果が期待できます。
 <br>
-ポーズのやり方
+<br>
+<h3>ポーズのやり方</h3>
 <br>
 1
 <br>
 正座をした状態から、体を倒して手を床につけます。手は前方へまっすぐ伸ばしておきます。
+<br>
 <br>
 2
 <br>
@@ -127,6 +146,7 @@
 手と足へ均等に体重を乗せながら、お尻を天上の方へ上げます。
 <br>
 体全体で三角形を描くことをイメージしましょう。
+<br>
 <br>
 3
 <br>
@@ -139,15 +159,16 @@
 <!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
 
 <form th:if="${session.COUNT == 4}" action="/yoga" method="post">
-<input type="submit" value="次のポーズ！">
+<input type="submit" class="button" value="次のポーズ！">
 <h1 th:if="${session.COUNT == 4}">ホタルのポーズ</h1>
 <div th:if="${session.COUNT == 4}"><img width="350" th:src="@{/yoga4.png}"/></div>
 <p th:if="${session.COUNT == 4}">
-効率効能
+<h3>効率効能</h3>
 <br>
 鼠蹊部内側と背中のストレッチ・腕と手首の強化・腹部を整える・バランス感覚の向上
 <br>
-ポーズのやり方
+<br>
+<h3>ポーズのやり方</h3>
 <br>
 1
 <br>
@@ -156,11 +177,14 @@
 骨盤を前傾させて胴体を両脚の間に。
 <br>
 胴体を低く保ちながら、骨盤を膝くらいの高さに持ち上げられるように両脚を伸ばす。
+<br>
+<br>
 2
 <br>
 左の上腕と肩を、膝のすぐ上の左腿裏からできるだけ遠くに滑らせていく。
 <br>
 左手は足の外側の床の上に指先を前に向けて置く。反対側も同じように行う。
+<br>
 <br>
 3
 <br>
@@ -170,9 +194,11 @@
 <br>
 腿の内側をできるだけ両腕と同じ高さにする。
 <br>
+<br>
 4
 <br>
 吸う息で両脚を外側へできる範囲でまっすぐに伸ばし、骨盤の高さを保って両脚を床と平行にする。
+<br>
 <br>
 5
 <br>
@@ -184,6 +210,7 @@
 <br>
 こうすることで背中上部が丸くなり、胴体がより高く持ち上がる。
 <br>
+<br>
 6
 <br>
 首を緊張させないように頭を持ち上げて、前を見る。
@@ -193,27 +220,31 @@
 <!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
 
 <form th:if="${session.COUNT == 5}" action="/yoga" method="post">
-<input type="submit" value="次のポーズ！">
+<input type="submit" class="button" value="次のポーズ！">
 <h1 th:if="${session.COUNT == 5}">一本足のポーズ</h1>
 <div th:if="${session.COUNT == 5}"><img width="350" th:src="@{/yoga5.PNG}"/></div>
 <p th:if="${session.COUNT == 5}">
-効率効能
+<h3>効率効能</h3>
 <br>
 体幹を強化。股関節の柔軟性を高める。バランス感覚を高める。集中力を高める。
 <br>
-ポーズのやり方
+<br>
+<h3>ポーズのやり方</h3>
 <br>
 1
 <br>
 くるぶしをつけて頭のてっぺんを上に引き上げた状態で立つ
 <br>
+<br>
 2
 <br>
 片膝を上げ、その足先を手で掴む
 <br>
+<br>
 3
 <br>
 上げた足を前方へと伸ばす
+<br>
 <br>
 4
 <br>
@@ -223,27 +254,31 @@
 </p></form>
 <!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
 <form th:if="${session.COUNT == 6}" action="/yoga" method="post">
-<input type="submit" value="次のポーズ！">
+<input type="submit" class="button" value="次のポーズ！">
 <h1 th:if="${session.COUNT == 6}">賢者のポーズ</h1>
 <div th:if="${session.COUNT == 6}"><img width="350" th:src="@{/yoga6.png}"/></div>
 <p th:if="${session.COUNT == 6}">
-効率効能
+<h3>効率効能</h3>
 <br>
 体幹の強化。自分に自身がつく。脇腹のシェイプアップ。背中のシェイプアップ
 <br>
-ポーズのやり方
+<br>
+<h3>ポーズのやり方</h3>
 <br>
 1
 <br>
 四つん這いになる
 <br>
+<br>
 2
 <br>
 左脚を後ろに下げて膝を伸ばす。右脚の位置は変えない。
 <br>
+<br>
 3
 <br>
 身体を左にねじり左手を腰に添える
+<br>
 <br>
 4
 <br>
@@ -255,27 +290,31 @@
 </p></form>
 <!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
 <form th:if="${session.COUNT == 7}" action="/yoga" method="post">
-<input type="submit" value="次でラスト！">
+<input type="submit" class="button" value="次でラスト！">
 <h1 th:if="${session.COUNT == 7}">安楽座(スカーサナ)のポーズ</h1>
 <div th:if="${session.COUNT == 7}"><img width="350" th:src="@{/yoga7.png}"/></div>
 <p th:if="${session.COUNT == 7}">
-効率効能
+<h3>効率効能</h3>
 <br>
 リラックス効果。集中力を高める。背中の強化。体幹強化と姿勢改善。膝と足首の柔軟性アップ
 <br>
-ポーズのやり方
+<br>
+<h3>ポーズのやり方</h3>
 <br>
 1
 <br>
 足を前にして座り、すねを交差させます。
 <br>
+<br>
 2
 <br>
 両膝を広げてそれぞれの足を反対側の膝の下に入れて身体の前でクロスさせます。
 <br>
+<br>
 3
 <br>
 背骨をまっすぐに引き上げ、胸を開きながら、足をリラックスさせましょう。
+<br>
 <br>
 4
 <br>
@@ -288,12 +327,13 @@
 <input type="hidden" value="100" name="prize">
 
 <h1 th:if="${session.COUNT == 8}">様々なヨガお疲れさまでした！</h1>
+<span th:if="${session.COUNT == 8}"><img width="350" th:src="@{/same1.png}"/></span>
 <p th:if="${session.COUNT == 8}">
 いつも疲れている体を癒すことはできましたか？
 <br>
 継続することでより良い効果を得ることができるので継続してやってみましょう！
 <br></p>
-<input type="submit" value="PointGet"></form>
+<input type="submit" class="button" value="PointGet"></form>
 
 <!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
 

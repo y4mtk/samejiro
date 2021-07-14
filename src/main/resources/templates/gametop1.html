@@ -3,13 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <title>ルール説明</title>
+<link th:href="@{/css/gametop.css}" rel="stylesheet">
 </head>
 <body>
 <form action="/yoga" method="get">
-<h1 th:text="'ルール説明：' + ${game.name}"></h1>
 
-<h2>簡単ヨガ～</h2>
+<h1>画像を真似して行うヨガ体験</h1>
 
+<br>
+<span><img src="/yogarules.png" width="300"></span>
+
+<h2>やり方</h2>
 <div>
 ボタンを押して出てくる画像のポーズを真似してヨガをやってみましょう！
 <br>
@@ -20,7 +24,8 @@
 無理しすぎず全ポーズをレッツチャレンジ！
 </div>
 
-<input type="submit" value="START">
+
+<p><button class="reset flat border">■ START</button></p>
 </form>
 
 </body>
