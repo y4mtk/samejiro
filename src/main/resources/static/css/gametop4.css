@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+body{
+    background-color:rgb(90, 90, 90);
+    text-align: center;
+}
+
+h1{
+	font-size:45px;
+	color: rgb(250, 250, 250);
+	position: absolute;
+  	top: 10%;
+  	left: 42%;
+}
+
+h2{
+	text-align: center;
+	color: rgb(250, 250, 250);
+	position: absolute;
+  	top: 37%;
+  	left: 47%;
+
+}
+
+h3{
+	text-align: center;
+	position: absolute;
+  	top: 25%;
+  	left: 39%;
+}
+
+div{
+	text-align: center;
+	position: absolute;
+  	top: 50%;
+  	left: 27%;
+}
+
+p{
+	text-align: center;
+	position: absolute;
+  	top: 75%;
+  	left: 45%;
+}

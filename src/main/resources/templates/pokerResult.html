@@ -3,10 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Poker</title>
+<link th:href="@{/css/pokerresult.css}" rel="stylesheet">
 </head>
 <body>
 <h1 th:text="${game.name}"></h1>
 
+<p1>
 <div th:text="'pot:' + ${list.get(2)}"></div>
 
 <div th:text="'CPUの手札' + ${cpuDeck}"></div>
@@ -15,7 +17,9 @@
 
 <div th:text="'あなたの手札' + ${playerDeck}"></div>
 <div th:text="${hand}"></div><br>
+</p1>
 
+<p2>
 <div th:text="${winner}"></div>
 <div th:else="${prize == 0}">
 <span th:text="'賞金は$'+ ${prize} + 'に決定しました'"></span>
@@ -23,12 +27,15 @@
 
 <br>
 <div th:text="'あなたの残チップ' + ${list.get(0)} + 'は口座にお返ししました。'"></div>
+</p2>
 
+<p3>
 <form action="/result" method="post">
 <input type="hidden" th:value="${game.code}" name="code">
 <input type="hidden" th:value="${prize}*100" name="prize">
-<input type="submit" value="結果表示画面へ">
+<input type="submit" value="結果表示画面へ" class="button">
 </form>
+</p3>
 
 </body>
 </html>

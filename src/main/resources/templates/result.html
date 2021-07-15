@@ -27,15 +27,15 @@
 <div th:if="${game.code == 3}">
 <h1 th:text="${game.name}+'結果発表'"></h1>
 
-<div th:text="'賞金は'+ ${prize} + '円でした。'"></div>
-<div th:text="${message}"></div>
+<h3 th:text="'賞金は'+ ${prize} + '円でした。'"></h3>
+<h4 th:text="${message}"></h4>
 </div>
 
 <div th:if="${game.code == 4}">
 <h1 th:text="${game.name}+'結果発表'"></h1>
 
-<div th:text="'賞金は'+ ${prize} + '円でした。'"></div>
-<div th:text="${message}"></div>
+<h3 th:text="'賞金は'+ ${prize} + '円でした。'"></h3>
+<h4 th:text="${message}"></h4>
 </div>
 
 <br>

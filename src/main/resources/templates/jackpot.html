@@ -3,31 +3,37 @@
 <head>
 <meta charset="UTF-8">
 <title>JackPotChallenge</title>
+<link th:href="@{/css/jackpot.css}" rel="stylesheet">
 </head>
 <body>
 <h1 th:text="${name}"></h1>
 
 <div th:if="${check == true}">
 
-	おめでとうございます！！
-	<span th:text="'ジャックポットの'+ ${prizeR} + 'をゲット出来ます！！'"></span>
+
+	<p4><img  src="/money.png" width="420"></p4>
+	<br>
+	<p>おめでとうございます！！</p>
+	<p1 th:text="'ジャックポットの'+ ${prizeR} + 'をゲット出来ます！！'"></p1>
 
 	<form action="/result" method="post">
 	<input type="hidden" value="2" name="code">
 	<input type="hidden" th:value="${prize}" name="prize">
-	<input type="submit" value="結果表示画面へ">
+	<p2><button class="reset flat border" >結果表示画面へ</button></p2>
 	</form>
 </div>
 
 <div th:if="${check == false}">
-	くじをひいて賞金を決めよう！
+	<p>くじをひいて賞金を決めよう！</p>
+	<p3><img src="/kira.png" width="1500"></p3>
 
+	<p1>
 	<form action="/getPrize" method="post">
-	<input type="submit" value="くじをひく！">
+	<button class="reset flat border" >くじを引く</button>
 	</form>
+	<br>
 
-	現在のジャックポットは<span style="color: red; font-size: 20px" th:text="${JP}"></span>円です。<br>
+	現在のジャックポットは<span style="color: red; font-size: 20px" th:text="${JP}"></span>円です。<br></p1>
 </div>
-
 </body>
 </html>

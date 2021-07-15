@@ -3,35 +3,57 @@
 <head>
 <meta charset="UTF-8">
 <title>ルール説明</title>
+<link th:href="@{/css/gametop3.css}" rel="stylesheet">
 </head>
 <body>
-<h1 th:text="'ルール説明：' + ${game.name}"></h1>
+<h1 th:text="${game.name}"></h1>
 
-<div>
-チップを賭けてCPUとポーカー勝負をしよう！<br>
 
-最初に5枚配られるファイブカード・ドローのクローズドポーカーです。<br>
+<h3>チップを賭けてCPUとポーカー勝負をしよう！</h3><br>
 
-ルール
-<ol>
-<li>最初に$10賭けてゲームスタート！</li>
-<li>プレイヤー、CPUともに5枚手札が配られます（お互いの手札は見えません）</li>
-<li>手札を見て掛け金を決めよう</li>
-<li>自分の手札をデッキのカードと交換できます</li>
-<li>交換したら再度掛け金を決めていざ勝負！</li>
-<li>手札の役が強い方が勝ち！掛け金と役で賞金が決まります</li>
-</ol>
+<h4>最初に5枚配られるファイブカード・ドローのクローズドポーカーです。</h4><br>
 
-チップの換算：10000円＝$100
-</div>
+<h2>ルール</h2>
 
+<div>最初に$10賭けてゲームスタート！<br>
+プレイヤー、CPUともに5枚手札が配られます（お互いの手札は見えません）<br>
+手札を見て掛け金を決めよう<br>
+自分の手札をデッキのカードと交換できます<br>
+交換したら再度掛け金を決めていざ勝負！<br>
+手札の役が強い方が勝ち！掛け金と役で賞金が決まります</div>
+<br>
+
+
+<p>
+チップの換算：10000円＝$100</p>
 <form action="/startPoker" method="post">
-<input type="text" name="tip">円
-<input type="submit" value="チップを確定して始める！">
+<p1>
+<div class="stuff">
+<div class="textBox">
+
+  <input
+         class="text"
+         type="text"
+         name="tip"
+         placeholder="tip"
+         onkeyup="this.setAttribute('value', this.value);"
+         value=""/>
+
+  <label class="label">tip</label>
+  <label class="error"></label>
+</div>
+</div></p1>
+<p2><input type="submit" value="確定して始める！" class="button"></p2></form>
+
+
+
+
+<!--
+<form action="/startPoker" method="post">
+<p1><input type="text" name="tip">円
+<input type="submit" value="チップを確定して始める！"></p1>
 </form>
-
-
+-->
 <span th:text="${message}"></span>
-<a href="/select/game">ゲーム一覧に戻る</a>
 </body>
 </html>

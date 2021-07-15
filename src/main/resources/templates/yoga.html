@@ -254,7 +254,7 @@
 </p></form>
 <!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
 <form th:if="${session.COUNT == 6}" action="/yoga" method="post">
-<input type="submit" class="button" value="次のポーズ！">
+<input type="submit" class="button" value="次でラスト！">
 <h1 th:if="${session.COUNT == 6}">賢者のポーズ</h1>
 <div th:if="${session.COUNT == 6}"><img width="350" th:src="@{/yoga6.png}"/></div>
 <p th:if="${session.COUNT == 6}">
@@ -290,7 +290,7 @@
 </p></form>
 <!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
 <form th:if="${session.COUNT == 7}" action="/yoga" method="post">
-<input type="submit" class="button" value="次でラスト！">
+<input type="submit" class="button" value="お疲れさまでした！">
 <h1 th:if="${session.COUNT == 7}">安楽座(スカーサナ)のポーズ</h1>
 <div th:if="${session.COUNT == 7}"><img width="350" th:src="@{/yoga7.png}"/></div>
 <p th:if="${session.COUNT == 7}">

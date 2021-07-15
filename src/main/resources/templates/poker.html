@@ -3,18 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <title>Poker</title>
+<link th:href="@{/css/poker.css}" rel="stylesheet">
 </head>
 <body>
 <h1 th:text="${game.name}"></h1>
 
-<div th:text="'CPUの残りチップ' + ${list[1]}"></div>
+<h3 th:text="'CPUの残りチップ：' + ${list[1]}"></h3>
 <br>
-<div th:text="'あなたの残りチップ' + ${list[0]}"></div>
-<div th:text="'あなたの手札' + ${playerDeck}"></div>
+<h4 th:text="'あなたの残りチップ：' + ${list[0]}"></h4>
+<h2 th:text="'あなたの手札' + ${playerDeck}"></h2>
 <br>
-<div th:text="'pot:' + ${list[2]}"></div>
 
-アクションを選択してください<br>
+<p th:text="'pot:' + ${list[2]}"></p>
+
+<p1>
+アクションを選択してください<br><br>
 <form action="/action" method="post">
 <input type="checkbox" name="check" value="1">一番左
 <input type="checkbox" name="check" value="2">左から２つ目
@@ -24,12 +27,24 @@
 <input type="checkbox" name="check" value="6" checked="checked">交換しない
 
 <br>
-BET:$<input type="text" name="bet" th:value="${list[2]}">
 
+<br>
+<div class="stuff">
+<div class="textBox">
+<input class="text" type="text" name="bet" th:value="${list[2]}"
+		onkeyup="this.setAttribute('value', this.value);" >
+
+		<label class="label">BET:$</label>
+  <label class="error"></label>
+
+</div>
+</div>
+
+<p2>
 <input type="hidden" name="deckCount" th:value="${deckCount}">
-<input type="submit" value="確定">
+<input type="submit" value="確定" class="button"></p2>
 </form>
-
+</p1>
 <span th:text="${message}"></span>
 
 </body>

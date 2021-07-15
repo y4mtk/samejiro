@@ -3,24 +3,40 @@
 <head>
 <meta charset="UTF-8">
 <title>PokerShowDown</title>
+<link th:href="@{/css/pokershowdown.css}" rel="stylesheet">
 </head>
 <body>
 <h1 th:text="${game.name}"></h1>
 
-<div th:text="'CPUの残りチップ' + ${list.get(1)}"></div>
+<h3 th:text="'CPUの残りチップ' + ${list.get(1)}"></h3>
 <br>
-<div th:text="'あなたの残りチップ' + ${list.get(0)}"></div>
-<div th:text="'あなたの手札' + ${playerDeck}"></div>
+<h4 th:text="'あなたの残りチップ' + ${list.get(0)}"></h4>
+<h2 th:text="'あなたの手札' + ${playerDeck}"></h2>
 <br>
-<div th:text="'pot:' + ${list.get(2)}"></div>
+<p th:text="'pot:' + ${list.get(2)}"></p>
 
-<form action="/pokerResult" method="post">
 
+
+<form action="/pokerResult" method="post"><p1>
 <input type="hidden" name="playerDeck" th:value="${playerDeck}">
 <input type="hidden" name="cpuDeck" th:value="${cpuDeck}">
-BET:$<input type="text" name="bet" th:value="${list.get(1)}">
-<input type="submit" value="勝負！">
+
+
+<div class="stuff">
+<div class="textBox">
+
+
+<input class="text" type="text" name="bet" th:value="${list.get(1)}"
+		onkeyup="this.setAttribute('value', this.value);">
+		<label class="label">BET:$</label>
+  <label class="error"></label>
+ </div>
+ </div></p1>
+
+
+<a><input type="submit" value="勝負！" class="button"></a>
 </form>
+
 
 <span th:text="${message}"></span>
 
