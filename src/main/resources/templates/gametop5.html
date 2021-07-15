@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ルール説明</title>
+<link th:href="@{/css/gametop5.css}" rel="stylesheet">
+</head>
+<body>
+<h1 th:text="${game.name}"></h1>
+
+<h3>クイズに正解して賞金をゲットしよう！</h3>
+
+<h2>ルール</h2>
+
+<div>
+</div>
+<br>
+
+
+
+<form action="/quiz" method="post">
+<p><input type="submit" value="挑戦を開始"></p>
+</form>
+
+
+<span th:text="${message}"></span>
+
+</body>
+</html>

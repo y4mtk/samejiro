@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>QUIZ</title>
+<link th:href="@{/css/quiz.css}" rel="stylesheet">
+</head>
+<body>
+
+<div>
+<h1 th:if="${session.COUNT == null}">クイズ</h1>
+<br>
+<div th:if="${session.COUNT == null}">
+<!-- <img width="350" th:src="@{/yogatop.png}"/> -->
+</div>
+<br>
+<br>
+<br>
+<br>
+<form action="/quiz" method="post">
+<input th:if="${session.COUNT == null}" type="submit" class="button" value="スタート！">
+</form>
+
+<!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
+
+<form th:if="${session.COUNT == 1}" action="/quiz" method="post">
+<h1 th:if="${session.COUNT == 1}">第一問</h1>
+<div th:if="${session.COUNT == 1}">
+<h2>正解は・・・②「おみくじ入りのクッキー」</h2>
+
+<div th:text="${RightOrWrong}"></div>
+
+フォーチュンクッキーの中にはおみくじの書かれた紙が入っていて、割ることで取り出すことが出来ます。
+アメリカやカナダの中華料理店で食後のデザートやちょっとしたお土産として出されることが多いです。
+
+</div>
+<input type="submit" value="次の問題へ">
+</form>
+
+<!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
+
+<form th:if="${session.COUNT == 2}" action="/quiz" method="post">
+<h1 th:if="${session.COUNT == 2}">第二問</h1>
+<div th:if="${session.COUNT == 2}">
+<h2>正解は・・・③「薄ら塩味」</h2>
+
+<div th:text="${RightOrWrong}"></div>
+
+涙の味は感情によってナトリウムの量が変わり、違う味になると言われています。
+嬉しいときや悲しいときは薄味になり、悔しいときや怒っているときは塩辛くなります。
+</div>
+
+</form>
+
+<!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
+<form th:if="${session.COUNT == 8}" action="/result" method="post">
+<input type="hidden" value="1" name="code">
+<input type="hidden" value="100" name="prize">
+
+<h1 th:if="${session.COUNT == 8}">様々なヨガお疲れさまでした！</h1>
+<span th:if="${session.COUNT == 8}"><img width="350" th:src="@{/same1.png}"/></span>
+<p th:if="${session.COUNT == 8}">
+いつも疲れている体を癒すことはできましたか？
+<br>
+継続することでより良い効果を得ることができるので継続してやってみましょう！
+<br></p>
+<input type="submit" class="button" value="PointGet"></form>
+
+<!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
+
+</div>
+
+</body>
+</html>
