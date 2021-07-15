@@ -123,7 +123,7 @@
 
 <form th:if="${session.COUNT == 8}" action="/result" method="post">
 <input type="hidden" value="4" name="code">
-<input type="hidden" th:value="${100 * session.RIGHT}" name="prize">
+<input type="hidden" th:value="${1000 * session.RIGHT / 7}" name="prize">
 
 <h1 th:if="${session.COUNT == 8}">お疲れさまでした！</h1>
 <p th:if="${session.COUNT == 8}">

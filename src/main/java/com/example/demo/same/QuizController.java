@@ -1,5 +1,8 @@
 package com.example.demo.same;
 
+import java.util.List;
+import java.util.Optional;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +18,37 @@ public class QuizController {
 	@Autowired
 	HttpSession session;
 
+	@Autowired
+	BankRepository bankRepository;
+
+	@Autowired
+	GameRepository gameRepository;
+
 	//http://localhost:8080/quiz
 	@RequestMapping ("/quiztop")
 	public ModelAndView quiztop(ModelAndView mv) {
+		People loginee = (People)session.getAttribute("login");
+
+		List<Bank> playerBank = bankRepository.findByUserCode(loginee.getCode());
+		Bank bankAccount = playerBank.get(0);
+		List<Bank> JP = bankRepository.findByUserCode(0);
+		Bank JPbank = JP.get(0);
+
+		Optional<Game> list2 = gameRepository.findById(4);
+		Game game = list2.get();
+
+		if(game.getPrice() > bankAccount.getMoney()) {
+			mv.addObject("message", "残高が足りません");
+			mv.setViewName("error");
+			return mv;
+		}
+
+		Bank newMoney = new Bank(bankAccount.getCode(), bankAccount.getUserCode(), bankAccount.getMoney()-game.getPrice(), bankAccount.getLost(), bankAccount.getWon());
+		bankRepository.saveAndFlush(newMoney);
+
+		Bank newJP = new Bank(JPbank.getCode(), 0, JPbank.getMoney()+game.getPrice(), 0, 0);
+		bankRepository.saveAndFlush(newJP);
+
 		mv.setViewName("quiz");
 		return mv;
 	}
@@ -38,6 +69,7 @@ public class QuizController {
 		if(count >=9) {
 			//セッションオブジェクトを消滅
 			session.removeAttribute("COUNT");
+			session.removeAttribute("RIGHT");
 		}
 
 		mv.setViewName("quiz");
@@ -48,7 +80,7 @@ public class QuizController {
 	public ModelAndView quizRight(ModelAndView mv) {
 		Integer rightAnswers = (Integer)session.getAttribute("RIGHT");
 
-		if(rightAnswers == null) {
+		if(rightAnswers == null || (Integer)session.getAttribute("COUNT")== 1) {
 			rightAnswers = 0;
 		}
 		rightAnswers++;
@@ -64,14 +96,6 @@ public class QuizController {
 
 	@RequestMapping (value="/quizAnswer", params="wrong", method=RequestMethod.POST)
 	public ModelAndView quizWrong(ModelAndView mv) {
-		Integer wrongAnswers = (Integer)session.getAttribute("RIGHT");
-
-		if(wrongAnswers == null) {
-			wrongAnswers = 0;
-		}
-		wrongAnswers++;
-
-		session.setAttribute("WRONG", wrongAnswers);
 
 		String RightOrWrong = "残念、不正解です";
 		mv.addObject("RightOrWrong", RightOrWrong);
