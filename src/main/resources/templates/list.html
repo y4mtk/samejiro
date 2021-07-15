@@ -22,7 +22,7 @@
   <th th:if="${game.code == 1}"><img width="150" th:src="@{/yogatop1.png}"/></th>
   <th th:if="${game.code == 2}"><img width="100" th:src="@{/jackpot.png}"/></th>
   <th th:if="${game.code == 3}"><img width="110" th:src="@{/trnp.png}"/></th>
-  <th th:if="${game.code == 4}"><img width="100" th:src="@{/same.png}"/></th>
+  <th th:if="${game.code == 4}"><img width="100" th:src="@{/bj.png}"/></th>
     <td th:text="${game.name}"></td>
     <td th:text="'1 PLAY '+ ${game.price} + '円'"></td>
     <td><form th:action="'/select/game/'+${game.code}" method="post">
