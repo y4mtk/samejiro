@@ -36,7 +36,7 @@
 <span th:if="${game.difficulty == 5}">★★★★★</span>
 </div><br>
 
-<form th:action="'/join/'+${game.code}" method="post">
+<form th:action="'/join/'+${game.code}" method="get">
 <button class="reset flat border">ゲームに<br>参加する！</button>
 </form>
 
