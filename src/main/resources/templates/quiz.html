@@ -28,9 +28,9 @@
 <div th:if="${session.COUNT == 1}">
 <h2>「フォーチュンクッキー」とはどんなクッキーでしょうか？</h2>
 
-①<input type="submit" class="button" name="wrong" value="コインが入っているクッキー">
-②<input type="submit" class="button" name="true" value="おみくじ入りのクッキー">
-③<input type="submit" class="button" name="wrong" value="近未来的で斬新なクッキー">
+①<input type="submit" name="wrong" value="コインが入っているクッキー"><br>
+②<input type="submit" name="true" value="おみくじ入りのクッキー"><br>
+③<input type="submit" name="wrong" value="近未来的で斬新なクッキー"><br>
 </div>
 
 </form>
@@ -42,25 +42,97 @@
 <div th:if="${session.COUNT == 2}">
 <h2>嬉しくて泣いているときの涙はどんな味でしょうか？</h2>
 
-①<input type="submit" class="button" name="wrong" value="何の味もしない">
-②<input type="submit" class="button" name="wrong" value="塩辛い>
-③<input type="submit" class="button" name="true" value="薄ら塩味">
+①<input type="submit" name="wrong" value="何の味もしない"><br>
+②<input type="submit" name="wrong" value="塩辛い"><br>
+③<input type="submit" name="true" value="薄ら塩味"><br>
 </div>
 
 </form>
 
 <!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
-<form th:if="${session.COUNT == 8}" action="/result" method="post">
-<input type="hidden" value="1" name="code">
-<input type="hidden" value="100" name="prize">
 
-<h1 th:if="${session.COUNT == 8}">様々なヨガお疲れさまでした！</h1>
-<span th:if="${session.COUNT == 8}"><img width="350" th:src="@{/same1.png}"/></span>
+<form th:if="${session.COUNT == 3}" action="/quizAnswer" method="post">
+<h1 th:if="${session.COUNT == 3}">第三問</h1>
+<div th:if="${session.COUNT == 3}">
+<h2>ティーカップの飲み口が広がった形なのは何故？</h2>
+
+①<input type="submit" name="wrong" value="アイスクリームを浮かべるため"><br>
+②<input type="submit" name="wrong" value="空気に触れやすくするため"><br>
+③<input type="submit" name="true" value="光が入りやすくするため"><br>
+</div>
+
+</form>
+
+<!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
+
+<form th:if="${session.COUNT == 4}" action="/quizAnswer" method="post">
+<h1 th:if="${session.COUNT == 4}">第四問</h1>
+<div th:if="${session.COUNT == 4}">
+<h2>お酢に卵を殻ごといれるとどうなるでしょう？</h2>
+
+①<input type="submit" name="true" value="透明な卵になる"><br>
+②<input type="submit" name="wrong" value="石のように固くなる"><br>
+③<input type="submit" name="wrong" value="全部溶けてなくなる"><br>
+</div>
+
+</form>
+
+<!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
+
+<form th:if="${session.COUNT == 5}" action="/quizAnswer" method="post">
+<h1 th:if="${session.COUNT == 5}">第五問</h1>
+<div th:if="${session.COUNT == 5}">
+<h2>キリンの睡眠時間はどのくらいでしょう？</h2>
+
+①<input type="submit" name="wrong" value="8時間"><br>
+②<input type="submit" name="wrong" value="20時間"><br>
+③<input type="submit" name="true" value="20分"><br>
+</div>
+
+</form>
+
+<!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
+
+<form th:if="${session.COUNT == 6}" action="/quizAnswer" method="post">
+<h1 th:if="${session.COUNT == 6}">第六問</h1>
+<div th:if="${session.COUNT == 6}">
+<h2>「敵に塩を送る」の由来になった武将は誰でしょう？</h2>
+
+①<input type="submit" name="wrong" value="武田信玄"><br>
+②<input type="submit" name="true" value="上杉謙信"><br>
+③<input type="submit" name="wrong" value="石田三成"><br>
+</div>
+
+</form>
+
+<!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
+
+<form th:if="${session.COUNT == 7}" action="/quizAnswer" method="post">
+<h1 th:if="${session.COUNT == 7}">第七問</h1>
+<div th:if="${session.COUNT == 7}">
+<h2>映画監督のスティーヴン・スピルバーグ。彼が出演している自分の作品はどれでしょう？</h2>
+
+①<input type="submit" name="wrong" value="ジョーズ"><br>
+②<input type="submit" name="wrong" value="E.T."><br>
+③<input type="submit" name="true" value="ジュラシックパーク ロストワールド"><br>
+</div>
+
+</form>
+
+<!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
+
+<form th:if="${session.COUNT == 8}" action="/result" method="post">
+<input type="hidden" value="4" name="code">
+<input type="hidden" th:value="${100 * session.RIGHT}" name="prize">
+
+<h1 th:if="${session.COUNT == 8}">お疲れさまでした！</h1>
 <p th:if="${session.COUNT == 8}">
-いつも疲れている体を癒すことはできましたか？
+正解数：<span th:text="${session.RIGHT}"></span>
 <br>
-継続することでより良い効果を得ることができるので継続してやってみましょう！
-<br></p>
+正答率は<span th:text="${100 * session.RIGHT / 7}+ '%'"></span>でした！
+<br>
+<span th:text="${1000 * session.RIGHT / 7} + '円が賞金として送られます'"></span>
+</p>
 <input type="submit" class="button" value="PointGet"></form>
 
 <!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->

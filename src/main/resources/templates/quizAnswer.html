@@ -7,22 +7,6 @@
 </head>
 <body>
 
-<div>
-<h1 th:if="${session.COUNT == null}">クイズ</h1>
-<br>
-<div th:if="${session.COUNT == null}">
-<!-- <img width="350" th:src="@{/yogatop.png}"/> -->
-</div>
-<br>
-<br>
-<br>
-<br>
-<form action="/quiz" method="post">
-<input th:if="${session.COUNT == null}" type="submit" class="button" value="スタート！">
-</form>
-
-<!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
-
 <form th:if="${session.COUNT == 1}" action="/quiz" method="post">
 <h1 th:if="${session.COUNT == 1}">第一問</h1>
 <div th:if="${session.COUNT == 1}">
@@ -53,22 +37,78 @@
 </form>
 
 <!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
-<form th:if="${session.COUNT == 8}" action="/result" method="post">
-<input type="hidden" value="1" name="code">
-<input type="hidden" value="100" name="prize">
 
-<h1 th:if="${session.COUNT == 8}">様々なヨガお疲れさまでした！</h1>
-<span th:if="${session.COUNT == 8}"><img width="350" th:src="@{/same1.png}"/></span>
-<p th:if="${session.COUNT == 8}">
-いつも疲れている体を癒すことはできましたか？
-<br>
-継続することでより良い効果を得ることができるので継続してやってみましょう！
-<br></p>
-<input type="submit" class="button" value="PointGet"></form>
+<form th:if="${session.COUNT == 3}" action="/quiz" method="post">
+<h1 th:if="${session.COUNT == 3}">第三問</h1>
+<div th:if="${session.COUNT == 3}">
+<h2>正解は・・・③「光が入りやすくするため」</h2>
+
+<div th:text="${RightOrWrong}"></div>
+
+19世紀に色の濃い紅茶が流行りましたが、その濃さ故あまりきれいとは言えませんでした。
+そのため、カップの底が浅く、飲み口の広い今のティーカップの形にすることで光が入りやすい設計になったと言われています。
+</div>
+<input type="submit" value="次の問題へ">
+</form>
 
 <!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
 
+<form th:if="${session.COUNT == 4}" action="/quiz" method="post">
+<h1 th:if="${session.COUNT == 4}">第四問</h1>
+<div th:if="${session.COUNT == 4}">
+<h2>正解は・・・①「透明な卵になる」</h2>
+
+<div th:text="${RightOrWrong}"></div>
+
+卵の殻を構成している炭酸カルシウムがお酢の酢酸と反応し、二酸化炭素と酢酸カルシウムに変化します。
+酢酸カルシウムは水に溶けやすい成分なので殻だけ溶けた透明な卵が出来上がります。
 </div>
+<input type="submit" value="次の問題へ">
+</form>
+
+<!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
+
+<form th:if="${session.COUNT == 5}" action="/quiz" method="post">
+<h1 th:if="${session.COUNT == 5}">第五問</h1>
+<div th:if="${session.COUNT == 5}">
+<h2>正解は・・・③「20分」</h2>
+
+<div th:text="${RightOrWrong}"></div>
+
+キリンは栄養を摂取するために大量の草を食べる必要があり、睡眠をとる時間があまりないと考えられています。
+</div>
+<input type="submit" value="次の問題へ">
+</form>
+
+<!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
+
+
+<form th:if="${session.COUNT == 6}" action="/quiz" method="post">
+<h1 th:if="${session.COUNT == 6}">第六問</h1>
+<div th:if="${session.COUNT == 6}">
+<h2>正解は・・・②「上杉謙信」</h2>
+
+<div th:text="${RightOrWrong}"></div>
+
+武田謙信が塩不足で苦しんでいるとき、敵対関係にあった上杉検診が塩を送って助けたことに由来します。
+</div>
+<input type="submit" value="次の問題へ">
+</form>
+
+<!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
+
+<form th:if="${session.COUNT == 7}" action="/quiz" method="post">
+<h1 th:if="${session.COUNT == 7}">第七問</h1>
+<div th:if="${session.COUNT == 7}">
+<h2>正解は・・・③「ジュラシックパーク ロストワールド」</h2>
+
+<div th:text="${RightOrWrong}"></div>
+
+上演開始から120分ごろのシーンでちょっとだけ出演しています。
+主人公たちがテレビを見ているときにテレビに反射して写っています。
+</div>
+<input type="submit" value="結果画面へ">
+</form>
 
 </body>
 </html>

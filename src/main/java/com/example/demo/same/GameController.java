@@ -46,12 +46,13 @@ public class GameController {
 			List<Bank> bankJackPot = bankRepository.findByUserCode(0);
 			Bank JackPot = bankJackPot.get(0);
 			mv.addObject("JP", JackPot);
-
 			mv.setViewName("gametop2");
 		} else if (code == 3) {
 			mv.setViewName("gametop3");
 		} else if (code == 4) {
 			mv.setViewName("gametop4");
+		} else if (code == 5) {
+			mv.setViewName("gametop5");
 		}
 
 		return mv;
