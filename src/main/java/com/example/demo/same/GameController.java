@@ -30,7 +30,7 @@ public class GameController {
 
 
 	//ルール詳細画面表示
-	@RequestMapping(value="/join/{code}", method=RequestMethod.POST)
+	@RequestMapping(value="/join/{code}", method=RequestMethod.GET)
 	public ModelAndView showGametop(
 			ModelAndView mv,
 			@PathVariable("code") int code
