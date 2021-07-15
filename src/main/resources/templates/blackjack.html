@@ -3,27 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <title>BlackJack</title>
+<link th:href="@{/css/blackjack.css}" rel="stylesheet">
 </head>
 <body>
 <h1 th:text="${game.name}"></h1>
 
-<div th:text="'ディーラーの手札枚数は' + ${list[2]} + 'です'"></div>
-<div th:text="'ディーラー１枚目：' + ${dealerDeck[0]}"></div>
-<br>
-<div th:text="'あなたの手札' + ${playerDeck}"></div>
-<div th:text="'現在のあなたの合計は'+ ${list[3]} + 'です'"></div>
+<p>ディーラーの手札枚数は <span th:text="${list[2]}" style="color:white"></span> です</p>
+<h3 th:text="'ディーラー１枚目：' + ${dealerDeck[0]}"></h3>
 <br>
 
-アクションを選択してください<br>
+<h2 th:text="'あなたの手札' + ${playerDeck}"></h2>
+<p1>現在のあなたの合計は <span th:text="${list[3]}" style="color:white"></span> です</p1>
+<br>
+
+<p2>
+アクションを選択してください<br></p2>
+
+<p3>
 <form action="/actionContinue" method="post">
-<input type="submit" value="カードをひく">
+<input type="submit" value="カードをひく" class="button">
 </form>
+</p3>
 
-<br>
-
+<p4>
 <form action="/actionEnd" method="post">
-<input type="submit" value="ひかない">
+<input type="submit" value="ひかない" class="button">
 </form>
+</p4>
 
 <span th:text="${message}"></span>
 

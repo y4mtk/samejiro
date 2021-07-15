@@ -3,34 +3,41 @@
 <head>
 <meta charset="UTF-8">
 <title>BlackJack</title>
+<link th:href="@{/css/blackjackresult.css}" rel="stylesheet">
 </head>
 <body>
 <h1 th:text="${game.name}"></h1>
 
-<div th:text="'ディーラーの手札' + ${dealerDeck}"></div>
-<div th:text="'ディーラー１枚目：' + ${dealerDeck[0]}"></div>
+<h4 th:text="'ディーラーの手札' + ${dealerDeck}"></h4>
+<h3 th:text="'ディーラー１枚目：' + ${dealerDeck[0]}"></h3>
 <div th:if="${list[4] != 0}">
-<div th:text="'ディーラーの合計は'+ ${list[4]} + 'です'"></div>
+<p2>ディーラーの合計は <span th:text="${list[4]}" style="color:white"></span> です</p2>
 </div>
 
 <br>
 
-<div th:text="'あなたの手札' + ${playerDeck}"></div>
+<h2 th:text="'あなたの手札' + ${playerDeck}"></h2>
 <div th:if="${list[3] != 0}">
-<div th:text="'あなたの合計は'+ ${list[3]} + 'です'"></div>
+<p3>あなたの合計は <span th:text="${list[3]}" style="color:white"></span> です</p3>
 </div>
 
 <br>
 
-<div th:text="${message}"></div>
+<p4>
+<div th:text="${message}" style="color:red"></div></p4>
 <br>
-<div th:text="${winner}"></div>
 
+<p6>
+<div th:text="${winner}" style="color:white"></div></p6>
+
+
+<p5>
 <form action="/result" method="post">
 <input type="hidden" th:value="${game.code}" name="code">
 <input type="hidden" th:value="${prize}" name="prize">
-<input type="submit" value="結果表示画面へ">
+<input type="submit" value="結果表示画面へ" class="button">
 </form>
+</p5>
 
 </body>
 </html>

@@ -14,33 +14,48 @@ h1{
 }
 
 h2{
-	text-align: center;
-	color: rgb(250, 250, 250);
+	font-size:30px;
+	color:rgb(189, 189, 189);
 	position: absolute;
-  	top: 37%;
-  	left: 47%;
-
-}
-
-h3{
-	text-align: center;
-	position: absolute;
-  	top: 25%;
+  	top: 45%;
   	left: 39%;
 }
 
-div{
-	text-align: center;
+p{
 	position: absolute;
-  	top: 50%;
-  	left: 27%;
+	top: 38%;
+  	left: 42.5%;
 }
 
-p{
-	text-align: center;
+h3{
+	color:rgb(189, 189, 189);
+	position: absolute;
+  	top: 30%;
+  	left: 43%;
+}
+
+p1{
+	position: absolute;
+  	top: 60%;
+  	left: 43%;
+}
+
+p2{
+	position: absolute;
+  	top: 65%;
+  	left: 42.5%;
+}
+
+p3{
 	position: absolute;
   	top: 75%;
-  	left: 44%;
+  	left: 40%;
+}
+
+p4{
+	position: absolute;
+  	top: 75%;
+  	left: 52%;
 }
 
 .button {
