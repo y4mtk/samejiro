@@ -73,8 +73,6 @@ public class GameController {
 		Game gameDetail = game.get();
 		mv.addObject("game", gameDetail);
 
-		List<Integer> list = (List<Integer>) session.getAttribute("list");
-
 		if(code == 2) {
 			List<Bank> JP = bankRepository.findByUserCode(0);
 			Bank JPbank = JP.get(0);
@@ -82,6 +80,7 @@ public class GameController {
 			bankRepository.saveAndFlush(newJP);
 		}
 		if(code == 3) {
+			List<Integer> list = (List<Integer>) session.getAttribute("list");
 			Game newGame = new Game(gameDetail.getCode(), gameDetail.getName(), list.get(0), gameDetail.getRules(), gameDetail.getDifficulty());
 			gameRepository.saveAndFlush(newGame);
 		}
