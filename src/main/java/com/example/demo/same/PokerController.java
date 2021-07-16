@@ -578,7 +578,7 @@ public class PokerController {
 			break;
 		}
 
-		Optional<Game> list2 = gameRepository.findById(2);
+		Optional<Game> list2 = gameRepository.findById(3);
 		Game game = list2.get();
 
 		People loginee = (People)session.getAttribute("login");
