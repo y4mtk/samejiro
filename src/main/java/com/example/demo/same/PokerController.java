@@ -87,7 +87,8 @@ public class PokerController {
 		list.add((tip/100)-10);
 		list.add(90);
 		list.add(20);
-		//{player, cpu, pot}
+		list.add(tip-list.get(0));
+		//{player, cpu, pot, playerBeted}
 
 		Optional<Game> list2 = gameRepository.findById(3);
 		Game game = list2.get();

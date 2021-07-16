@@ -79,17 +79,18 @@ public class GameController {
 			Bank newJP = new Bank(JPbank.getCode(), 0, JPbank.getMoney()-(int)prize, 0, 0);
 			bankRepository.saveAndFlush(newJP);
 		}
-		if(code == 3) {
-			List<Integer> list = (List<Integer>) session.getAttribute("list");
-			Game newGame = new Game(gameDetail.getCode(), gameDetail.getName(), list.get(0), gameDetail.getRules(), gameDetail.getDifficulty());
-			gameRepository.saveAndFlush(newGame);
-		}
 
 		People player = (People) session.getAttribute("login");
 		List<Bank> list1 = bankRepository.findByUserCode(player.getCode());
 		Bank bankAccount = list1.get(0);
 
 		int WonOrLost = (int)prize - gameDetail.getPrice();
+
+		if(code == 3) {
+			List<Integer> list = (List<Integer>) session.getAttribute("list");
+			WonOrLost = (int)prize - list.get(3);
+		}
+
 		if(WonOrLost > 0) {
 			int won = WonOrLost;
 			mv.addObject("message", "勝ち金が"+ won + "円増えました。");

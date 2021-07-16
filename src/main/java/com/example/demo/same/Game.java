@@ -31,14 +31,6 @@ public class Game {
 
 	}
 
-	public Game(Integer code, String name, int price, String rules, int difficulty) {
-		this.code = code;
-		this.name = name;
-		this.price = price;
-		this.rules = rules;
-		this.difficulty = difficulty;
-	}
-
 	public Integer getCode() {
 		return code;
 	}
