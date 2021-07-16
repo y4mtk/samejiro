@@ -85,6 +85,10 @@ public class AccountController {
 			else {
 				People login = user.get(0);
 				session.setAttribute("login", login);
+				Optional<Samejiro> samejiro = samejiroRepository.findById(1);
+				Samejiro selectSamejiro = samejiro.get();
+
+				mv.addObject("selectChat", selectSamejiro.getChat());
 				mv.setViewName("select");
 			}
 	 }
