@@ -92,6 +92,9 @@ public class QuizController {
 	public ModelAndView quizRight(ModelAndView mv) {
 		Integer rightAnswers = (Integer)session.getAttribute("RIGHT");
 
+		if(rightAnswers == null) {
+			rightAnswers = 0;
+		}
 		rightAnswers++;
 
 		session.setAttribute("RIGHT", rightAnswers);
