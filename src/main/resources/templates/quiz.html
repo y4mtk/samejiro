@@ -8,8 +8,9 @@
 <body>
 
 <div>
-<h1 th:if="${session.COUNT == null}">クイズ</h1>
+<h1 th:if="${session.COUNT == null}">雑学クイズ</h1>
 <br>
+</div>
 <div th:if="${session.COUNT == null}">
 <!-- <img width="350" th:src="@{/yogatop.png}"/> -->
 </div>
@@ -122,7 +123,7 @@
 <!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
 
 <form th:if="${session.COUNT == 8}" action="/result" method="post">
-<input type="hidden" value="4" name="code">
+<input type="hidden" value="5" name="code">
 <input type="hidden" th:value="${1000 * session.RIGHT / 7}" name="prize">
 
 <h1 th:if="${session.COUNT == 8}">お疲れさまでした！</h1>
@@ -137,7 +138,7 @@
 
 <!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
 
-</div>
+
 
 </body>
 </html>

@@ -38,6 +38,13 @@
 <h4 th:text="${message}"></h4>
 </div>
 
+<div th:if="${game.code == 5}">
+<h1 th:text="${game.name}+'結果発表'"></h1>
+
+<h3 th:text="'賞金は'+ ${prize} + '円でした。'"></h3>
+<h4 th:text="${message}"></h4>
+</div>
+
 <br>
 <h5>新しい残高は</h5>
 <br>

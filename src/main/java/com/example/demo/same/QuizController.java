@@ -27,6 +27,7 @@ public class QuizController {
 	//http://localhost:8080/quiz
 	@RequestMapping ("/quiztop")
 	public ModelAndView quiztop(ModelAndView mv) {
+
 		People loginee = (People)session.getAttribute("login");
 
 		List<Bank> playerBank = bankRepository.findByUserCode(loginee.getCode());
@@ -80,7 +81,7 @@ public class QuizController {
 	public ModelAndView quizRight(ModelAndView mv) {
 		Integer rightAnswers = (Integer)session.getAttribute("RIGHT");
 
-		if(rightAnswers == null || (Integer)session.getAttribute("COUNT")== 1) {
+		if(rightAnswers == null) {
 			rightAnswers = 0;
 		}
 		rightAnswers++;
