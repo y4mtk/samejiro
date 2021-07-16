@@ -8,6 +8,10 @@
 <body>
 <h1 th:text="${game.name}"></h1>
 
+<p5>
+<img width="250" th:src="@{/card1.png}"/>
+</p5>
+
 <h3 th:text="'CPUの残りチップ：' + ${list[1]}"></h3>
 <br>
 <h4 th:text="'あなたの残りチップ：' + ${list[0]}"></h4>
