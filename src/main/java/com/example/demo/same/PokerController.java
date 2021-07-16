@@ -226,12 +226,19 @@ public class PokerController {
 	public ModelAndView pokerResult(ModelAndView mv, @RequestParam("bet") int bet) {
 
 
+		Optional<Game> list2 = gameRepository.findById(3);
+		Game game = list2.get();
+
 		List<String> playerDeck = (List<String>) session.getAttribute("player");
 		List<String> cpuDeck = (List<String>) session.getAttribute("cpu");
 		List<Integer> list = (List<Integer>) session.getAttribute("list");
 
 		if(bet > list.get(0)) {
 			mv.addObject("message", "チップ不足です");
+			mv.addObject("game",game);
+			mv.addObject("list",list);
+			mv.addObject("playerDeck",playerDeck);
+			mv.addObject("cpuDeck",cpuDeck);
 			mv.setViewName("pokerShowDown");
 			return mv;
 		}
@@ -582,9 +589,6 @@ public class PokerController {
 			handCPU = "HIGH CARD";
 			break;
 		}
-
-		Optional<Game> list2 = gameRepository.findById(3);
-		Game game = list2.get();
 
 		People loginee = (People)session.getAttribute("login");
 		List<Bank> playerBank = bankRepository.findByUserCode(loginee.getCode());
