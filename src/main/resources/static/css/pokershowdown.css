@@ -156,6 +156,13 @@ a{
   	left: 50%;
 }
 
+p6{
+	color:white;
+	position: absolute;
+  	top: 73%;
+  	left: 58%;
+}
+
 .button {
   display       : inline-block;
   border-radius : 5%;          /* 角丸       */

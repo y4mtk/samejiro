@@ -25,6 +25,25 @@ h2{
   	padding: 10px;
 }
 
+p1{
+	position: absolute;
+  	top: 25%;
+  	left: 40%;
+}
+
+p2{
+	position: absolute;
+  	top: 25%;
+  	left: -5%;
+}
+
+p3{
+	font-size:15px;
+	position: absolute;
+  	top: 33%;
+  	left: 42%;
+}
+
 
 aタグ
 *,
