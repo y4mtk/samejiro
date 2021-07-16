@@ -1,7 +1,7 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/earlyaccess/nicomoji.css');
 body{
-    background-color:rgb(223, 183, 221);
+    background-color:rgb(236, 236, 236);
 }
 
 
@@ -26,6 +26,20 @@ p{
 
 }
 
+p2{
+	font-size:14px;
+ 	position: absolute;
+  	top: 34%;
+  	left: 23%;
+
+}
+
+p3{
+ 	position: absolute;
+  	top: 29%;
+  	left: 20%;
+
+}
 
 
 
