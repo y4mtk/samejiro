@@ -60,6 +60,8 @@ public class QuizController {
 
 		Integer count = (Integer)session.getAttribute("COUNT");
 
+		Integer rightAnswers = (Integer)session.getAttribute("RIGHT");
+
 		if(count == null) {
 			count = 0;
 		}
@@ -73,6 +75,15 @@ public class QuizController {
 			session.removeAttribute("RIGHT");
 		}
 
+		if(rightAnswers == null) {
+			rightAnswers = 0;
+		}
+		int rightR = 100 * rightAnswers / 7 ;
+		if(rightAnswers == 0) {
+			rightR = 0;
+		}
+
+		mv.addObject("rightR",rightR);
 		mv.setViewName("quiz");
 		return mv;
 	}
@@ -81,9 +92,6 @@ public class QuizController {
 	public ModelAndView quizRight(ModelAndView mv) {
 		Integer rightAnswers = (Integer)session.getAttribute("RIGHT");
 
-		if(rightAnswers == null) {
-			rightAnswers = 0;
-		}
 		rightAnswers++;
 
 		session.setAttribute("RIGHT", rightAnswers);

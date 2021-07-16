@@ -124,15 +124,15 @@
 
 <form th:if="${session.COUNT == 8}" action="/result" method="post">
 <input type="hidden" value="5" name="code">
-<input type="hidden" th:value="${1000 * session.RIGHT / 7}" name="prize">
+<input type="hidden" th:value="${10 * rightR}" name="prize">
 
 <h1 th:if="${session.COUNT == 8}">お疲れさまでした！</h1>
 <p th:if="${session.COUNT == 8}">
 正解数：<span th:text="${session.RIGHT}"></span>
 <br>
-正答率は<span th:text="${100 * session.RIGHT / 7}+ '%'"></span>でした！
+正答率は<span th:text="${rightR}+ '%'"></span>でした！
 <br>
-<span th:text="${1000 * session.RIGHT / 7} + '円が賞金として送られます'"></span>
+<span th:text="${10 * rightR} + '円が賞金として送られます'"></span>
 </p>
 <input type="submit" class="button" value="PointGet"></form>
 
