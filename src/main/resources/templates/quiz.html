@@ -7,8 +7,17 @@
 </head>
 <body>
 
+<div class="bg"></div>
+<div class="bg bg2"></div>
+<div class="bg bg3"></div>
+
+<br>
+<br>
+<br>
 <div>
 <h1 th:if="${session.COUNT == null}">雑学クイズ</h1>
+<br>
+<br>
 <br>
 </div>
 <div th:if="${session.COUNT == null}">
@@ -19,7 +28,7 @@
 <br>
 <br>
 <form action="/quiz" method="post">
-<input th:if="${session.COUNT == null}" type="submit" class="button" value="スタート！">
+<input th:if="${session.COUNT == null}" type="submit" class="button" value="スタート！" >
 </form>
 
 <!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
@@ -27,11 +36,20 @@
 <form th:if="${session.COUNT == 1}" action="/quizAnswer" method="post">
 <h1 th:if="${session.COUNT == 1}">第一問</h1>
 <div th:if="${session.COUNT == 1}">
+<br>
 <h2>「フォーチュンクッキー」とはどんなクッキーでしょうか？</h2>
-
-①<input type="submit" name="wrong" value="コインが入っているクッキー"><br>
-②<input type="submit" name="true" value="おみくじ入りのクッキー"><br>
-③<input type="submit" name="wrong" value="近未来的で斬新なクッキー"><br>
+<br><br><br><br>
+<p>
+<input type="submit" name="wrong" value="①：コインが入っているクッキー" class="button">
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+<input type="submit" name="true" value="②：おみくじ入りのクッキー" class="button">
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+<input type="submit" name="wrong" value="③：近未来的で斬新なクッキー" class="button">
+</p>
 </div>
 
 </form>
@@ -42,10 +60,19 @@
 <h1 th:if="${session.COUNT == 2}">第二問</h1>
 <div th:if="${session.COUNT == 2}">
 <h2>嬉しくて泣いているときの涙はどんな味でしょうか？</h2>
+<br>
+<br><br><br><br>
 
-①<input type="submit" name="wrong" value="何の味もしない"><br>
-②<input type="submit" name="wrong" value="塩辛い"><br>
-③<input type="submit" name="true" value="薄ら塩味"><br>
+<p>
+<input type="submit" name="wrong" value="①：何の味もしない" class="button">
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+<input type="submit" name="wrong" value="②：塩辛い" class="button">
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+<input type="submit" name="true" value="③：薄ら塩味" class="button"></p>
 </div>
 
 </form>
@@ -55,11 +82,20 @@
 <form th:if="${session.COUNT == 3}" action="/quizAnswer" method="post">
 <h1 th:if="${session.COUNT == 3}">第三問</h1>
 <div th:if="${session.COUNT == 3}">
+<br>
 <h2>ティーカップの飲み口が広がった形なのは何故？</h2>
 
-①<input type="submit" name="wrong" value="アイスクリームを浮かべるため"><br>
-②<input type="submit" name="wrong" value="空気に触れやすくするため"><br>
-③<input type="submit" name="true" value="光が入りやすくするため"><br>
+<br><br><br><br>
+<p>
+<input type="submit" name="wrong" value="①：アイスクリームを浮かべるため" class="button">
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+<input type="submit" name="wrong" value="②：空気に触れやすくするため" class="button">
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+<input type="submit" name="true" value="③：光が入りやすくするため" class="button"></p>
 </div>
 
 </form>
@@ -69,11 +105,21 @@
 <form th:if="${session.COUNT == 4}" action="/quizAnswer" method="post">
 <h1 th:if="${session.COUNT == 4}">第四問</h1>
 <div th:if="${session.COUNT == 4}">
+
+<br>
 <h2>お酢に卵を殻ごといれるとどうなるでしょう？</h2>
 
-①<input type="submit" name="true" value="透明な卵になる"><br>
-②<input type="submit" name="wrong" value="石のように固くなる"><br>
-③<input type="submit" name="wrong" value="全部溶けてなくなる"><br>
+<br><br><br><br>
+<p>
+<input type="submit" name="true" value="①：透明な卵になる" class="button">
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+<input type="submit" name="wrong" value="②：石のように固くなる" class="button">
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+<input type="submit" name="wrong" value="③：全部溶けてなくなる" class="button"></p>
 </div>
 
 </form>
@@ -83,11 +129,21 @@
 <form th:if="${session.COUNT == 5}" action="/quizAnswer" method="post">
 <h1 th:if="${session.COUNT == 5}">第五問</h1>
 <div th:if="${session.COUNT == 5}">
+
+<br>
 <h2>キリンの睡眠時間はどのくらいでしょう？</h2>
 
-①<input type="submit" name="wrong" value="8時間"><br>
-②<input type="submit" name="wrong" value="20時間"><br>
-③<input type="submit" name="true" value="20分"><br>
+<br><br><br><br>
+<p>
+<input type="submit" name="wrong" value="①：8時間" class="button">
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+<input type="submit" name="wrong" value="②：20時間" class="button">
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+<input type="submit" name="true" value="③：20分" class="button"></p>
 </div>
 
 </form>
@@ -97,11 +153,21 @@
 <form th:if="${session.COUNT == 6}" action="/quizAnswer" method="post">
 <h1 th:if="${session.COUNT == 6}">第六問</h1>
 <div th:if="${session.COUNT == 6}">
+
+<br>
 <h2>「敵に塩を送る」の由来になった武将は誰でしょう？</h2>
 
-①<input type="submit" name="wrong" value="武田信玄"><br>
-②<input type="submit" name="true" value="上杉謙信"><br>
-③<input type="submit" name="wrong" value="石田三成"><br>
+<br><br><br><br>
+<p>
+<input type="submit" name="wrong" value="①：武田信玄" class="button">
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+<input type="submit" name="true" value="②：上杉謙信" class="button">
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+<input type="submit" name="wrong" value="③：石田三成" class="button"></p>
 </div>
 
 </form>
@@ -111,11 +177,21 @@
 <form th:if="${session.COUNT == 7}" action="/quizAnswer" method="post">
 <h1 th:if="${session.COUNT == 7}">第七問</h1>
 <div th:if="${session.COUNT == 7}">
+
+<br>
 <h2>映画監督のスティーヴン・スピルバーグ。彼が出演している自分の作品はどれでしょう？</h2>
 
-①<input type="submit" name="wrong" value="ジョーズ"><br>
-②<input type="submit" name="wrong" value="E.T."><br>
-③<input type="submit" name="true" value="ジュラシックパーク ロストワールド"><br>
+<br><br><br><br>
+<p>
+<input type="submit" name="wrong" value="①：ジョーズ" class="button">
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+<input type="submit" name="wrong" value="②：E.T." class="button">
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+<input type="submit" name="true" value="③：ジュラシックパーク ロストワールド" class="button"></p>
 </div>
 
 </form>
@@ -128,11 +204,17 @@
 
 <h1 th:if="${session.COUNT == 8}">お疲れさまでした！</h1>
 <p th:if="${session.COUNT == 8}">
+<br>
+<br>
+<br>
 正解数：<span th:text="${session.RIGHT}"></span>
 <br>
-正答率は<span th:text="${rightR}+ '%'"></span>でした！
+正答率は <span th:text="${rightR}+ '%'" style="color:white"></span> でした！
+<br>
 <br>
 <span th:text="${10 * rightR} + '円が賞金として送られます'"></span>
+<br>
+<br>
 </p>
 <input type="submit" class="button" value="PointGet"></form>
 

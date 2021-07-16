@@ -3,111 +3,200 @@
 <head>
 <meta charset="UTF-8">
 <title>QUIZ</title>
-<link th:href="@{/css/quiz.css}" rel="stylesheet">
+<link th:href="@{/css/quizanswer.css}" rel="stylesheet">
 </head>
 <body>
 
+<div class="bg"></div>
+<div class="bg bg2"></div>
+<div class="bg bg3"></div>
+
 <form th:if="${session.COUNT == 1}" action="/quiz" method="post">
+<br>
+<br>
+<br>
+<br>
 <h1 th:if="${session.COUNT == 1}">第一問</h1>
 <div th:if="${session.COUNT == 1}">
+
+<br>
+<br>
 <h2>正解は・・・②「おみくじ入りのクッキー」</h2>
-
+<br>
 <div th:text="${RightOrWrong}"></div>
-
-フォーチュンクッキーの中にはおみくじの書かれた紙が入っていて、割ることで取り出すことが出来ます。
+<br>
+<br>
+フォーチュンクッキーの中にはおみくじの書かれた紙が入っていて、割ることで取り出すことが出来ます。<br>
 アメリカやカナダの中華料理店で食後のデザートやちょっとしたお土産として出されることが多いです。
 
 </div>
-<input type="submit" value="次の問題へ">
+
+<br>
+<br>
+<br>
+<br>
+<input type="submit" value="次の問題へ" class="button">
 </form>
 
 <!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
 
 <form th:if="${session.COUNT == 2}" action="/quiz" method="post">
+<br>
+<br>
+<br>
+<br>
 <h1 th:if="${session.COUNT == 2}">第二問</h1>
 <div th:if="${session.COUNT == 2}">
+
+<br>
+<br>
 <h2>正解は・・・③「薄ら塩味」</h2>
-
+<br>
 <div th:text="${RightOrWrong}"></div>
-
-涙の味は感情によってナトリウムの量が変わり、違う味になると言われています。
+<br>
+<br>
+涙の味は感情によってナトリウムの量が変わり、違う味になると言われています。<br>
 嬉しいときや悲しいときは薄味になり、悔しいときや怒っているときは塩辛くなります。
 </div>
-<input type="submit" value="次の問題へ">
+<br>
+<br>
+<br>
+<br>
+<input type="submit" value="次の問題へ" class="button">
 </form>
 
 <!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
 
 <form th:if="${session.COUNT == 3}" action="/quiz" method="post">
+<br>
+<br>
+<br>
+<br>
 <h1 th:if="${session.COUNT == 3}">第三問</h1>
 <div th:if="${session.COUNT == 3}">
+<br>
+<br>
 <h2>正解は・・・③「光が入りやすくするため」</h2>
+<br>
 
 <div th:text="${RightOrWrong}"></div>
 
-19世紀に色の濃い紅茶が流行りましたが、その濃さ故あまりきれいとは言えませんでした。
+<br>
+<br>
+19世紀に色の濃い紅茶が流行りましたが、その濃さ故あまりきれいとは言えませんでした。<br>
 そのため、カップの底が浅く、飲み口の広い今のティーカップの形にすることで光が入りやすい設計になったと言われています。
 </div>
-<input type="submit" value="次の問題へ">
+<br>
+<br>
+<br>
+<br>
+<input type="submit" value="次の問題へ" class="button">
 </form>
 
 <!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
 
 <form th:if="${session.COUNT == 4}" action="/quiz" method="post">
+<br>
+<br>
+<br>
+<br>
 <h1 th:if="${session.COUNT == 4}">第四問</h1>
 <div th:if="${session.COUNT == 4}">
+
+<br>
+<br>
 <h2>正解は・・・①「透明な卵になる」</h2>
-
+<br>
 <div th:text="${RightOrWrong}"></div>
-
-卵の殻を構成している炭酸カルシウムがお酢の酢酸と反応し、二酸化炭素と酢酸カルシウムに変化します。
+<br>
+<br>
+卵の殻を構成している炭酸カルシウムがお酢の酢酸と反応し、二酸化炭素と酢酸カルシウムに変化します。<br>
 酢酸カルシウムは水に溶けやすい成分なので殻だけ溶けた透明な卵が出来上がります。
 </div>
-<input type="submit" value="次の問題へ">
+<br>
+<br>
+<br>
+<br>
+<input type="submit" value="次の問題へ" class="button">
 </form>
 
 <!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
 
 <form th:if="${session.COUNT == 5}" action="/quiz" method="post">
+<br>
+<br>
+<br>
+<br>
 <h1 th:if="${session.COUNT == 5}">第五問</h1>
 <div th:if="${session.COUNT == 5}">
+<br>
+<br>
 <h2>正解は・・・③「20分」</h2>
-
+<br>
 <div th:text="${RightOrWrong}"></div>
-
+<br>
+<br>
 キリンは栄養を摂取するために大量の草を食べる必要があり、睡眠をとる時間があまりないと考えられています。
 </div>
-<input type="submit" value="次の問題へ">
+<br>
+<br>
+<br>
+<br>
+<br>
+<input type="submit" value="次の問題へ" class="button">
 </form>
 
 <!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
 
 
 <form th:if="${session.COUNT == 6}" action="/quiz" method="post">
+<br>
+<br>
+<br>
+<br>
 <h1 th:if="${session.COUNT == 6}">第六問</h1>
 <div th:if="${session.COUNT == 6}">
+<br>
+<br>
 <h2>正解は・・・②「上杉謙信」</h2>
-
+<br>
 <div th:text="${RightOrWrong}"></div>
-
+<br>
+<br>
 武田謙信が塩不足で苦しんでいるとき、敵対関係にあった上杉検診が塩を送って助けたことに由来します。
 </div>
-<input type="submit" value="次の問題へ">
+<br>
+<br>
+<br>
+<br>
+<br>
+<input type="submit" value="次の問題へ" class="button">
 </form>
 
 <!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
 
 <form th:if="${session.COUNT == 7}" action="/quiz" method="post">
+<br>
+<br>
+<br>
+<br>
 <h1 th:if="${session.COUNT == 7}">第七問</h1>
 <div th:if="${session.COUNT == 7}">
+<br>
+<br>
 <h2>正解は・・・③「ジュラシックパーク ロストワールド」</h2>
-
+<br>
 <div th:text="${RightOrWrong}"></div>
-
-上演開始から120分ごろのシーンでちょっとだけ出演しています。
+<br>
+<br>
+上演開始から120分ごろのシーンでちょっとだけ出演しています。<br>
 主人公たちがテレビを見ているときにテレビに反射して写っています。
 </div>
-<input type="submit" value="結果画面へ">
+<br>
+<br>
+<br>
+<br>
+<input type="submit" value="結果画面へ" class="button">
 </form>
 
 </body>
