@@ -73,16 +73,22 @@ public class GameController {
 		Game gameDetail = game.get();
 		mv.addObject("game", gameDetail);
 
+		List<Integer> list = (List<Integer>) session.getAttribute("list");
+
 		if(code == 2) {
 			List<Bank> JP = bankRepository.findByUserCode(0);
 			Bank JPbank = JP.get(0);
 			Bank newJP = new Bank(JPbank.getCode(), 0, JPbank.getMoney()-(int)prize, 0, 0);
 			bankRepository.saveAndFlush(newJP);
 		}
+		if(code == 3) {
+			Game newGame = new Game(gameDetail.getCode(), gameDetail.getName(), list.get(0), gameDetail.getRules(), gameDetail.getDifficulty());
+			gameRepository.saveAndFlush(newGame);
+		}
 
 		People player = (People) session.getAttribute("login");
-		List<Bank> list = bankRepository.findByUserCode(player.getCode());
-		Bank bankAccount = list.get(0);
+		List<Bank> list1 = bankRepository.findByUserCode(player.getCode());
+		Bank bankAccount = list1.get(0);
 
 		int WonOrLost = (int)prize - gameDetail.getPrice();
 		if(WonOrLost > 0) {

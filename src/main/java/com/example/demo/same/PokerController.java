@@ -115,8 +115,15 @@ public class PokerController {
 		List<String> cpuDeck = (List<String>) session.getAttribute("cpu");
 		List<Integer> list = (List<Integer>) session.getAttribute("list");
 
+	    Optional<Game> list2 = gameRepository.findById(3);
+		Game game = list2.get();
+
 		if(bet > list.get(0)) {
 			mv.addObject("message", "チップ不足です");
+			mv.addObject("deckCount",deckCount);
+			mv.addObject("game",game);
+			mv.addObject("list",list);
+			mv.addObject("playerDeck",playerDeck);
 			mv.setViewName("poker");
 			return mv;
 		}
@@ -204,9 +211,6 @@ public class PokerController {
 	    case 5:
 	    	break;
 	    }
-
-	    Optional<Game> list2 = gameRepository.findById(3);
-		Game game = list2.get();
 
 		mv.addObject("game",game);
 		mv.addObject("list",list);
