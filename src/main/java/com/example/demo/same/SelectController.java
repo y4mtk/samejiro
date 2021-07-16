@@ -30,7 +30,7 @@ public class SelectController {
 	//選択画面表示
 	@RequestMapping(value="/select")
 	public ModelAndView select(ModelAndView mv) {
-		Optional<Samejiro> samejiro = samejiroRepository.findById(5);
+		Optional<Samejiro> samejiro = samejiroRepository.findById(1);
 		Samejiro selectSamejiro = samejiro.get();
 
 		mv.addObject("selectChat", selectSamejiro.getChat());

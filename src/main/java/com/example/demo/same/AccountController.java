@@ -1,6 +1,8 @@
 package com.example.demo.same;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.Random;
 
 import javax.servlet.http.HttpSession;
 
@@ -22,6 +24,9 @@ public class AccountController {
 	PeopleRepository peopleRepository;
 
 	@Autowired
+	SamejiroRepository samejiroRepository;
+
+	@Autowired
 	BankRepository bankRepository;
 
 	//http://localhost:8080/
@@ -35,6 +40,18 @@ public class AccountController {
 	//http://localhost:8080/login
 		@RequestMapping("/login")
 		public ModelAndView login(ModelAndView mv) {
+
+			List<Samejiro> list = samejiroRepository.findAll();
+			int chatNum = list.size();
+
+			Random random = new Random();
+			int chat = random.nextInt(chatNum) + 2;
+
+			Optional<Samejiro> list2 = samejiroRepository.findById(chat);
+			Samejiro Today = list2.get();
+
+			mv.addObject("samejiroToday",Today.getChat());
+
 			mv.setViewName("login"); //フォワード先
 			return mv;
 	}
@@ -52,6 +69,16 @@ public class AccountController {
 			List<People>user = peopleRepository.findByUseridAndPassword(userid, password);
 
 			if(user.size()==0) {
+				List<Samejiro> list = samejiroRepository.findAll();
+				int chatNum = list.size();
+
+				Random random = new Random();
+				int chat = random.nextInt(chatNum) + 2;
+
+				Optional<Samejiro> list2 = samejiroRepository.findById(chat);
+				Samejiro Today = list2.get();
+
+				mv.addObject("samejiroToday",Today.getChat());
 				mv.addObject("miss","ユーザIDが一致しませんでした");
 				mv.setViewName("login");
 			}
@@ -67,6 +94,16 @@ public class AccountController {
 	//http://localhost:8080/signup
 	@RequestMapping("/signup")
 		public ModelAndView signup(ModelAndView mv) {
+		List<Samejiro> list = samejiroRepository.findAll();
+		int chatNum = list.size();
+
+		Random random = new Random();
+		int chat = random.nextInt(chatNum) + 2;
+
+		Optional<Samejiro> list2 = samejiroRepository.findById(chat);
+		Samejiro Today = list2.get();
+
+		mv.addObject("samejiroToday",Today.getChat());
 		mv.setViewName("signup"); //フォワード先
 		return mv;
 	}
@@ -78,11 +115,21 @@ public class AccountController {
 			@RequestParam("email") String email,
 			@RequestParam("password") String password,
 			ModelAndView mv) {
+		List<Samejiro> list = samejiroRepository.findAll();
+		int chatNum = list.size();
+
+		Random random = new Random();
+		int chat = random.nextInt(chatNum) + 2;
+
+		Optional<Samejiro> list2 = samejiroRepository.findById(chat);
+		Samejiro Today = list2.get();
+		mv.addObject("samejiroToday",Today.getChat());
 
 
 			//未入力項目
 			if (userid.isEmpty() || name.isEmpty() || email.isEmpty() || password.isEmpty()) {
 				mv.addObject("message","未入力の項目があります");
+
 				mv.setViewName("signup");
 
 				return mv;

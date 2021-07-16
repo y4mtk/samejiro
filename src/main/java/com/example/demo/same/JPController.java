@@ -23,9 +23,6 @@ public class JPController {
 	GameRepository gameRepository;
 
 	@Autowired
-	SamejiroRepository samejiroRepository;
-
-	@Autowired
 	BankRepository bankRepository;
 
 
