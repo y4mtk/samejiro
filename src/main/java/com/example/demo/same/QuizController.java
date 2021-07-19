@@ -67,6 +67,8 @@ public class QuizController {
 		}
 		count++;
 
+		//
+
 		session.setAttribute("COUNT", count);
 
 		if(count >= 12) {
