@@ -8,8 +8,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -171,6 +173,53 @@ public class AccountController {
 
 	}
 
+	@GetMapping("/remind")
+	public ModelAndView remind(ModelAndView mv) {
+		mv.setViewName("remind");
+		return mv;
+	}
+
+	@RequestMapping(value="/remind", params="id", method=RequestMethod.POST)
+	public ModelAndView remindID(
+			ModelAndView mv,
+			@RequestParam("address")String address
+			) {
+		if(address.isEmpty()) {
+			mv.addObject("message", "入力してください");
+		}
+		else {
+			List<People> user = peopleRepository.findByEmail(address);
+
+			if (user.size() == 0) {
+				mv.addObject("message", "登録されていないメールアドレスです");
+			}
+
+			mv.addObject("userID", user.get(0).getUserid());
+		}
+		mv.setViewName("remind");
+		return mv;
+	}
+
+	@RequestMapping(value="/remind", params="pass", method=RequestMethod.POST)
+	public ModelAndView remindPassword(
+			ModelAndView mv,
+			@RequestParam("address")String address
+			) {
+		if(address.isEmpty()) {
+			mv.addObject("message", "入力してください");
+		}
+		else {
+			List<People> user = peopleRepository.findByEmail(address);
+
+			if (user.size() == 0) {
+				mv.addObject("message", "登録されていないメールアドレスです");
+			}
+
+			mv.addObject("password", user.get(0).getPassword());
+		}
+		mv.setViewName("remind");
+		return mv;
+	}
 
 	//ログアウト
 	@RequestMapping("/logout")

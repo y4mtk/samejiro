@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>ログイン</title>
+<title>登録照会</title>
 <link rel="stylesheet" href="login.css">
 </head>
 <body>
@@ -13,29 +13,19 @@
   <span>トップ画面に戻る</span>
 </a>
 <br>
-<h1>ログイン</h1>
+<h1>登録内容照会</h1>
 
 
 <h2>
-<form action="/login" method="post">
-<div th:text="${Registration}" style="color:red"></div>
+<form action="/remind" method="post">
 <div th:text="${message}" style="color:red"></div>
-<div th:text="${miss}" style="color:red"></div>
 
 <br>
-<br>
-
-
-<div class="group">
-   <label for="text3" id="l_text3">ユーザー名</label>
-   <input id="text3" type="text" name="userid">
-   <div class="text_underline"></div>
-</div>
 <br>
 
 <div class="group">
-   <label for="text3" id="l_text3">パスワード</label>
-   <input id="text3" type="password" name="password">
+   <label for="text3" id="l_text3">メールアドレス</label>
+   <input id="text3" type="address" name="address">
    <div class="text_underline"></div>
 </div>
 
@@ -52,19 +42,20 @@
 
 
 <br>
-<input type="submit" value="ログイン" class="button">
+<input type="submit" value="ユーザー名照会" name="id" class="button">
+<input type="submit" value="パスワード照会" name="pass" class="button">
 </form>
 <br>
 <br>
 <br>
 <a href="/signup">新規会員登録</a>はこちら<br>
-<a href="/remind">ユーザー名、パスワードをお忘れの方</a>はこちら
+<a href="/login">ログイン画面</a>はこちら
 </h2>
 
 <p1><img src="/2.png" width=300 height="150"></p1>
 <p2><img src="/4.png" width=700></p2>
-<p3><div th:text="${samejiroToday}"></div></p3>
-
+<p3 th:if="${userID != null}"><div th:text="'「'+ ${userID} + '」だよ！'"></div></p3>
+<p3 th:if="${password != null}"><div th:text="'「'+ ${password} + '」だよ！'"></div></p3>
 
 </body>
 </html>

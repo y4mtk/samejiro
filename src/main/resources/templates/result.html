@@ -10,7 +10,6 @@
 
 	<hr>
 
-
 <div th:if="${game.code == 1}">
 <h1 th:text="${game.name}+'ポイントゲット！'"></h1>
 
@@ -68,7 +67,31 @@
 <td th:text="${bankAccount.won}+${bankAccount.lost}+'円'"></td>
 </tr>
 </table>
-
+</div>
+  <div class="inner2">
+<table th:if="${game.code != 1}">
+<tr>
+<td colspan="3">Ranking</td>
+</tr>
+<tr>
+<td>順位</td><td>プレイヤー名</td><td>賞金額</td>
+</tr>
+<tr th:if="${sameGame.size >= 1}">
+<td>１位</td>
+<td th:text="${sameGame[0].getPlayerName}"></td>
+<td th:text="${sameGame[0].getPrize}"></td>
+</tr>
+<tr th:if="${sameGame.size >= 2}">
+<td>２位</td>
+<td th:text="${sameGame[1].getPlayerName}"></td>
+<td th:text="${sameGame[1].getPrize}"></td>
+</tr>
+<tr th:if="${sameGame.size >= 3}">
+<td>３位</td>
+<td th:text="${sameGame[2].getPlayerName}"></td>
+<td th:text="${sameGame[2].getPrize}"></td>
+</tr>
+</table>
 </div>
 </div>
 
