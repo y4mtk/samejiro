@@ -6,22 +6,17 @@ body{
 }
 
 h1{
-	font-size:50px;
-	font-family:"Nico Moji";
-
+	font-size:40px;
 	text-align: center;
  	position: absolute;
-  	top: 12%;
+  	top: 15%;
   	left: 50%;
   	-webkit-transform: translateY(-50%) translateX(-50%);
   	transform: translateY(-50%) translateX(-50%);
   	padding: 20px;
 }
 
-hr {
-  height: 4px;
-  background: url(line01.png) repeat-x 0 0;
-}
+
 
 
 table{
@@ -56,8 +51,8 @@ table th,table td{
 }
 .inner{
   position: absolute;
-  top: 60%;
-  left: 25%;
+  top: 80%;
+  left: 35%;
   -webkit-transform: translateY(-50%) translateX(-50%);
   transform: translateY(-50%) translateX(-50%);
   padding: 40px;
