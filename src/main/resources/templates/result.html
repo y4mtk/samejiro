@@ -11,6 +11,11 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
 
 
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<!--==============レイアウトを制御する独自のCSSを読み込み===============-->
+<link rel="stylesheet" type="text/css" href="http://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/move02/5-2/css/reset.css">
+<link rel="stylesheet" type="text/css" href="http://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/move02/5-2/css/5-2.css">
+<link rel="stylesheet" type="text/css" href="css/result.css">
 
 <meta name="description"  content="書籍「動くWebデザインアイディア帳」のサンプルサイトです">
 
@@ -140,6 +145,10 @@
 </div>
 </div>
 </p5>
+
+<p6>
+<h2 th:if="${game.code == 1}"><img width="500" th:src="@{/yogayoga.png}"/></h2>
+</p6>
 
 <p3><section><a href="/select" class="btn_05"><span>TOPに戻る</span></a></section></p3>
 <p2><section><a th:href="'/join/' + ${game.code}" class="btn_051"><span>もう一度遊ぶ</span></a></section></p2>

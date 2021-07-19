@@ -1,5 +1,7 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/earlyaccess/nicomoji.css');
+
+
 body{
     background-color:rgb(236, 236, 236);
 }
@@ -131,12 +133,33 @@ a.btn-malformation:hover {
 }
 
 .btn-malformation--pastel {
-  background: #fca1a1;
-  background: -webkit-linear-gradient(-45deg, #fca1a1 40%, #fcfc5d 100%);
-  background: -webkit-linear-gradient(315deg, #fca1a1 40%, #fcfc5d 100%);
-  background: linear-gradient(135deg, #fca1a1 40%, #fcfc5d 100%);
-  -webkit-box-shadow: 30px 10px 0 #fefeb3;
-  box-shadow: 30px 10px 0 #fefeb3;
+  background: #b38ae9;
+  background: -webkit-linear-gradient(-45deg, #b38ae9 40%, #3c9aa7 100%);
+  background: -webkit-linear-gradient(315deg, #b38ae9 40%, #3c9aa7 100%);
+  background: linear-gradient(135deg, #b38ae9 40%, #3c9aa7 100%);
+  -webkit-box-shadow: 30px 10px 0 #757575;
+  box-shadow: 30px 10px 0 #757575;
 
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fca1a1', endColorstr='#fcfc5d', GradientType=1);
+}
+
+/*========= レイアウトのためのCSS ===============*/
+
+#wrapper{
+  width:100%;
+  height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/*========= waveを描画するエリア設定 ===============*/
+
+canvas{
+    position: absolute;
+    bottom: 0;
+  left:0;
+    width: 100%;
 }

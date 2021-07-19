@@ -1,9 +1,7 @@
 @charset "UTF-8";
 
 
-body{
-    background-color:rgb(231, 248, 243);
-}
+
 
 h1{
 	font-size:50px;
@@ -290,4 +288,36 @@ a.btn_051 span:before {
   top: 50%;
   left: 0;
   margin-top: -4px;
+}
+
+
+/*========= レイアウトのためのCSS ===============*/
+
+p{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+}
+
+/*========= body背景色の変化CSS ===============*/
+
+body {
+  width: 100%;
+  height: 100vh;
+  background:linear-gradient(45deg, #82d6a3,#68aa9c,#baebe0);/*グラデーションを定義*/
+  background-size: 200% 200%;/*サイズを大きくひきのばす*/
+  animation: bggradient 20s ease infinite;
+}
+
+@keyframes bggradient{
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
