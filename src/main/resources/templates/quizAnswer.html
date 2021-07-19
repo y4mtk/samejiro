@@ -196,7 +196,84 @@
 <br>
 <br>
 <br>
-<input type="submit" value="結果画面へ" class="button">
+<input type="submit" value="次の問題へ" class="button">
+</form>
+
+<!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
+
+<form th:if="${session.COUNT == 8}" action="/quiz" method="post">
+<br>
+<br>
+<br>
+<br>
+<h1 th:if="${session.COUNT == 8}">第八問</h1>
+<div th:if="${session.COUNT == 8}">
+<br>
+<br>
+<h2>正解は・・・①「怠け者」</h2>
+<br>
+<div th:text="${RightOrWrong}"></div>
+<br>
+<br>
+『靴紐がなく、簡単に履いたり脱いだり出来る靴』ということが由来です。
+</div>
+<br>
+<br>
+<br>
+<br>
+<input type="submit" value="次の問題へ" class="button">
+</form>
+
+<!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
+
+<form th:if="${session.COUNT == 9}" action="/quiz" method="post">
+<br>
+<br>
+<br>
+<br>
+<h1 th:if="${session.COUNT == 9}">第九問</h1>
+<div th:if="${session.COUNT == 9}">
+<br>
+<br>
+<h2>正解は・・・①「３種類」</h2>
+<br>
+<div th:text="${RightOrWrong}"></div>
+<br>
+<br>
+猫の血液型はA型、B型、AB型の３種類と言われています。<br>
+ちなみにゴリラはB型のみの１種類、馬は３兆種類あるとも言われています。
+</div>
+<br>
+<br>
+<br>
+<br>
+<input type="submit" value="最終問題へ" class="button">
+</form>
+
+<!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
+
+<form th:if="${session.COUNT == 10}" action="/quiz" method="post">
+<br>
+<br>
+<br>
+<br>
+<h1 th:if="${session.COUNT == 10}">第十問</h1>
+<div th:if="${session.COUNT == 10}">
+<br>
+<br>
+<h2>正解は・・・③「香り」</h2>
+<br>
+<div th:text="${RightOrWrong}"></div>
+<br>
+<br>
+英語ではMusk(香り)と書きます。<br>
+これがなまってマスクに変化しました。
+</div>
+<br>
+<br>
+<br>
+<br>
+<input type="submit" value="結果表示へ" class="button">
 </form>
 
 </body>

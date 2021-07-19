@@ -198,12 +198,83 @@
 
 <!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
 
-<form th:if="${session.COUNT == 8}" action="/result" method="post">
+<form th:if="${session.COUNT == 8}" action="/quizAnswer" method="post">
+<h1 th:if="${session.COUNT == 8}">第八問</h1>
+<div th:if="${session.COUNT == 8}">
+
+<br>
+<h2>学生がよく履く「ローファー」を日本語に訳すとどんな意味になるでしょう？</h2>
+
+<br><br><br><br>
+<p>
+<input type="submit" name="true" value="①：怠け者" class="button">
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+<input type="submit" name="wrong" value="②：親不孝者" class="button">
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+<input type="submit" name="wrong" value="③：寂しがり屋" class="button"></p>
+</div>
+
+</form>
+
+<!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
+
+<form th:if="${session.COUNT == 9}" action="/quizAnswer" method="post">
+<h1 th:if="${session.COUNT == 9}">第九問</h1>
+<div th:if="${session.COUNT == 9}">
+
+<br>
+<h2>猫の血液型は何種類でしょう？</h2>
+
+<br><br><br><br>
+<p>
+<input type="submit" name="true" value="①：３種類" class="button">
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+<input type="submit" name="wrong" value="②：５種類" class="button">
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+<input type="submit" name="wrong" value="③：１０種類以上" class="button"></p>
+</div>
+
+</form>
+
+<!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
+
+<form th:if="${session.COUNT == 10}" action="/quizAnswer" method="post">
+<h1 th:if="${session.COUNT == 10}">第十問</h1>
+<div th:if="${session.COUNT == 10}">
+
+<br>
+<h2>マスクメロンの「マスク」とはどんな意味？</h2>
+
+<br><br><br><br>
+<p>
+<input type="submit" name="wrong" value="①：仮面" class="button">
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+<input type="submit" name="wrong" value="②：偽物" class="button">
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+&nbsp;&nbsp;
+<input type="submit" name="true" value="③：香り" class="button"></p>
+</div>
+
+</form>
+<!-- ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・ -->
+
+<form th:if="${session.COUNT == 11}" action="/result" method="post">
 <input type="hidden" value="5" name="code">
 <input type="hidden" th:value="${10 * rightR}" name="prize">
 
-<h1 th:if="${session.COUNT == 8}">お疲れさまでした！</h1>
-<p th:if="${session.COUNT == 8}">
+<h1 th:if="${session.COUNT == 11}">お疲れさまでした！</h1>
+<p th:if="${session.COUNT == 11}">
 <br>
 <br>
 <br>

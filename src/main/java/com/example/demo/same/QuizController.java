@@ -69,7 +69,7 @@ public class QuizController {
 
 		session.setAttribute("COUNT", count);
 
-		if(count >=9) {
+		if(count >= 12) {
 			//セッションオブジェクトを消滅
 			session.removeAttribute("COUNT");
 			session.removeAttribute("RIGHT");
@@ -78,7 +78,7 @@ public class QuizController {
 		if(rightAnswers == null) {
 			rightAnswers = 0;
 		}
-		int rightR = 100 * rightAnswers / 7 ;
+		int rightR = 100 * rightAnswers / 10 ;
 		if(rightAnswers == 0) {
 			rightR = 0;
 		}
