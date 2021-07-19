@@ -112,12 +112,12 @@
 
 </p4>
 
-<h2>Ranking</h2>
+<h2 th:if="${game.code != 1}">Ranking</h2>
 
 <p5>
 <div class="parent">
   <div class="inner">
-<table width="400" border="1">
+<table width="400" border="1" th:if="${game.code != 1}">
 <tr>
 <th>順位</th><td>プレイヤー名</td><td>賞金額</td>
 </tr>
