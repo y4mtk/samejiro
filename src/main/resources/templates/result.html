@@ -4,11 +4,49 @@
 <meta charset="UTF-8">
 <title>RESULT</title>
 <link th:href="@{/css/result.css}" rel="stylesheet">
+
+<link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-lightness/jquery-ui.css" rel="stylesheet" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
+
+
+
+<meta name="description"  content="書籍「動くWebデザインアイディア帳」のサンプルサイトです">
+
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<!--==============レイアウトを制御する独自のCSSを読み込み===============-->
+<link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/reset.css">
+<link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/5-1-11/css/5-1-11.css">
+
+
+
 </head>
 <body>
+
+<br>
+
 <span th:replace="menu"></span>
 
+<br>
+<br>
+
 	<hr>
+
+
+<div class="openbtn1"><span></span><span></span><span></span></div>
+<nav id="g-nav">
+<div id="g-nav-list"><!--ナビの数が増えた場合縦スクロールするためのdiv※不要なら削除-->
+<ul>
+<li><a href="/">Top</a></li>
+<li><a href="/select">Select</a></li>
+<li><a href="/select/game">Game</a></li>
+<li><a href="/select/bank">Bank</a></li>
+<li><a href="/logout">Logout</a></li>
+</ul>
+</div>
+</nav>
+
 
 <div th:if="${game.code == 1}">
 <h1 th:text="${game.name}+'ポイントゲット！'"></h1>
@@ -47,6 +85,9 @@
 <br>
 <h5>新しい残高は</h5>
 <br>
+
+
+<p4>
 <div class="parent">
   <div class="inner">
 <table width="600" border="1">
@@ -68,40 +109,60 @@
 </tr>
 </table>
 </div>
-  <div class="inner2">
-<table th:if="${game.code != 1}">
+
+</p4>
+
+<h2>Ranking</h2>
+
+<p5>
+<div class="parent">
+  <div class="inner">
+<table width="400" border="1">
 <tr>
-<td colspan="3">Ranking</td>
-</tr>
-<tr>
-<td>順位</td><td>プレイヤー名</td><td>賞金額</td>
+<th>順位</th><td>プレイヤー名</td><td>賞金額</td>
 </tr>
 <tr th:if="${sameGame.size >= 1}">
-<td>１位</td>
+<th>１位</th>
 <td th:text="${sameGame[0].getPlayerName}"></td>
 <td th:text="${sameGame[0].getPrize}"></td>
 </tr>
 <tr th:if="${sameGame.size >= 2}">
-<td>２位</td>
+<th>２位</th>
 <td th:text="${sameGame[1].getPlayerName}"></td>
 <td th:text="${sameGame[1].getPrize}"></td>
 </tr>
 <tr th:if="${sameGame.size >= 3}">
-<td>３位</td>
+<th>３位</th>
 <td th:text="${sameGame[2].getPlayerName}"></td>
 <td th:text="${sameGame[2].getPrize}"></td>
 </tr>
 </table>
 </div>
 </div>
+</p5>
 
-<p1><section><a href="/select" class="btn_05"><span>TOPに戻る</span></a></section></p1>
+<p3><section><a href="/select" class="btn_05"><span>TOPに戻る</span></a></section></p3>
 <p2><section><a th:href="'/join/' + ${game.code}" class="btn_051"><span>もう一度遊ぶ</span></a></section></p2>
 
 <!--
 <a href="/select">メニューに戻る</a>
 <a th:href="'/join/' + ${game.code}">もう一度遊ぶ</a>
 -->
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="  crossorigin="anonymous"></script>
+<script type="text/javascript" src="./../jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+$(".openbtn1").click(function () {//ボタンがクリックされたら
+	  $(this).toggleClass('active');//ボタン自身に activeクラスを付与し
+	    $("#g-nav").toggleClass('panelactive');//ナビゲーションにpanelactiveクラスを付与
+	});
+
+	$("#g-nav a").click(function () {//ナビゲーションのリンクがクリックされたら
+	    $(".openbtn1").removeClass('active');//ボタンの activeクラスを除去し
+	    $("#g-nav").removeClass('panelactive');//ナビゲーションのpanelactiveクラスも除去
+	});
+</script>
+<script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/5-1-11/js/5-1-11.js"></script>
 
 </body>
 </html>
