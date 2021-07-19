@@ -8,7 +8,8 @@
 <body>
 <h1 th:text="${name}"></h1>
 
-<div th:if="${slot1 == null && slot2 == null && slot3 == null}">
+<!-- <div th:if="${slot1 == null && slot2 == null && slot3 == null}"> -->
+<div th:if="${session.COUNT == null}">
 	<form action="/challenge/start" method="post">
 		<input type="hidden" th:value="${name}" name="name">
 		<input type="hidden" th:value="${JP}" name="JP">
@@ -26,20 +27,64 @@
 	</form>
 </div>
 
-<div th:if="${slot1 != null && slot2 != null && slot3 != null}">
+<div th:if="${session.COUNT == 1}">
+	<form action="/challenge/start" method="post">
+		<input type="hidden" th:value="${name}" name="name">
+		<input type="hidden" th:value="${JP}" name="JP">
+		<p1>現在のジャックポットは<span style="color: red" th:text="${JP}"></span>円です。<br></p1>
+
 <table border="1">
         <tr>
-       		 <td><div th:if="${slot1 == 'サメ太郎'}"><img width="200" th:src="@{/same04.png}"/></div>
-       		 	<div th:if="${slot1 == 'サメジロー。'}"><img width="200" th:src="@{/same01.png}"/></div>
-       		 	<div th:if="${slot1 == 'サメ子'}"><img width="200" th:src="@{/same03.png}"/></div></td>
+       		 <td><div th:if="${session.slot1 == 'サメ太郎'}"><img width="200" th:src="@{/same04.png}"/></div>
+       		 	<div th:if="${session.slot1 == 'サメジロー。'}"><img width="200" th:src="@{/same01.png}"/></div>
+       		 	<div th:if="${session.slot1 == 'サメ子'}"><img width="200" th:src="@{/same03.png}"/></div></td>
+       		 <td><img width="200" th:src="@{/same0.png}"/></td>
+       		 <td><img width="200" th:src="@{/same0.png}"/></td>
+        </tr>
+</table>
 
-           	 <td><div th:if="${slot2 == 'サメ太郎'}"><img width="200" th:src="@{/same04.png}"/></div>
-           	 <div th:if="${slot2 == 'サメジロー。'}"><img width="200" th:src="@{/same01.png}"/></div>
-           	 <div th:if="${slot2 == 'サメ子'}"><img width="200" th:src="@{/same03.png}"/></div></td>
+		<p2><button class="reset flat border" name="start">STOP</button></p2>
+	</form>
+</div>
 
-           	 <td><div th:if="${slot3 == 'サメ太郎'}"><img width="200" th:src="@{/same04.png}"/></div>
-           	 <div th:if="${slot3 == 'サメジロー。'}"><img width="200" th:src="@{/same01.png}"/></div>
-           	 <div th:if="${slot3 == 'サメ子'}"><img width="200" th:src="@{/same03.png}"/></div></td>
+<div th:if="${session.COUNT == 2}">
+	<form action="/challenge/start" method="post">
+		<input type="hidden" th:value="${name}" name="name">
+		<input type="hidden" th:value="${JP}" name="JP">
+		<p1>現在のジャックポットは<span style="color: red" th:text="${JP}"></span>円です。<br></p1>
+
+<table border="1">
+        <tr>
+       		 <td><div th:if="${session.slot1 == 'サメ太郎'}"><img width="200" th:src="@{/same04.png}"/></div>
+       		 	<div th:if="${session.slot1 == 'サメジロー。'}"><img width="200" th:src="@{/same01.png}"/></div>
+       		 	<div th:if="${session.slot1 == 'サメ子'}"><img width="200" th:src="@{/same03.png}"/></div></td>
+
+			 <td><div th:if="${session.slot2 == 'サメ太郎'}"><img width="200" th:src="@{/same04.png}"/></div>
+           	 	<div th:if="${session.slot2 == 'サメジロー。'}"><img width="200" th:src="@{/same01.png}"/></div>
+           	 	<div th:if="${session.slot2 == 'サメ子'}"><img width="200" th:src="@{/same03.png}"/></div></td>
+
+       		 <td><img width="200" th:src="@{/same0.png}"/></td>
+        </tr>
+</table>
+
+		<p2><button class="reset flat border" name="start">STOP</button></p2>
+	</form>
+</div>
+
+<div th:if="${session.COUNT == 3}">
+<table border="1">
+        <tr>
+       		 <td><div th:if="${session.slot1 == 'サメ太郎'}"><img width="200" th:src="@{/same04.png}"/></div>
+       		 	<div th:if="${session.slot1 == 'サメジロー。'}"><img width="200" th:src="@{/same01.png}"/></div>
+       		 	<div th:if="${session.slot1 == 'サメ子'}"><img width="200" th:src="@{/same03.png}"/></div></td>
+
+           	 <td><div th:if="${session.slot2 == 'サメ太郎'}"><img width="200" th:src="@{/same04.png}"/></div>
+           	 <div th:if="${session.slot2 == 'サメジロー。'}"><img width="200" th:src="@{/same01.png}"/></div>
+           	 <div th:if="${session.slot2 == 'サメ子'}"><img width="200" th:src="@{/same03.png}"/></div></td>
+
+           	 <td><div th:if="${session.slot3 == 'サメ太郎'}"><img width="200" th:src="@{/same04.png}"/></div>
+           	 <div th:if="${session.slot3 == 'サメジロー。'}"><img width="200" th:src="@{/same01.png}"/></div>
+           	 <div th:if="${session.slot3 == 'サメ子'}"><img width="200" th:src="@{/same03.png}"/></div></td>
         </tr>
 </table>
 <p3><span th:text="${message}"></span></p3>

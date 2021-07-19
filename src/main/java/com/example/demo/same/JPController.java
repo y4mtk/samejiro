@@ -67,67 +67,98 @@ public class JPController {
 			@RequestParam("JP") int jp,
 			@RequestParam("name") String name
 	) {
-		String slot1 = null;
-		String slot2 = null;
-		String slot3 = null;
+		Integer count = (Integer)session.getAttribute("COUNT");
+		if(count == null) {
+			count = 0;
+		}
+		count++;
+
+		if(count >=4) {
+			//セッションオブジェクトを消滅
+			session.removeAttribute("COUNT");
+			session.removeAttribute("slot1");
+			session.removeAttribute("slot2");
+			session.removeAttribute("slot3");
+		}
+
+		session.setAttribute("COUNT", count);
+
+//		String slot1 = null;
+//		String slot2 = null;
+//		String slot3 = null;
+
+		String slot1 = (String) session.getAttribute("slot1");
+		String slot2 = (String) session.getAttribute("slot2");
+		String slot3 = (String) session.getAttribute("slot3");
 
 		Random random = new Random();
-		int col1 = random.nextInt(3) + 1;
-		switch(col1){
-		case 1:
-			slot1= "サメ太郎";
-			break;
-		case 2:
-			slot1= "サメジロー。";
-			break;
-		case 3:
-			slot1= "サメ子";
-			break;
+
+		if (count == 1) {
+			int col1 = random.nextInt(3) + 1;
+			switch (col1) {
+			case 1:
+				slot1 = "サメ太郎";
+				break;
+			case 2:
+				slot1 = "サメジロー。";
+				break;
+			case 3:
+				slot1 = "サメ子";
+				break;
+			}
 		}
 
-		int col2 = random.nextInt(3) + 1;
-		switch(col2){
-		case 1:
-			slot2= "サメ太郎";
-			break;
-		case 2:
-			slot2= "サメジロー。";
-			break;
-		case 3:
-			slot2= "サメ子";
-			break;
+		if (count == 2) {
+			int col2 = random.nextInt(3) + 1;
+			switch (col2) {
+			case 1:
+				slot2 = "サメ太郎";
+				break;
+			case 2:
+				slot2 = "サメジロー。";
+				break;
+			case 3:
+				slot2 = "サメ子";
+				break;
+			}
 		}
 
-		int col3 = random.nextInt(3) + 1;
-		switch(col3){
-		case 1:
-			slot3= "サメ太郎";
-			break;
-		case 2:
-			slot3= "サメジロー。";
-			break;
-		case 3:
-			slot3= "サメ子";
-			break;
+		if (count == 3) {
+			int col3 = random.nextInt(3) + 1;
+			switch (col3) {
+			case 1:
+				slot3 = "サメ太郎";
+				break;
+			case 2:
+				slot3 = "サメジロー。";
+				break;
+			case 3:
+				slot3 = "サメ子";
+				break;
+			}
 		}
 
-		mv.addObject("slot1", slot1);
-		mv.addObject("slot2", slot2);
-		mv.addObject("slot3", slot3);
+		session.setAttribute("slot1", slot1);
+		session.setAttribute("slot2", slot2);
+		session.setAttribute("slot3", slot3);
+//		mv.addObject("slot1", slot1);
+//		mv.addObject("slot2", slot2);
+//		mv.addObject("slot3", slot3);
 		mv.addObject("name", name);
 		mv.addObject("JP", jp);
 
-		if(slot1.equals(slot2) && slot1.equals(slot3) && slot2.equals(slot3)) {
-			boolean samejiroCheck = true;
+		if (count == 3) {
+			if (slot1.equals(slot2) && slot1.equals(slot3) && slot2.equals(slot3)) {
+				boolean samejiroCheck = true;
 
-			mv.addObject("message", "チャレンジ成功！！");
-			mv.addObject("samejiroCheck", samejiroCheck);
-		}else {
-			boolean samejiroCheck = false;
-			mv.addObject("message", "チャレンジ失敗……。");
-			mv.addObject("samejiroCheck", samejiroCheck);
+				mv.addObject("message", "チャレンジ成功！！");
+				mv.addObject("samejiroCheck", samejiroCheck);
+			} else {
+				boolean samejiroCheck = false;
+				mv.addObject("message", "チャレンジ失敗……。");
+				mv.addObject("samejiroCheck", samejiroCheck);
+			}
 		}
-
 		mv.setViewName("jpchallenge");
 		return mv;
 	}

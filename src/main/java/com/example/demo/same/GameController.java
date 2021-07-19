@@ -69,6 +69,9 @@ public class GameController {
 
 		session.removeAttribute("COUNT");
 		session.removeAttribute("RIGHT");
+		session.removeAttribute("slot1");
+		session.removeAttribute("slot2");
+		session.removeAttribute("slot3");
 
 		Optional<Game> game = gameRepository.findById(code);
 		Game gameDetail = game.get();
