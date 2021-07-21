@@ -88,7 +88,7 @@ public class GameController {
 		List<PlayerRank> alist = playerRankRepository.findAll();
 
 		if (alist.size() != 0) {
-			if (!(alist.get(0).getDate().equals(Date.valueOf(dateNow)))) { //今日のじゃない表が出来ているとき
+			if (alist.get(0).getDate().compareTo(Date.valueOf(dateNow))!= 0) { //今日のじゃない表が出来ているとき
 				playerRankRepository.deleteAll();
 			}
 		}
