@@ -37,10 +37,11 @@ public class PlayerRank {
 
 	}
 
-	public PlayerRank(String playerName, Integer prize, Integer gameCode){
+	public PlayerRank(String playerName, Integer prize, Integer gameCode, Date date){
 		this.playerName = playerName;
 		this.prize = prize;
 		this.gameCode = gameCode;
+		this.date = date;
 	}
 
 	public PlayerRank(Integer code, String playerName, Integer prize, Integer gameCode){
@@ -90,6 +91,11 @@ public class PlayerRank {
 	public void setGameCode(Integer gameCode) {
 		this.gameCode = gameCode;
 	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
 	public Date getDate() {
 		return date;
 	}

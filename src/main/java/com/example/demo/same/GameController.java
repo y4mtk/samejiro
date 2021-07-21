@@ -83,13 +83,17 @@ public class GameController {
 		List<Bank> list1 = bankRepository.findByUserCode(player.getCode());
 		Bank bankAccount = list1.get(0);
 
-		LocalDate dateNow = null;
+		LocalDate dateNow = LocalDate.now();
 
-		if(playerRankRepository.findAll().get(0).getDate()!= Date.valueOf(dateNow)) { //今日のじゃない表が出来ているとき
-			playerRankRepository.deleteAll();
+		List<PlayerRank> alist = playerRankRepository.findAll();
+
+		if (alist.size() != 0) {
+			if (alist.get(0).getDate() != Date.valueOf(dateNow)) { //今日のじゃない表が出来ているとき
+				playerRankRepository.deleteAll();
+			}
 		}
 
-		PlayerRank addNew = new PlayerRank(player.getName(), (int)prize, gameDetail.getCode());
+		PlayerRank addNew = new PlayerRank(player.getName(), (int)prize, gameDetail.getCode(), Date.valueOf(dateNow));
 		playerRankRepository.saveAndFlush(addNew);
 
 		List<PlayerRank> sameGame = playerRankRepository.findByGameCodeOrderByPrizeDesc(code);
