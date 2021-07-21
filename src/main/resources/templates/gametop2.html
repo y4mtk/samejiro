@@ -33,7 +33,7 @@
 <div id="g-nav-list"><!--ナビの数が増えた場合縦スクロールするためのdiv※不要なら削除-->
 <ul>
 <li><a href="/logout">LOGOUT</a></li>
-<li><a href="/select/game">Game</a></li>
+<li><a th:href="'/select/game/'+ ${game.code}">GAME RULE</a></li>
 </ul>
 </div>
 </nav>
