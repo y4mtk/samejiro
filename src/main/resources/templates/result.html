@@ -56,34 +56,34 @@
 <div th:if="${game.code == 1}">
 <h1 th:text="${game.name}+'ポイントゲット！'"></h1>
 
-<h3 th:text="'ゲットしたポイントは'+ ${prize} + 'でした。'"></h3>
+<h3 th:text="'ゲットした ｼｬｰｸは'+ ${prize} + 'でした。'"></h3>
 </div>
 
 <div th:if="${game.code == 2}">
 <h1 th:text="${game.name}+'結果発表'"></h1>
 
-<h3 th:text="'賞金は'+ ${prize} + '円でした。'"></h3>
+<h3 th:text="'賞金は'+ ${prize} + ' ｼｬｰｸでした。'"></h3>
 <h4 th:text="${message}"></h4>
 </div>
 
 <div th:if="${game.code == 3}">
 <h1 th:text="${game.name}+'結果発表'"></h1>
 
-<h3 th:text="'賞金は'+ ${prize} + '円でした。'"></h3>
+<h3 th:text="'賞金は'+ ${prize} + ' ｼｬｰｸでした。'"></h3>
 <h4 th:text="${message}"></h4>
 </div>
 
 <div th:if="${game.code == 4}">
 <h1 th:text="${game.name}+'結果発表'"></h1>
 
-<h3 th:text="'賞金は'+ ${prize} + '円でした。'"></h3>
+<h3 th:text="'賞金は'+ ${prize} + ' ｼｬｰｸでした。'"></h3>
 <h4 th:text="${message}"></h4>
 </div>
 
 <div th:if="${game.code == 5}">
 <h1 th:text="${game.name}+'結果発表'"></h1>
 
-<h3 th:text="'賞金は'+ ${prize} + '円でした。'"></h3>
+<h3 th:text="'賞金は'+ ${prize} + ' ｼｬｰｸでした。'"></h3>
 <h4 th:text="${message}"></h4>
 </div>
 
@@ -98,19 +98,19 @@
 <table width="600" border="1">
 <tr>
 <th>残高</th>
-<td th:text="${bankAccount.money}+'円'"></td>
+<td th:text="${bankAccount.money}+' ｼｬｰｸ'"></td>
 </tr>
 <tr>
 <th>累計負け金</th>
-<td th:text="${bankAccount.lost}+'円'"></td>
+<td th:text="${bankAccount.lost}+' ｼｬｰｸ'"></td>
 </tr>
 <tr>
 <th>累計勝ち金</th>
-<td th:text="${bankAccount.won}+'円'"></td>
+<td th:text="${bankAccount.won}+' ｼｬｰｸ'"></td>
 </tr>
 <tr>
 <th>成績</th>
-<td th:text="${bankAccount.won}+${bankAccount.lost}+'円'"></td>
+<td th:text="${bankAccount.won}+${bankAccount.lost}+' ｼｬｰｸ'"></td>
 </tr>
 </table>
 </div>

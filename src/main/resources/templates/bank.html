@@ -62,19 +62,19 @@
 <table width="600"  border="1">
 <tr>
 <th>残高</th>
-<td th:text="${bankAccount.money}+'円'"></td>
+<td th:text="${bankAccount.money}+' ｼｬｰｸ'"></td>
 </tr>
 <tr>
 <th>累計負け金</th>
-<td th:text="${bankAccount.lost}+'円'"></td>
+<td th:text="${bankAccount.lost}+' ｼｬｰｸ'"></td>
 </tr>
 <tr>
 <th>累計勝ち金</th>
-<td th:text="${bankAccount.won}+'円'"></td>
+<td th:text="${bankAccount.won}+' ｼｬｰｸ'"></td>
 </tr>
 <tr>
 <th>成績</th>
-<td th:text="${bankAccount.won}+${bankAccount.lost}+'円'"></td>
+<td th:text="${bankAccount.won}+${bankAccount.lost}+' ｼｬｰｸ'"></td>
 </tr>
 </table>
 </p2>
