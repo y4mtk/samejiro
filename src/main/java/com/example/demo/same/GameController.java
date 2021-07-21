@@ -1,5 +1,7 @@
 package com.example.demo.same;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -81,11 +83,16 @@ public class GameController {
 		List<Bank> list1 = bankRepository.findByUserCode(player.getCode());
 		Bank bankAccount = list1.get(0);
 
+		LocalDate dateNow = null;
+
+		if(playerRankRepository.findAll().get(0).getDate()!= Date.valueOf(dateNow)) { //今日のじゃない表が出来ているとき
+			playerRankRepository.deleteAll();
+		}
+
 		PlayerRank addNew = new PlayerRank(player.getName(), (int)prize, gameDetail.getCode());
 		playerRankRepository.saveAndFlush(addNew);
 
 		List<PlayerRank> sameGame = playerRankRepository.findByGameCodeOrderByPrizeDesc(code);
-
 		mv.addObject("sameGame", sameGame);
 
 		if(code == 2) {

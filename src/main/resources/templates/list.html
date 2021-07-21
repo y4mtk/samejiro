@@ -60,7 +60,7 @@
   <th th:if="${game.code == 5}"><img width="100" th:src="@{/unnamed.png}"/></th>
     <td th:text="${game.name}"></td>
     <td th:text="'1 PLAY '+ ${game.price} + ' ｼｬｰｸ'"></td>
-    <td><form th:action="'/select/game/'+${game.code}" method="post">
+    <td><form th:action="'/select/game/'+${game.code}" method="get">
     <button class="reset flat border">ゲームに<br>参加する！</button></form>
 		</td>
   </tr>

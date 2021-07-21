@@ -1,5 +1,7 @@
 package com.example.demo.same;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,6 +26,9 @@ public class PlayerRank {
 
 	@Column(name="game_code")
 	private Integer gameCode;
+
+	@Column(name="date")
+	private Date date;
 
 	@Transient
 	private int rank;
@@ -85,6 +90,8 @@ public class PlayerRank {
 	public void setGameCode(Integer gameCode) {
 		this.gameCode = gameCode;
 	}
-
+	public Date getDate() {
+		return date;
+	}
 
 }

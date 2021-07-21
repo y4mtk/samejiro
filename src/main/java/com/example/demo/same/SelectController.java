@@ -50,7 +50,7 @@ public class SelectController {
 	}
 
 	//ゲーム詳細画面へ
-	@RequestMapping(value="/select/game/{code}", method=RequestMethod.POST)
+	@RequestMapping(value="/select/game/{code}", method=RequestMethod.GET)
 	public ModelAndView showGame(
 			ModelAndView mv,
 			@PathVariable("code") int code) {
