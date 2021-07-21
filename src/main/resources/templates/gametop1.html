@@ -22,17 +22,18 @@
 <link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/5-1-11/css/5-1-11.css">
 
 
-<link rel="stylesheet" type="text/css" href="css/gametop1.css">
+<!-- <link rel="stylesheet" type="text/css" href="css/gametop1.css">-->
 </head>
 <body>
 
+<span th:replace="hbg"></span>
 
 <div class="openbtn1"><span></span><span></span><span></span></div>
 <nav id="g-nav">
 <div id="g-nav-list"><!--ナビの数が増えた場合縦スクロールするためのdiv※不要なら削除-->
 <ul>
 <li><a href="/logout">LOGOUT</a></li>
-<li><a th:href="'/select/game/'+${game.code}">GAME RULE</a></li>
+<li><a th:href="'/select/game/'+ ${game.code}">GAME RULE</a></li>
 </ul>
 </div>
 </nav>

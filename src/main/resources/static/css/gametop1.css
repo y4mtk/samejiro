@@ -1,10 +1,10 @@
 @charset "UTF-8";
 
-
-/*========= ボタンのためのCSS ===============*/
+/*
+========= ボタンのためのCSS ===============
 .openbtn1{
   position:fixed;
-    z-index: 9999;/*ボタンを最前面に*/
+    z-index: 9999;ボタンを最前面に
   top:10px;
   right: 10px;
   cursor: pointer;
@@ -12,7 +12,7 @@
     height:50px;
 }
 
-/*×に変化*/
+×に変化
 .openbtn1 span{
     display: inline-block;
     transition: all .4s;
@@ -53,6 +53,7 @@
     transform: translateY(-6px) rotate(45deg);
     width: 30%;
 }
+ */
 
 body{
     background-color:rgb(226, 232, 240);
