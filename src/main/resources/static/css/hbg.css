@@ -8,6 +8,7 @@
   opacity: 0;/*はじめは透過0*/
     /*ナビの位置と形状*/
   	top:0;
+  	left:80%;
   	width:20%;
     height: 100vh;/*ナビの高さ*/
   background:#999;
@@ -27,7 +28,7 @@
     /*ナビの数が増えた場合縦スクロール*/
     position: fixed;
     z-index: 999;
-    width: 170%;
+    width: 20%;
     height: 100vh;/*表示する高さ*/
     overflow: auto;
     -webkit-overflow-scrolling: touch;
