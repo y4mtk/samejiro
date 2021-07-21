@@ -87,7 +87,7 @@ public class PokerController {
 		list.add((tip/100)-10);
 		list.add(90);
 		list.add(20);
-		list.add(tip-list.get(0));
+		list.add(10);
 		//{player, cpu, pot, playerBeted}
 
 		Optional<Game> list2 = gameRepository.findById(3);
@@ -140,6 +140,7 @@ public class PokerController {
 		list.set(0, list.get(0)-bet);
 		list.set(1, list.get(1)-CPUbet);
 	    list.set(2, list.get(2)+bet+CPUbet);
+	    list.set(3, list.get(3)+bet);
 
 	    ArrayList<Integer> checked = new ArrayList<>();
 	    for(int i : check) {
@@ -254,6 +255,7 @@ public class PokerController {
 		list.set(0, list.get(0)-bet);
 		list.set(1, list.get(1)-CPUbet);
 	    list.set(2, list.get(2)+bet+CPUbet);
+	    list.set(3, list.get(3)+bet);
 
 		int rank;
 

@@ -99,7 +99,7 @@ public class GameController {
 
 		if(code == 3) {
 			List<Integer> list = (List<Integer>) session.getAttribute("list");
-			WonOrLost = (int)prize - list.get(3);
+			WonOrLost = (int)prize - list.get(3)*100;
 		}
 
 		if(WonOrLost > 0) {
