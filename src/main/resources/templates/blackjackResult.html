@@ -4,8 +4,39 @@
 <meta charset="UTF-8">
 <title>BlackJack</title>
 <link th:href="@{/css/blackjackresult.css}" rel="stylesheet">
+
+
+<link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-lightness/jquery-ui.css" rel="stylesheet" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
+
+
+
+<meta name="description"  content="書籍「動くWebデザインアイディア帳」のサンプルサイトです">
+
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<!--==============レイアウトを制御する独自のCSSを読み込み===============-->
+<link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/reset.css">
+<link rel="stylesheet" type="text/css" href="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/5-1-11/css/5-1-11.css">
+
+
 </head>
 <body>
+
+<span th:replace="hbg"></span>
+
+<div class="openbtn1"><span></span><span></span><span></span></div>
+<nav id="g-nav">
+<div id="g-nav-list"><!--ナビの数が増えた場合縦スクロールするためのdiv※不要なら削除-->
+<ul>
+<li><a href="/logout">LOGOUT</a></li>
+<li><a href="/select/game">Game</a></li>
+</ul>
+</div>
+</nav>
+
+
 <h1 th:text="${game.name}"></h1>
 
 <h4 th:text="'ディーラーの手札' + ${dealerDeck}"></h4>
@@ -38,6 +69,21 @@
 <input type="submit" value="結果表示画面へ" class="button">
 </form>
 </p5>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="  crossorigin="anonymous"></script>
+<script type="text/javascript" src="./../jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+$(".openbtn1").click(function () {//ボタンがクリックされたら
+	  $(this).toggleClass('active');//ボタン自身に activeクラスを付与し
+	    $("#g-nav").toggleClass('panelactive');//ナビゲーションにpanelactiveクラスを付与
+	});
+
+	$("#g-nav a").click(function () {//ナビゲーションのリンクがクリックされたら
+	    $(".openbtn1").removeClass('active');//ボタンの activeクラスを除去し
+	    $("#g-nav").removeClass('panelactive');//ナビゲーションのpanelactiveクラスも除去
+	});
+</script>
+<script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/5-1-11/js/5-1-11.js"></script>
 
 </body>
 </html>
