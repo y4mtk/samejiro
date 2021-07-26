@@ -215,8 +215,9 @@ public class AccountController {
 			if (user.size() == 0) {
 				mv.addObject("message", "登録されていないメールアドレスです");
 			}
-
+			else {
 			mv.addObject("password", user.get(0).getPassword());
+			}
 		}
 		mv.setViewName("remind");
 		return mv;
