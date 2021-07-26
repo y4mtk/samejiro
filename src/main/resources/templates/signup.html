@@ -42,14 +42,14 @@
 
 <div class="group">
    <label for="text3" id="l_text3">メールアドレス</label>
-   <input id="text3" type="text" name="email">
+   <input id="text3" type="text" name="email" pattern=".+@.+\..+" title="メールアドレスは、aaa@〇〇〇.com のような形式で記入してください。">
    <div class="text_underline"></div>
 </div>
 <br>
 
 <div class="group">
    <label for="text3" id="l_text3">パスワード</label>
-   <input id="text3" type="text" name="password">
+   <input id="text3" type="text" name="password" pattern="[a-zA-Z0-9]+" title="パスワードは半角英数字で入力してください。">
    <div class="text_underline"></div>
 </div>
 <br>

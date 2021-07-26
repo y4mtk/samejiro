@@ -81,7 +81,7 @@ public class AccountController {
 				Samejiro Today = list2.get();
 
 				mv.addObject("samejiroToday",Today.getChat());
-				mv.addObject("miss","ユーザIDが一致しませんでした");
+				mv.addObject("miss","ユーザ名またはパスワードが一致しませんでした");
 				mv.setViewName("login");
 			}
 			else {
