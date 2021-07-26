@@ -462,7 +462,7 @@ public class PokerController {
 
 		switch(rank) {
 		case 1:
-			hand = "ROYAL STRAIGHT FLUSH";
+			hand = "ROYAL FLUSH";
 			prize = 1000 * list.get(2);
 			break;
 		case 2:
@@ -494,7 +494,7 @@ public class PokerController {
 			prize = 5 * list.get(2);
 			break;
 		case 9:
-			hand = "ONE PIAR";
+			hand = "ONE PAIR";
 			prize = 2 * list.get(2);
 			break;
 		case 10:
@@ -507,7 +507,7 @@ public class PokerController {
 			winner = "あなたの勝ちです";
 			switch(rank) {
 			case 1:
-				hand = "ROYAL STRAIGHT FLUSH";
+				hand = "ROYAL FLUSH";
 				prize = 1000 * list.get(2);
 				break;
 			case 2:
@@ -539,7 +539,7 @@ public class PokerController {
 				prize = 5 * list.get(2);
 				break;
 			case 9:
-				hand = "ONE PIAR";
+				hand = "ONE PAIR";
 				prize = 2 * list.get(2);
 				break;
 			case 10:
@@ -561,7 +561,7 @@ public class PokerController {
 		String handCPU = null;
 		switch(rankCPU) {
 		case 1:
-			handCPU = "ROYAL STRAIGHT FLUSH";
+			handCPU = "ROYAL FLUSH";
 			break;
 		case 2:
 			handCPU = "STRAIGHT FLUSH";
@@ -585,7 +585,7 @@ public class PokerController {
 			handCPU = "TWO PAIR";
 			break;
 		case 9:
-			handCPU = "ONE PIAR";
+			handCPU = "ONE PAIR";
 			break;
 		case 10:
 			handCPU = "HIGH CARD";
