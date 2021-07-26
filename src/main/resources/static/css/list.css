@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 body{
-    background-color:rgb(226, 232, 240);
+    background-color:rgb(219, 236, 235);
     text-align: center;
 }
 
@@ -49,7 +49,7 @@ table tr{
 }
 
 table tr:hover{
-  background-color: rgb(209, 209, 209);
+  background-color: rgb(183, 205, 214);
 }
 
 table th,table td{

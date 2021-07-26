@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 body{
-    background-color:rgb(246, 227, 253);
+    background-color:#f8f6f0;
 
 }
 
@@ -15,7 +15,7 @@ header{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background:rgb(222, 189, 235);
+  background:#c3b68f;
   color:#fff;
   text-align: center;
   padding: 20px;
@@ -51,7 +51,7 @@ th,td {
 }
 
 th {
-    background-color: rgb(191, 149, 206);  /* 背景色指定 */
+    background-color: #c3b68f;  /* 背景色指定 */
     color:  #fff;               /* 文字色指定 */
     font-weight:  normal;       /* 文字の太さ指定 */
     position:  relative;        /* 位置指定 */
@@ -60,7 +60,7 @@ th {
 
 td {
 	text-align: center;
-    background-color:  rgb(239, 204, 252); /* 背景色指定 */
+    background-color:  #ece4ca; /* 背景色指定 */
     padding-left: 25px;         /* 余白指定 */
 }
 
@@ -69,7 +69,7 @@ th::after {
     position:  absolute;        /* 位置指定 */
     height: 24px;               /* 高さ指定 */
     width: 24px;                /* 幅指定 */
-    background-color: rgb(191, 149, 206);  /* 背景色指定 */
+    background-color: #c3b68f;   /* 背景色指定 */
     transform:  rotate(45deg);  /* 要素を回転 */
     top: 5px;                   /* 位置指定 */
     right: -12px;               /* 位置指定 */
