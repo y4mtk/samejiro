@@ -130,6 +130,14 @@ public class BJController {
 		list.add(handTotalDealer);
 		//{deckCount, playerCount, dealerCount, handTotal, handTotalDealer}
 
+		Integer count = (Integer)session.getAttribute("COUNT");
+		if(count == null) {
+			count = 0;
+		}
+		count ++;
+
+		session.setAttribute("COUNT", count);
+
 		mv.addObject("list",list);
 		mv.addObject("game",game);
 		mv.addObject("playerDeck",player);
@@ -156,15 +164,7 @@ public class BJController {
 		Bank newMoney = new Bank(bankAccount.getCode(), bankAccount.getUserCode(), bankAccount.getMoney()-bet, bankAccount.getLost(), bankAccount.getWon());
 		bankRepository.saveAndFlush(newMoney);
 
-		Integer count = (Integer)session.getAttribute("COUNT");
-		if(count == null) {
-			count = 0;
-		}
-		count ++;
-
 		list.add(2*bet); //list.get(5)==掛け金合計
-
-		session.setAttribute("COUNT", count);
 		List<Integer> deck = (List<Integer>) session.getAttribute("deck");
 		List<String> playerDeck = (List<String>) session.getAttribute("player");
 		List<String> dealerDeck = (List<String>) session.getAttribute("dealer");
@@ -350,24 +350,31 @@ public class BJController {
 		Optional<Game> list2 = gameRepository.findById(4);
 		Game game = list2.get();
 
+		List<Bank> JP = bankRepository.findByUserCode(0);
+		Bank JPbank = JP.get(0);
+
 		String winner = null;
 		int prize;
 
 		if (list.get(3) > list.get(4)) {
 			if(list.get(3) == 21) {
 				winner = "あなたの勝ちです";
-				prize = 3 * (list.get(5)+game.getPrice());
+				prize = (3 * list.get(5)) + game.getPrice();
 			}
 			else {
 				winner = "あなたの勝ちです";
-				prize = 2 * (list.get(5)+game.getPrice());
+				prize = (2 * list.get(5)) + game.getPrice();
 			}
 		}
 		else if (list.get(3) == list.get(4)) {
 			winner = "引き分け";
-			prize = game.getPrice();
+			prize = (list.get(5)/2) + game.getPrice();
+			Bank newJP = new Bank(JPbank.getCode(), 0, JPbank.getMoney()+(list.get(5)/2), 0, 0);
+			bankRepository.saveAndFlush(newJP);
 		}
 		else {
+			Bank newJP = new Bank(JPbank.getCode(), 0, JPbank.getMoney()+game.getPrice()+list.get(5), 0, 0);
+			bankRepository.saveAndFlush(newJP);
 			winner = "ディーラーの勝ちです";
 			prize = 0;
 		}
