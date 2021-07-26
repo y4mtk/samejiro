@@ -85,7 +85,7 @@ th,td {
 }
 
 th {
-    background-color: rgb(137, 241, 208); /* 背景色指定 */
+    background-color: rgb(124, 179, 152); /* 背景色指定 */
     color:  #fff;               /* 文字色指定 */
     font-weight:  normal;       /* 文字の太さ指定 */
     position:  relative;        /* 位置指定 */
@@ -94,7 +94,7 @@ th {
 
 td {
 	text-align: center;
-    background-color:  rgb(215, 245, 236); /* 背景色指定 */
+    background-color:  rgb(216, 221, 219); /* 背景色指定 */
     padding-left: 25px;         /* 余白指定 */
 }
 
@@ -103,7 +103,7 @@ th::after {
     position:  absolute;        /* 位置指定 */
     height: 24px;               /* 高さ指定 */
     width: 24px;                /* 幅指定 */
-    background-color: rgb(137, 241, 208);  /* 背景色指定 */
+    background-color: rgb(124, 179, 152); /* 背景色指定 */
     transform:  rotate(45deg);  /* 要素を回転 */
     top: 5px;                   /* 位置指定 */
     right: -12px;               /* 位置指定 */
