@@ -1,8 +1,7 @@
 @charset "UTF-8";
-
 p1{
  	position: absolute;
-  	top: 3%;
+  	top: 30%;
   	left: 2%;
 }
 /*========= ボタンのためのCSS ===============*/

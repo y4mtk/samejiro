@@ -1,6 +1,20 @@
 @charset "UTF-8";
 
-
+header{
+    /*fixedで上部固定*/
+  position: fixed;
+  height: 70px;
+  width:100%;
+    z-index: 999;/*最前面へ*/
+  /*以下はレイアウトのためのCSS*/
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background:rgb(100, 143, 122);
+  color:#fff;
+  text-align: center;
+  padding: 20px;
+}
 
 
 h1{
