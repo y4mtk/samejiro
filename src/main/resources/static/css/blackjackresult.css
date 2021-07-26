@@ -10,7 +10,7 @@ h1{
 	color: rgb(250, 250, 250);
 	position: absolute;
   	top: 10%;
-  	left: 42%;
+  	left: 46%;
 }
 
 h4{
@@ -34,10 +34,10 @@ p2{
 }
 
 h2{
-	font-size:30px;
+	font-size:35px;
 	color:rgb(189, 189, 189);
 	position: absolute;
-  	top: 50%;
+  	top: 53%;
   	left: 38.5%;
 }
 
@@ -49,13 +49,13 @@ p3{
 
 p4{
 	position: absolute;
-  	top: 68%;
-  	left: 42%;
+  	top: 65%;
+  	left: 44%;
 }
 p6{
 	position: absolute;
   	top: 73%;
-  	left: 44.5%;
+  	left: 45.5%;
 }
 
 p5{
