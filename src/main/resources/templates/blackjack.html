@@ -41,7 +41,8 @@
 <p>ディーラーの手札枚数は <span th:text="${list[2]}" style="color:white"></span> です</p>
 <h3 th:text="'ディーラー１枚目：' + ${dealerDeck[0]}"></h3>
 <br>
-
+<br>
+<br>
 <h2 th:text="'あなたの手札' + ${playerDeck}"></h2>
 <p1>現在のあなたの合計は <span th:text="${list[3]}" style="color:white"></span> です</p1>
 <br>
@@ -49,9 +50,25 @@
 <p2>
 アクションを選択してください<br></p2>
 
+
+
 <div th:if="${session.COUNT == 1}">
-bet<input type="text" name="bet"> ｼｬｰｸ
+
+<div class="stuff">
+<div class="textBox">
+
+
+<input class="text" type="text" name="bet" value=0
+		onkeyup="this.setAttribute('value', this.value);" >
+		<label class="label">BET:ｼｬｰｸ</label>
+  <label class="error"></label>
+ </div>
+ </div>
+
 </div>
+<!--
+bet<input type="text" name="bet"> ｼｬｰｸ
+</div>  -->
 
 <p3>
 <form action="/actionContinue" method="post">
