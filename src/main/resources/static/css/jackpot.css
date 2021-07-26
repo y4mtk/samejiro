@@ -5,12 +5,12 @@ body{
 }
 
 h1{
-	font-size:45px;
+	font-size:100px;
 	background-color:rgb(77, 77, 77);
 	color: rgb(255, 252, 210);
 	position: absolute;
   	top: 10%;
-  	left: 36%;
+  	left: 45%;
 }
 
 p{

@@ -6,8 +6,8 @@ body{
 }
 
 h1{
-	font-size:45px;
 	color: rgb(250, 250, 250);
+	font-size:45px;
 	position: absolute;
   	top: 10%;
   	left: 46%;
@@ -17,20 +17,20 @@ p1{
 	font-size:25px;
 	position: absolute;
 	top: 30%;
-	left: 35.5%;
+	left: 33%;
 }
 
 
 p2{
 	position: absolute;
 	top: 65%;
-	left: 39%;
+	left: 37%;
 }
 
 p3{
 	position: absolute;
 	top: 82%;
-	left: 45%;
+	left: 43%;
 }
 
 .button {
