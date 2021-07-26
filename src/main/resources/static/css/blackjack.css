@@ -35,7 +35,7 @@ body{
 }
 
 .textBox > input.text:focus {
-  border-color: #B2FF59;
+  border-color: #408080;
 }
 
 .textBox .label {
@@ -72,7 +72,7 @@ body{
 }
 
 .textBox > input.text:focus ~ .label {
-  color: #B2FF59;
+  color: #408080;
 }
 
 .textBox ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
@@ -143,14 +143,20 @@ p2{
 
 p3{
 	position: absolute;
-  	top: 75%;
+  	top: 85%;
   	left: 40%;
 }
 
 p4{
 	position: absolute;
-  	top: 75%;
+  	top: 85%;
   	left: 52%;
+}
+
+p5{
+	position: absolute;
+  	top: 75%;
+  	left: 38%;
 }
 
 .button {
