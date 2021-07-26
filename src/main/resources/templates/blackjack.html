@@ -50,13 +50,12 @@
 <p2>
 アクションを選択してください<br></p2>
 
-
+<form action="/actionBJ" method="post">
 
 <div th:if="${session.COUNT == 1}">
 <p5>
 <div class="stuff">
 <div class="textBox">
-
 
 <input class="text" type="text" name="bet" value=0
 		onkeyup="this.setAttribute('value', this.value);" >
@@ -64,21 +63,19 @@
   <label class="error"></label>
  </div>
  </div></p5>
-
 </div>
-<!--
-bet<input type="text" name="bet"> ｼｬｰｸ
-</div>  -->
+
+<div th:else="${session.COUNT == 1}"><input type="hidden" name="bet" value=0></div>
 
 <p3>
-<form action="/actionContinue" method="post">
-<input type="submit" value="カードをひく" class="button">
-</form>
+<!-- <form action="/actionContinue" method="post"> -->
+<input type="submit" value="カードをひく" class="button" name="continue">
+<!-- </form> -->
 </p3>
 
 <p4>
-<form action="/actionEnd" method="post">
-<input type="submit" value="ひかない" class="button">
+<!-- <form action="/actionEnd" method="post"> -->
+<input type="submit" value="ひかない" class="button" name="end">
 </form>
 </p4>
 

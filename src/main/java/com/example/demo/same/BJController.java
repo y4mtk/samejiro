@@ -147,24 +147,34 @@ public class BJController {
 	}
 
 	@SuppressWarnings("unchecked")
-	@RequestMapping(value="/actionContinue", method=RequestMethod.POST)
-	public ModelAndView actionContinue(ModelAndView mv, @RequestParam("bet") int bet) {
-
+	@RequestMapping(value="/actionBJ", params="continue", method=RequestMethod.POST)
+	public ModelAndView actionContinue(
+			ModelAndView mv,
+			@RequestParam("bet") int bet
+			) {
+		Integer count = (Integer)session.getAttribute("COUNT");
 		List<Integer> list = (List<Integer>) session.getAttribute("list");
 		People loginee = (People)session.getAttribute("login");
 		List<Bank> playerBank = bankRepository.findByUserCode(loginee.getCode());
 		Bank bankAccount = playerBank.get(0);
 
-		if(bet > bankAccount.getMoney()) {
-			mv.addObject("message", "残高が足りません");
-			mv.setViewName("blackjack");
-			return mv;
+		if(count == 1) {
+			if (bet > bankAccount.getMoney()) {
+				mv.addObject("message", "残高が足りません");
+				mv.setViewName("blackjack");
+				return mv;
+			}
+
+			Bank newMoney = new Bank(bankAccount.getCode(), bankAccount.getUserCode(), bankAccount.getMoney() - bet,
+					bankAccount.getLost(), bankAccount.getWon());
+			bankRepository.saveAndFlush(newMoney);
+
 		}
 
-		Bank newMoney = new Bank(bankAccount.getCode(), bankAccount.getUserCode(), bankAccount.getMoney()-bet, bankAccount.getLost(), bankAccount.getWon());
-		bankRepository.saveAndFlush(newMoney);
+		list.add(2 * bet); //list.get(5)==掛け金合計
+		count ++;
+		session.setAttribute("COUNT", count);
 
-		list.add(2*bet); //list.get(5)==掛け金合計
 		List<Integer> deck = (List<Integer>) session.getAttribute("deck");
 		List<String> playerDeck = (List<String>) session.getAttribute("player");
 		List<String> dealerDeck = (List<String>) session.getAttribute("dealer");
@@ -263,29 +273,33 @@ public class BJController {
 	}
 
 	@SuppressWarnings("unchecked")
-	@RequestMapping(value="/actionEnd", method=RequestMethod.POST)
-	public ModelAndView actionEnd(ModelAndView mv, @RequestParam("bet") int bet) {
+	@RequestMapping(value="/actionBJ", params="end", method=RequestMethod.POST)
+	public ModelAndView actionEnd(
+			ModelAndView mv,
+			@RequestParam("bet") int bet
+			) {
 		List<Integer> list = (List<Integer>) session.getAttribute("list");
 		People loginee = (People)session.getAttribute("login");
 		List<Bank> playerBank = bankRepository.findByUserCode(loginee.getCode());
 		Bank bankAccount = playerBank.get(0);
 
-		if(bet > bankAccount.getMoney()) {
-			mv.addObject("message", "残高が足りません");
-			mv.setViewName("blackjack");
-			return mv;
-		}
-
-		Bank newMoney = new Bank(bankAccount.getCode(), bankAccount.getUserCode(), bankAccount.getMoney()-bet, bankAccount.getLost(), bankAccount.getWon());
-		bankRepository.saveAndFlush(newMoney);
-
 		Integer count = (Integer)session.getAttribute("COUNT");
-		if(count == null) {
-			count = 0;
-		}
-		count ++;
 
-		list.add(2*bet); //list.get(5)==掛け金合計
+		if(count == 1) {
+			if (bet > bankAccount.getMoney()) {
+				mv.addObject("message", "残高が足りません");
+				mv.setViewName("blackjack");
+				return mv;
+			}
+
+			Bank newMoney = new Bank(bankAccount.getCode(), bankAccount.getUserCode(), bankAccount.getMoney() - bet,
+					bankAccount.getLost(), bankAccount.getWon());
+			bankRepository.saveAndFlush(newMoney);
+		}
+
+		list.add(2 * bet); //list.get(5)==掛け金合計
+		count ++;
+		session.setAttribute("COUNT", count);
 
 		List<Integer> deck = (List<Integer>) session.getAttribute("deck");
 		List<String> playerDeck = (List<String>) session.getAttribute("player");
@@ -359,11 +373,11 @@ public class BJController {
 		if (list.get(3) > list.get(4)) {
 			if(list.get(3) == 21) {
 				winner = "あなたの勝ちです";
-				prize = (3 * list.get(5)) + game.getPrice();
+				prize = 3 * (list.get(5) + game.getPrice());
 			}
 			else {
 				winner = "あなたの勝ちです";
-				prize = (2 * list.get(5)) + game.getPrice();
+				prize = 2 * (list.get(5) + game.getPrice());
 			}
 		}
 		else if (list.get(3) == list.get(4)) {
