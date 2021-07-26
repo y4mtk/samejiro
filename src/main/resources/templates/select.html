@@ -19,6 +19,16 @@
 <link rel="stylesheet" type="text/css" href="css/select.css">
 </head>
 <body>
+<!-- ローディング画面 -->
+  <aside id="loading-wrapper">
+    <div class="loader"></div>
+  </aside>
+
+
+
+  <!-- コンテンツ部分 -->
+  <aside id="page">
+
 
 <canvas id="waveCanvas"></canvas>
 
@@ -86,7 +96,7 @@
 
   </div>
 </div>
-
+</aside>
 <!--
 <div>
 	<form action="/select/game" method="get">
@@ -207,6 +217,11 @@ for (i = yAxis; i <= canvas.width + 10; i += 10) {
 
 init();
 
+
+
+setTimeout(function() {
+    $('#loading-wrapper').fadeOut(600);
+}, 300); // 3秒後にfadeOut処理
 </script>
 <script src="https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/5-1-11/js/5-1-11.js"></script>
 </body>
